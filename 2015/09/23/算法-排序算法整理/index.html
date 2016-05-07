@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>算法--排序算法整理 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="##排序概念排序是计算机内经常进行的一种操作，其目的是将一组“无序”的记录序列调整为“有序”的记录序列。
+##各种排序以下的排序都是以排序数组为例。当然一般用来排序的也就是数组了，比如栈，队列，哈系表这些，就不用排序了，因为它们的主要用途不在于排序。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法--排序算法整理">
+<meta property="og:url" content="http://yoursite.com/2015/09/23/算法-排序算法整理/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="##排序概念排序是计算机内经常进行的一种操作，其目的是将一组“无序”的记录序列调整为“有序”的记录序列。
+##各种排序以下的排序都是以排序数组为例。当然一般用来排序的也就是数组了，比如栈，队列，哈系表这些，就不用排序了，因为它们的主要用途不在于排序。">
+<meta property="og:updated_time" content="2016-04-06T05:35:57.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="算法--排序算法整理">
+<meta name="twitter:description" content="##排序概念排序是计算机内经常进行的一种操作，其目的是将一组“无序”的记录序列调整为“有序”的记录序列。
+##各种排序以下的排序都是以排序数组为例。当然一般用来排序的也就是数组了，比如栈，队列，哈系表这些，就不用排序了，因为它们的主要用途不在于排序。">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-算法-排序算法整理" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/09/23/算法-排序算法整理/" class="article-date">
+  <time datetime="2015-09-23T08:50:51.000Z" itemprop="datePublished">2015-09-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      算法--排序算法整理
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##排序概念<br>排序是计算机内经常进行的一种操作，其目的是将一组“无序”的记录序列调整为“有序”的记录序列。</p>
+<p>##各种排序<br>以下的排序都是以排序数组为例。当然一般用来排序的也就是数组了，比如栈，队列，哈系表这些，<br>就不用排序了，因为它们的主要用途不在于排序。<br><a id="more"></a><br>首先中间的交换函数是用一个通用的交换函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">void swap(void *a, void *b, int size)</span><br><span class="line">&#123;</span><br><span class="line">    void *temp = malloc(size);</span><br><span class="line">    memcpy(temp, a, size);</span><br><span class="line">    memcpy(a, b, size);</span><br><span class="line">    memcpy(b, temp, size);</span><br><span class="line">    </span><br><span class="line">    free(temp);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>###选择排序<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">void select_sort(int *array, int length);</span><br><span class="line">void select_sort(int *array, int length)</span><br><span class="line">&#123;</span><br><span class="line">    int i = 0;</span><br><span class="line">    int j = 0;</span><br><span class="line">    </span><br><span class="line">    for(i = 0; i &lt; length - 1; ++i)&#123;</span><br><span class="line">        for(j = i + 1; j &lt; length; ++j)&#123;</span><br><span class="line">            if(array[i] &gt; array[j])&#123;</span><br><span class="line">                swap(array + i, array + j, sizeof(array[i]));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>###直接插入排序<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">void insert_sort(int *array, int length);</span><br><span class="line">void insert_sort(int *array, int length)</span><br><span class="line">&#123;</span><br><span class="line">    int i = 0;</span><br><span class="line">    int j = 0;</span><br><span class="line"></span><br><span class="line">    for(i = 1; i &lt; length; ++i)&#123;</span><br><span class="line">        for(j = i - 1; j &gt;= 0 &amp;&amp; array[j] &gt; array[j + 1]; --j)&#123;</span><br><span class="line">            swap(&amp;array[j], &amp;array[j + 1], sizeof(array[j]));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>###冒泡排序<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">void bubble_sort(int *array, int length);</span><br><span class="line">void bubble_sort(int *array, int length)</span><br><span class="line">&#123;</span><br><span class="line">    int i = 0;</span><br><span class="line">    int j = 0;</span><br><span class="line">  </span><br><span class="line">    for(i = 0; i &lt; length - 1; ++i)&#123;</span><br><span class="line">        for(j = 0; j &lt; length - i - 1; ++j)&#123;</span><br><span class="line">            if(array[j] &gt; array[j + 1])&#123;</span><br><span class="line">                swap(array + j, array + j + 1, sizeof(array[j]));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>###冒泡排序（改进）<br>改进思路，冒泡排序可能排到一半就已经排列好了，当一次冒泡过程中没有发生交换<br>说明已经排好了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">void bubble_sort(int *array, int length);</span><br><span class="line">void bubble_sort(int *array, int length)</span><br><span class="line">&#123;</span><br><span class="line">    int i = 0;</span><br><span class="line">    int j = 0;</span><br><span class="line">    int flag = 0;</span><br><span class="line">    </span><br><span class="line">    for(i = 0; i &lt; length - 1; ++i)&#123;</span><br><span class="line">        flag = 0;</span><br><span class="line">        for(j = 0; j &lt; length - i - 1; ++j)&#123;</span><br><span class="line">            if(array[j] &gt; array[j + 1])&#123;</span><br><span class="line">                swap(array + j, array + j + 1, sizeof(array[j]));</span><br><span class="line">                flag = 1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        //如果flag为0，说明没有发生交换</span><br><span class="line">        if(flag == 0)&#123;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>###快速排序1<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">void quick_sort(int *array, int length);</span><br><span class="line">void quick_sort(int *array, int length)</span><br><span class="line">&#123;</span><br><span class="line">    int i = 0;</span><br><span class="line">    int j = 0;</span><br><span class="line">    int value = 0;</span><br><span class="line">    </span><br><span class="line">    if(length &gt; 1)&#123;</span><br><span class="line">        i = 0;</span><br><span class="line">        j = length - 1;</span><br><span class="line">        value = array[0];</span><br><span class="line">        while(i &lt; j)&#123;</span><br><span class="line">            while(i &lt; j)&#123;</span><br><span class="line">                if(array[j] &lt; value)&#123;</span><br><span class="line">                    array[i++] = array[j];</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">                j--;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            while(i &lt; j)&#123;</span><br><span class="line">                if(array[i] &gt; value)&#123;</span><br><span class="line">                    array[j--] = array[i];</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        array[i] = value;</span><br><span class="line">        quick_sort(array, i);</span><br><span class="line">        quick_sort(array + i + 1, length - i - 1);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>老师曾经说过，循环里面加if会使程序的效率遍低，所以可以稍微改进一下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">void quick_sort(int *array, int length)</span><br><span class="line">&#123;</span><br><span class="line">    int i = 0;</span><br><span class="line">    int j = 0;</span><br><span class="line">    int value = 0;</span><br><span class="line">    </span><br><span class="line">    if(length &gt; 1)&#123;</span><br><span class="line">        i = 0;</span><br><span class="line">        j = length - 1;</span><br><span class="line">        value = array[0];</span><br><span class="line">        while(i &lt; j)&#123;</span><br><span class="line">            while(i &lt; j &amp;&amp; array[j] &gt; value)&#123;</span><br><span class="line">                j--;</span><br><span class="line">            &#125;</span><br><span class="line">            if(i &lt; j)&#123;</span><br><span class="line">                array[i++] = array[j];</span><br><span class="line">            &#125;</span><br><span class="line">            while(i &lt; j &amp;&amp; array[i] &lt; value)&#123;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">            if(i &lt; j)&#123;</span><br><span class="line">                array[j--] = array[i];;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        array[i] = value;</span><br><span class="line">        quick_sort(array, i);</span><br><span class="line">        quick_sort(array + i + 1, length - i - 1);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>虽然这样循环里面仍然有if但是，if在外层的循环，之前的if是在里层的循环，所以这样效率会高</p>
+<p>###快速排序2<br>这种快速排序时早期的快排，也是算法导论这本书上所讲到的快速排序。<br>以最后一个元素作为基准，i是此时小于标准的最大的下标，初始为-1。<br>j从头开始遍历到倒数第二个元素，找到小的元素就将i++，并交换i和j所指向的元素<br>当遍历完后，把把i+1对应的元素和最后一个元素交换，这样i+1前面的数都要比i+1后面的数要小<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">void quick_sort(int *array, int length);</span><br><span class="line">void quick_sort(int *array, int length)</span><br><span class="line">&#123;</span><br><span class="line">    int i = -1;</span><br><span class="line">    int j = 0;</span><br><span class="line">    int value = 0;</span><br><span class="line">    </span><br><span class="line">    if(length &gt; 1)&#123;</span><br><span class="line">        value = array[length - 1];</span><br><span class="line">        for(j = 0; j &lt; length - 1; ++j)&#123;</span><br><span class="line">            if(array[j] &lt;= value)&#123;</span><br><span class="line">                i++;</span><br><span class="line">                swap(&amp;array[i], &amp;array[j], sizeof(array[i]));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        swap(&amp;array[i + 1], &amp;array[length - 1], sizeof(array[i + 1]));</span><br><span class="line">        quick_sort(array, i + 1);</span><br><span class="line">        quick_sort(array + i + 2, length - i - 2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这个版本的快速排序，虽然代码看起来要比第一种要简洁，但是这个用到了交换操作，所以效率会低点</p>
+<p>###归并排序<br>归并排序是建立在归并操作上的一种有效的排序算法,<br>该算法是采用分治法（Divide and Conquer）的一个非常典型的应用。<br>将已有序的子序列合并，得到完全有序的序列；即先使每个子序列有序，<br>再使子序列段间有序。若将两个有序表合并成一个有序表，称为二路归并。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">void merge_sort(int *array, int length);</span><br><span class="line">void merge_sort(int *array, int length)</span><br><span class="line">&#123;</span><br><span class="line">    int i = 0;</span><br><span class="line">    int j = 0;</span><br><span class="line">    int cnt = 0;</span><br><span class="line">    int *temp_array = NULL;</span><br><span class="line">    if(length &gt; 1)&#123;</span><br><span class="line">        //新建临时的数组用来二路归并</span><br><span class="line">        temp_array = (int *)malloc(sizeof(int) * length);</span><br><span class="line">        merge_sort(array, length / 2);</span><br><span class="line">        merge_sort(array + length / 2, length - length / 2);</span><br><span class="line">        i = 0;</span><br><span class="line">        j = length / 2;</span><br><span class="line">        while(i &lt; length / 2 &amp;&amp; j &lt; length)&#123;</span><br><span class="line">            if(array[i] &lt; array[j])&#123;</span><br><span class="line">                temp_array[cnt++] = array[i++];</span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                temp_array[cnt++] = array[j++];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        while(i &lt; length / 2)&#123;</span><br><span class="line">            temp_array[cnt++] = array[i++];</span><br><span class="line">        &#125;</span><br><span class="line">        while(j &lt; length)&#123;</span><br><span class="line">            temp_array[cnt++] = array[j++];</span><br><span class="line">        &#125;</span><br><span class="line">        for(i = 0; i &lt; length; ++i)&#123;</span><br><span class="line">            array[i] = temp_array[i];</span><br><span class="line">        &#125;</span><br><span class="line">        free(temp_array);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>###希尔排序<br>希尔排序(Shell Sort)是插入排序的一种。也称缩小增量排序，<br>是直接插入排序算法的一种更高效的改进版本。<br>希尔排序是非稳定排序算法。<br>希尔排序是把记录按下标的一定增量分组，对每组使用直接插入排序算法排序；<br>随着增量逐渐减少，每组包含的关键词越来越多，当增量减至1时，整个文件恰被分成一组，算法便终止。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">void shell_sort(int *array, int length);</span><br><span class="line">void shell_sort(int *array, int length)</span><br><span class="line">&#123;</span><br><span class="line">    int i = 0;</span><br><span class="line">    int j = 0;</span><br><span class="line">    int gap = length;</span><br><span class="line">    while(gap = gap / 2)&#123;</span><br><span class="line">        for(i = gap; i &lt; length; ++i)&#123;</span><br><span class="line">            for(j = i - gap; j &gt;= 0 &amp;&amp; array[j] &gt; array[j + gap]; j = j - gap)&#123;</span><br><span class="line">                swap(array + j, array + j + gap, sizeof(int));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Shell排序是一种不稳定的排序算法，其时间复杂度受增量序列的影响明显大于其他因素，<br>最坏的情况是o(n2)，好的情况在o(n1.3)，与增量序列选择有关</p>
+<p>###计数排序<br>计数排序可以说不是真正意义上的排序，它是先统计每个元素的个数，然后把元素都展开就好<br>计数排序在一些特定的情况下使用，当知道最大值，且数值的范围较为集中，且，必须为正数，<br>当然其实也可以对负数专门再弄一个数组来存。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">void count_sort(int *array, int length, int max);</span><br><span class="line">void count_sort(int *array, int length, int max)</span><br><span class="line">&#123;</span><br><span class="line">    int *count = (int *)malloc(sizeof(int) * (max + 1));</span><br><span class="line">    int cnt = 0;</span><br><span class="line">    int i = 0;</span><br><span class="line">    bzero(count, sizeof(int) * (max + 1));</span><br><span class="line">    //统计每个数的个数，下标代表数，对应的元素的值代表个数</span><br><span class="line">    for(i = 0; i &lt; length; ++i)&#123;</span><br><span class="line">        count[array[i]]++;</span><br><span class="line">    &#125;</span><br><span class="line">    for(i = 0; i &lt;= max; ++i)&#123;</span><br><span class="line">        while(count[i]--)&#123;</span><br><span class="line">            array[cnt++] = i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>###基数排序<br>基数排序也是一种不用比较的排序，每次只排一位，从个位，十位，百位。。。<br>直到最后一位。然而，比较一位并不需要比较，只要把它放到对应下标的数组就好了。<br>当所有的位都排好，这个序列也就排好了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">void radix_sort(int *array, int length);</span><br><span class="line">void radix_sort(int *array, int length)</span><br><span class="line">&#123;</span><br><span class="line">    int i = 0;</span><br><span class="line">    int k = 0;</span><br><span class="line">    int t = 1;</span><br><span class="line">    int j = 0;</span><br><span class="line">    int cnt = 0;</span><br><span class="line">    </span><br><span class="line">    //创建十个用来存放数的数组，小标0-9</span><br><span class="line">    int ** con = (int **)malloc(sizeof(int *) * 10);</span><br><span class="line">    for(i = 0; i &lt; 10; ++i)&#123;</span><br><span class="line">        con[i] = (int *)malloc(sizeof(int) * (length + 1));</span><br><span class="line">        bzero(con[i], sizeof(int) * (length + 1));</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //用t的累增来表示从个位到最高位的取值，这里默认最高位8位</span><br><span class="line">    while(t &lt; 100000000)&#123;</span><br><span class="line">        for(i = 0; i &lt; length; ++i)&#123;</span><br><span class="line">            k = array[i] / t % 10;</span><br><span class="line">            //用每个数组的第一位用来存放每个数组的个数</span><br><span class="line">            con[k][++con[k][0]] = array[i];</span><br><span class="line">        &#125;</span><br><span class="line">        cnt = 0;</span><br><span class="line">        //把收集好的每个数都重新展开原数组</span><br><span class="line">        for(i = 0; i &lt; 10; ++i)&#123;</span><br><span class="line">            for(j = 1; j &lt;= con[i][0]; ++j)&#123;</span><br><span class="line">                array[cnt++] = con[i][j];</span><br><span class="line">            &#125;</span><br><span class="line">            con[i][0] = 0;</span><br><span class="line">        &#125;</span><br><span class="line">        t = t * 10;</span><br><span class="line">    &#125;</span><br><span class="line">    for(i = 0; i &lt; 10; ++i)&#123;</span><br><span class="line">        free(con[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    free(con);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/09/23/算法-排序算法整理/" data-id="cinxbdrp8003yrdgpbudrim6m" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/排序/">排序</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/09/26/linux-修改redhat7的截图配置/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          linux--修改redhat7的截图配置
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/09/22/数据结构-将通用双端链表封装成队列/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">数据结构--将通用双端链表封装成队列</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/c语言基础/">c语言基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux基础/">linux基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/">数据结构</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/IPC/">IPC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/avl树/">avl树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux基础/">linux基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stl/">stl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tcp/">tcp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unix-c/">unix_c</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/位运算/">位运算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数原型/">函数原型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/排序/">排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/栈/">栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/链表/">链表</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/队列/">队列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试题/">面试题</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/IPC/" style="font-size: 10px;">IPC</a> <a href="/tags/avl树/" style="font-size: 10px;">avl树</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/leetcode/" style="font-size: 10px;">leetcode</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/linux基础/" style="font-size: 20px;">linux基础</a> <a href="/tags/mysql/" style="font-size: 11.67px;">mysql</a> <a href="/tags/shell/" style="font-size: 15px;">shell</a> <a href="/tags/stl/" style="font-size: 11.67px;">stl</a> <a href="/tags/tcp/" style="font-size: 10px;">tcp</a> <a href="/tags/unix-c/" style="font-size: 18.33px;">unix_c</a> <a href="/tags/位运算/" style="font-size: 11.67px;">位运算</a> <a href="/tags/函数原型/" style="font-size: 11.67px;">函数原型</a> <a href="/tags/排序/" style="font-size: 10px;">排序</a> <a href="/tags/数据结构/" style="font-size: 16.67px;">数据结构</a> <a href="/tags/栈/" style="font-size: 10px;">栈</a> <a href="/tags/算法/" style="font-size: 15px;">算法</a> <a href="/tags/链表/" style="font-size: 10px;">链表</a> <a href="/tags/队列/" style="font-size: 10px;">队列</a> <a href="/tags/面试题/" style="font-size: 10px;">面试题</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/05/07/http协议/">http协议</a>
+          </li>
+        
+          <li>
+            <a href="/2016/05/07/tcp-11种状态/">tcp--11种状态</a>
+          </li>
+        
+          <li>
+            <a href="/2016/05/05/stl-avl树/">stl--avl树</a>
+          </li>
+        
+          <li>
+            <a href="/2016/05/02/stl-空间配置器/">stl_空间配置器</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/06/算法-大整数算法/">算法--大整数算法</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

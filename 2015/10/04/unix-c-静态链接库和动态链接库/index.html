@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>unix_c--静态链接库和动态链接库 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="##编译的过程当我们用gcc编译c语言程序的时候都是直接生成可执行文件，但是在实际的编译过程中编译的过程也是有明显的步骤之分的。以最简单的程序hello.c为例。1:预编译gcc -E hello.c -o hello.i简单来说就是替换掉宏，展开头文件。123456将所有的`#define`删除，并且展开所有的宏定义处理所有条件预编译指令,比如`#if`、`#ifdef`、`#elif`、`el">
+<meta property="og:type" content="article">
+<meta property="og:title" content="unix_c--静态链接库和动态链接库">
+<meta property="og:url" content="http://yoursite.com/2015/10/04/unix-c-静态链接库和动态链接库/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="##编译的过程当我们用gcc编译c语言程序的时候都是直接生成可执行文件，但是在实际的编译过程中编译的过程也是有明显的步骤之分的。以最简单的程序hello.c为例。1:预编译gcc -E hello.c -o hello.i简单来说就是替换掉宏，展开头文件。123456将所有的`#define`删除，并且展开所有的宏定义处理所有条件预编译指令,比如`#if`、`#ifdef`、`#elif`、`el">
+<meta property="og:updated_time" content="2016-04-06T05:35:57.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="unix_c--静态链接库和动态链接库">
+<meta name="twitter:description" content="##编译的过程当我们用gcc编译c语言程序的时候都是直接生成可执行文件，但是在实际的编译过程中编译的过程也是有明显的步骤之分的。以最简单的程序hello.c为例。1:预编译gcc -E hello.c -o hello.i简单来说就是替换掉宏，展开头文件。123456将所有的`#define`删除，并且展开所有的宏定义处理所有条件预编译指令,比如`#if`、`#ifdef`、`#elif`、`el">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-unix-c-静态链接库和动态链接库" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/10/04/unix-c-静态链接库和动态链接库/" class="article-date">
+  <time datetime="2015-10-04T12:27:14.000Z" itemprop="datePublished">2015-10-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      unix_c--静态链接库和动态链接库
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##编译的过程<br>当我们用gcc编译c语言程序的时候都是直接生成可执行文件，但是在实际的编译过程中<br>编译的过程也是有明显的步骤之分的。<br>以最简单的程序hello.c为例。<br>1:预编译<br><code>gcc -E hello.c -o hello.i</code><br>简单来说就是替换掉宏，展开头文件。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">将所有的`<span class="meta">#<span class="meta-keyword">define</span>`删除，并且展开所有的宏定义</span></span><br><span class="line">处理所有条件预编译指令,比如`<span class="meta">#<span class="meta-keyword">if</span>`、`#<span class="meta-keyword">ifdef</span>`、`#<span class="meta-keyword">elif</span>`、`<span class="meta-keyword">else</span>`、`#<span class="meta-keyword">endif</span>`</span></span><br><span class="line">处理`include`预编译指令，将被包含的头文件插入到该预编译指令的位置。(这个过程是递归进行的，也就是被包含的文件可能包含有其他的文件)</span><br><span class="line">删除所有的注释`<span class="comment">//`和`/**/`</span></span><br><span class="line">添加行号和文件名标识，比如`<span class="meta">#2<span class="string">"hello.c"</span>`，以便于编译时遍一起产生调试用的行号信息以及用于编译时产生编译错误或警告时能够显示行号</span></span><br><span class="line">保留所有的`<span class="meta">#progma`编译指令，因为编译器须要使用它们</span></span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>2:编译<br><code>gcc -S hello.i -o hello.s</code><br>简单来说是将c语言程序编译成汇编代码。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">编译过程就是把预处理完的文件进行一系列的</span><br><span class="line">词法分析、语法分析、语义分析以及优化后产生向以的汇编代码文件。</span><br></pre></td></tr></table></figure></p>
+<p>3:汇编<br>简单来说汇编是将汇编代码转换成可重定向的二进制文件。<br><code>gcc -c hello.s -o hello.o</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">汇编是用汇编器将汇编代码转变成机器可以只行的指令，</span><br><span class="line">每一个汇编预言语句几乎都对应一条机器指令。</span><br><span class="line">所以汇编器的汇编过程相对于编译器来讲比较简单，</span><br><span class="line">它没有复杂的语法，也没有语义，也不需要做指令优化，</span><br><span class="line">值是根据汇编指令和机器指令的对照表一一翻译就可以了，</span><br><span class="line">`汇编这个名字也来源于此`。</span><br></pre></td></tr></table></figure></p>
+<p>4:链接<br>简单来说就是将可重定向文件与库文件链接生成可执行的二进制文件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">链接也有两种方式:</span><br><span class="line">一种是与静态库的链接</span><br><span class="line">一种是与动态库的链接</span><br></pre></td></tr></table></figure></p>
+<p>本文主要是来区分两种链接方式的不同用法</p>
+<p>##链接<br>首先看以下所需要的几个文件<br><code>hello.h</code><br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> _HELLO_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _HELLO_H</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pirnt</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure></p>
+<p><code>hello.c</code><br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="string">"hello.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"hello,world\n"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>main.c</code><br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="string">"hello.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> **argv)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    print();</span><br><span class="line"></span><br><span class="line">    return <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>无论时静态库还是静态库，都是由.o文件打包形成的<br>前面的预编译和编译就省略，直接到汇编生成可重定向的二进制文件<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@linux demo]<span class="meta"># gcc -c hello.c</span></span><br><span class="line">[root@linux demo]<span class="meta"># gcc -c main.c </span></span><br><span class="line">[root@linux demo]<span class="meta"># ls</span></span><br><span class="line">hello.c  hello.h  hello.o  main.c  main.o</span><br></pre></td></tr></table></figure></p>
+<p>链接操作<br>这里是直接用的是gcc的链接<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@linux demo]<span class="meta"># gcc hello.o main.o -o main</span></span><br><span class="line">[root@linux demo]<span class="meta"># ls</span></span><br><span class="line">hello.c  hello.h  hello.o  main  main.c  main.o</span><br><span class="line">[root@linux demo]<span class="meta"># ./main </span></span><br><span class="line">hello,world</span><br></pre></td></tr></table></figure></p>
+<p>###静态库链接的运作方式<br>静态库一般是以.a结尾，lib开头。<br>实际上呢，静态库就是对汇编生成的可重定向的二进制文件的<code>XXX.o</code>文件的打包<br>打包是为了提高代码的利用率?<br>那么如何将.o文件打包成静态库同时在链接的时候使用静态库呢？<br>比如<code>hello.o</code>文件，当其他程序要使用<code>hello.o</code>中的函数时，把<code>hello.h</code>文件包含进去</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#将hello.o打包成静态库</span></span><br><span class="line">[root@linux demo]<span class="meta"># ar cr libhello.a hello.o</span></span><br><span class="line"><span class="meta">#显示libhello.a里面包含的文件</span></span><br><span class="line">[root@linux demo]<span class="meta"># ar t libhello.a </span></span><br><span class="line">hello.o</span><br><span class="line">[root@linux demo]<span class="meta"># gcc -o main main.c libhello.a </span></span><br><span class="line">[root@linux demo]<span class="meta"># ls</span></span><br><span class="line">hello.c  hello.h  hello.o  libhello.a  main  main.c  main.o</span><br><span class="line">[root@linux demo]<span class="meta"># ./main </span></span><br><span class="line">hello,world</span><br></pre></td></tr></table></figure>
+<p>###动态链接的运作方式<br>动态库一般是以.so结尾<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#先把hello.c打包成动态库libhello.so</span></span><br><span class="line">[root@linux demo]<span class="meta"># gcc -fpic -shared hello.c libhello.so</span></span><br><span class="line"><span class="meta">#将动态库与main.c一起编译成main</span></span><br><span class="line">[root@linux demo]<span class="meta"># gcc libhello.so main.c -o main</span></span><br><span class="line"><span class="meta">#此时libhello.so并没有被加载到内存，所有不能运行</span></span><br><span class="line">[root@linux demo]<span class="meta"># ./main </span></span><br><span class="line">./main: error <span class="keyword">while</span> loading shared libraries: libhello.so: cannot open shared object file: No such file or directory</span><br><span class="line">[root@linux demo]<span class="meta"># ldconfig libhello.so</span></span><br><span class="line">ldconfig: relative path libhello.so used to build cache</span><br><span class="line"><span class="meta">#ldconfig +绝对路径  将路径下的所有动态库都加载进去</span></span><br><span class="line">[root@linux demo]<span class="meta"># ldconfig $(pwd)</span></span><br><span class="line"><span class="meta">#加在完成，程序就可以执行了</span></span><br><span class="line">[root@linux demo]<span class="meta"># ./main </span></span><br><span class="line">hello,world</span><br></pre></td></tr></table></figure></p>
+<p>###使用静态库和动态库的优缺点<br>其实优缺点从他们使用的方式就体现了出来<br>静态库时在链接的时候，把库的代码都链接了过来，这样静态链接的程序可以不依赖于<br>库从而可以独立运行，而动态链接的程序，当它所需要的库还没有加载到内存的时候是<br>不能够运行的。<br>静态库每次都要把代码复制到程序中，这样程序本身就需要占用磁盘空间，在程序<br>运行的时候也是非常消耗内存的，如果有很多程序都使用了相同的库，那样就更是浪费<br>了。<br>而动态库的链接只是引用了动态库的符号表，并不会把其他的并入到程序中。<br>同时程序在运行时，使用了相同动态库的程序会共用那个动态库。<br>但是，在系统开始运行使用了动态链接的程序时，系统会先把控制权交给动态链接器，<br>由它完成所有的动态链接过程工作之后再把控制权交给程序。这样缺点也显而易见了，<br>执行过程慢，程序在运行前还要先调用动态链接器。</p>
+<p>总结：<br>静态库：<br>    优点：执行速度快，编译好之后不需要依赖其它库就可以运行<br>    缺点：浪费空间，程序存放时会占用硬盘空间，执行的时候会占用内存<br>动态库：<br>    优点：节省空间，可以实现多个程序在运行时使用同一个库，节省磁盘空间和内存<br>    缺点：执行速度较慢，在程序的时候要先执行动态链接操作。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/10/04/unix-c-静态链接库和动态链接库/" data-id="cinxbdrmk0035rdgph6yhok3w" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/unix-c/">unix_c</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/10/06/linux-修改PS1的值/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          linux--修改PS1的值
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/09/26/linux-修改redhat7的截图配置/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">linux--修改redhat7的截图配置</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/c语言基础/">c语言基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux基础/">linux基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/">数据结构</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/IPC/">IPC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/avl树/">avl树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux基础/">linux基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stl/">stl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tcp/">tcp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unix-c/">unix_c</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/位运算/">位运算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数原型/">函数原型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/排序/">排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/栈/">栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/链表/">链表</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/队列/">队列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试题/">面试题</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/IPC/" style="font-size: 10px;">IPC</a> <a href="/tags/avl树/" style="font-size: 10px;">avl树</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/leetcode/" style="font-size: 10px;">leetcode</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/linux基础/" style="font-size: 20px;">linux基础</a> <a href="/tags/mysql/" style="font-size: 11.67px;">mysql</a> <a href="/tags/shell/" style="font-size: 15px;">shell</a> <a href="/tags/stl/" style="font-size: 11.67px;">stl</a> <a href="/tags/tcp/" style="font-size: 10px;">tcp</a> <a href="/tags/unix-c/" style="font-size: 18.33px;">unix_c</a> <a href="/tags/位运算/" style="font-size: 11.67px;">位运算</a> <a href="/tags/函数原型/" style="font-size: 11.67px;">函数原型</a> <a href="/tags/排序/" style="font-size: 10px;">排序</a> <a href="/tags/数据结构/" style="font-size: 16.67px;">数据结构</a> <a href="/tags/栈/" style="font-size: 10px;">栈</a> <a href="/tags/算法/" style="font-size: 15px;">算法</a> <a href="/tags/链表/" style="font-size: 10px;">链表</a> <a href="/tags/队列/" style="font-size: 10px;">队列</a> <a href="/tags/面试题/" style="font-size: 10px;">面试题</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/05/07/http协议/">http协议</a>
+          </li>
+        
+          <li>
+            <a href="/2016/05/07/tcp-11种状态/">tcp--11种状态</a>
+          </li>
+        
+          <li>
+            <a href="/2016/05/05/stl-avl树/">stl--avl树</a>
+          </li>
+        
+          <li>
+            <a href="/2016/05/02/stl-空间配置器/">stl_空间配置器</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/06/算法-大整数算法/">算法--大整数算法</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
