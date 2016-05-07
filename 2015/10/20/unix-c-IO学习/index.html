@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>unix_c--IO学习 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="IO简单来说就是对文件的操作IO的使用有两种：   1 系统调用   2 库函数的调用
+系统调用和库函数的区别：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="unix_c--IO学习">
+<meta property="og:url" content="http://yoursite.com/2015/10/20/unix-c-IO学习/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="IO简单来说就是对文件的操作IO的使用有两种：   1 系统调用   2 库函数的调用
+系统调用和库函数的区别：">
+<meta property="og:updated_time" content="2016-04-06T05:35:57.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="unix_c--IO学习">
+<meta name="twitter:description" content="IO简单来说就是对文件的操作IO的使用有两种：   1 系统调用   2 库函数的调用
+系统调用和库函数的区别：">
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/avatar.png" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/">John Doe</a></h1>
+        </hgroup>
+
+        
+                
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="mailto:jinfeng1995@gmail.com" title="Email"></a></li>
+                            
+                                <li id="GitHub"><a class="GitHub" target="_blank" href="//github.com/kingfeng12138" title="GitHub"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/IPC/" style="font-size: 10px;">IPC</a> <a href="/tags/avl树/" style="font-size: 10px;">avl树</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/leetcode/" style="font-size: 10px;">leetcode</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/linux基础/" style="font-size: 20px;">linux基础</a> <a href="/tags/mysql/" style="font-size: 11.67px;">mysql</a> <a href="/tags/shell/" style="font-size: 15px;">shell</a> <a href="/tags/stl/" style="font-size: 11.67px;">stl</a> <a href="/tags/tcp/" style="font-size: 10px;">tcp</a> <a href="/tags/unix-c/" style="font-size: 18.33px;">unix_c</a> <a href="/tags/位运算/" style="font-size: 11.67px;">位运算</a> <a href="/tags/函数原型/" style="font-size: 11.67px;">函数原型</a> <a href="/tags/排序/" style="font-size: 10px;">排序</a> <a href="/tags/数据结构/" style="font-size: 16.67px;">数据结构</a> <a href="/tags/栈/" style="font-size: 10px;">栈</a> <a href="/tags/算法/" style="font-size: 15px;">算法</a> <a href="/tags/链表/" style="font-size: 10px;">链表</a> <a href="/tags/队列/" style="font-size: 10px;">队列</a> <a href="/tags/面试题/" style="font-size: 10px;">面试题</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://my.oschina.net/cnyinlinux">cnyinlinux</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.zmy123.cn">IT-追梦园</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://rubbly.cn">Rubbly</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://xknow.net">认知</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://leejiahao.com">leejiahao</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.Riyadhlinux.com/wordpress">Riyadh</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.learnandroid.cn">xavier</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于后台</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">John Doe</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/avatar.png" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">John Doe</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="mailto:jinfeng1995@gmail.com" title="Email"></a></li>
+                            
+                                <li id="GitHub"><a class="GitHub" target="_blank" href="//github.com/kingfeng12138" title="GitHub"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-unix-c-IO学习" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>IO简单来说就是对文件的操作<br>IO的使用有两种：<br>   1 系统调用<br>   2 库函数的调用</p>
+<p>系统调用和库函数的区别：</p>
+<a id="more"></a>
+<p>系统调用：<br>移植性：<br>系统调用是内核的直接调用，移植性差，或者说，无移植性。<br>库函数兼容性好，脱离了系统平台，对与不同的系统实现的方式不一样<br>效率：<br>系统调用会直接使用内核，效率高，响应快，但是可能会占用内核，一般建议少用<br>库函数是非直接的调用<br>联系：<br>库函数的实现也是调用了系统调用，库函数封装了不同系统对系统调用的<br>差异，也拓展了一些功能。<br>使用范围：<br>虽然库函数封装了大部分的系统调用，但是有的功能也只能由系统调用来完成。</p>
+<p>###文件描述符<br>对内核而言，所有打开的文件都通过文件描述符引用。文件描述符是一个非负<br>整数。当打开一个现有的文件或这创建一个新文件时，内核向进程返回一个文<br>件描述符号。</p>
+<p>##系统调用</p>
+<p>###open和opennat<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fcntl.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">open</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *path, <span class="keyword">int</span> oflag, ....<span class="comment">/*mode_t mode*/</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">openat</span><span class="params">(<span class="keyword">int</span> fd, <span class="keyword">const</span> <span class="keyword">char</span> *path, <span class="keyword">int</span> oflag, ...<span class="comment">/*mode_t mode */</span>)</span></span>;</span><br></pre></td></tr></table></figure></p>
+<p>打开一个文件，并返回文件描述符<br>当path是绝对路径，openat的fd参数就会被忽略，openat函数就相当于open<br>当path参数指定的是相对路径名，fd参数指出了相对路径名在文件系统中的<br>开始地址。<br>oflag的值可以同时指定多个，是以按位或的形式来传递多个参数<br>参数都可以从man page来查看<br>O_RDONLY    只读打开<br>O_RWONLY    只写打开<br>O_RDWR      读、写打开<br>O_EXEC      只执行打开<br>O_SEARCH    只搜索打开(应用于目录)<br>O_APPEND    每次写文件都追加到文件的末尾<br>O_CREAT     如果文件不存在则创建它。<br>O_EXCL      如果指定了O_CREAT，若文件已经存在则出错(可以用来判断文件是否存在)<br>……..</p>
+<p>###creat<br>用来创建一个新文件<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fcntl.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">creat</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *path, mode_t mode)</span></span>;</span><br></pre></td></tr></table></figure></p>
+<p>creat的功能就是创建一个文件，mode来指定文件的权限<br>但是creat创建文件之后是以只写方式打开创建的文件。<br>如果创建文件之后写了文件又要读取文件，就必须先close然后在open</p>
+<p>###close<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">close</span> <span class="params">(<span class="keyword">int</span> fd)</span></span>;</span><br></pre></td></tr></table></figure></p>
+<p>关闭一个已经打开的文件</p>
+<p>###lseek<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">off_t</span> lseek(<span class="keyword">int</span> d, <span class="keyword">off_t</span> offset, <span class="keyword">int</span> whence);</span><br></pre></td></tr></table></figure></p>
+<p>用来改变文件偏移量的位置<br>whence用来指定改变偏移的方式<br>SEEK_SET  文件的偏移量设置为距文件开始处offset个字节<br>SEEK_CUR  文件的偏移量设置为但前值加上offset，offset可正可负<br>SEEK_END  文件的偏移量设置为文件长度加offset，offset可正可负</p>
+<p>###read<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">ssize_t</span> read(<span class="keyword">int</span> fd, <span class="keyword">void</span> *buf, <span class="keyword">size_t</span> nbytes);</span><br></pre></td></tr></table></figure></p>
+<p>read函数用来从打开的文件中读取文件<br>将打开的文件的nbytes个读到buf指向的内存</p>
+<p>###write<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">ssize_t</span> write(<span class="keyword">int</span> fd, <span class="keyword">void</span> *buf, <span class="keyword">size_t</span> nbytes);</span><br></pre></td></tr></table></figure></p>
+<p>write函数是向打开的文件写入数据<br>将buf指向的内存中的数据，写入到打开的文件中</p>
+<p>##IO库函数</p>
+<p>###打开流<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function">FILE *<span class="title">fopen</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *<span class="keyword">restrict</span> pathname, <span class="keyword">const</span> <span class="keyword">char</span> *<span class="keyword">restrict</span> type)</span></span>;</span><br><span class="line"><span class="function">FILE *<span class="title">freopen</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *<span class="keyword">restrict</span> pathname, <span class="keyword">const</span> <span class="keyword">char</span> *<span class="keyword">restrict</span> type, FILE *<span class="keyword">restrict</span> fp)</span></span>;</span><br><span class="line"><span class="function">FILE *<span class="title">fdopen</span><span class="params">(<span class="keyword">int</span> fd, <span class="keyword">const</span> <span class="keyword">char</span> *type)</span></span>;</span><br></pre></td></tr></table></figure></p>
+<p>(1)fopen函数用来打开路径名为pathname的文件<br>(2)freopen在一个指定的流上打开指定的文件，若原来流打开的，就先关闭该流。<br>若该流已经定向，则使用freopen清除该定向<br>(3)将文件描述符和标准I/O流相结合</p>
+<p>###读和写流<br>一次读取一个字符，若成功就返回<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getc</span><span class="params">(FILE *fp)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fgetc</span><span class="params">(FILE *fp)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getchar</span><span class="params">(<span class="keyword">void</span>)</span></span>;</span><br></pre></td></tr></table></figure></p>
+<p>将字符压回送回流<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">ungetc</span><span class="params">(<span class="keyword">int</span> c, FILE *fp)</span></span>;</span><br></pre></td></tr></table></figure></p>
+<p>返回值:若成功， 返回c，若出错，返回EOF<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">putc</span><span class="params">(<span class="keyword">int</span> c, FILE *fp)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fputc</span><span class="params">(<span class="keyword">int</span> c, FILE *fp)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">putchar</span><span class="params">(<span class="keyword">int</span> c)</span></span>;</span><br></pre></td></tr></table></figure></p>
+<p>返回值：若成功，返回c，若出错，返回EOF</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">char</span> *<span class="title">fgets</span><span class="params">(<span class="keyword">char</span> *<span class="keyword">restrict</span> buf, <span class="keyword">int</span> n, FILE *<span class="keyword">restrict</span> fp)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">char</span> *<span class="title">gets</span><span class="params">(<span class="keyword">char</span> *buf)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>###格式化I/O<br>格式化输出<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">printf</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *<span class="keyword">restrict</span> format, ...)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fprintf</span><span class="params">(FILE *<span class="keyword">restrict</span> fp, <span class="keyword">const</span> <span class="keyword">char</span> *<span class="keyword">restrict</span> format, ...)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dprintf</span><span class="params">(<span class="keyword">int</span> fd, <span class="keyword">const</span> <span class="keyword">char</span> *<span class="keyword">restrict</span> format, ...)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sprintf</span><span class="params">(<span class="keyword">char</span> *<span class="keyword">restrict</span> buf, <span class="keyword">const</span> <span class="keyword">char</span> *<span class="keyword">restrict</span> format, ...)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">snprintf</span><span class="params">(<span class="keyword">char</span> *<span class="keyword">restrict</span> buf, size_t n, <span class="keyword">const</span> <span class="keyword">char</span> *<span class="keyword">restrict</span> format, ...)</span></span>;</span><br></pre></td></tr></table></figure></p>
+<p>格式化输入<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">scanf</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *<span class="keyword">restrict</span> fomat, ...)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fscanf</span><span class="params">(FILE *<span class="keyword">restrict</span> fp, <span class="keyword">const</span> <span class="keyword">char</span> *<span class="keyword">restrict</span> format, ...)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sscanf</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *<span class="keyword">restrict</span> buf, <span class="keyword">const</span> <span class="keyword">char</span> *<span class="keyword">restrict</span> format, ...)</span></span>;</span><br></pre></td></tr></table></figure></p>
+<p>3个函数的返回值:赋值的输入函数；若输入出错或在任一转换前已经达到文件尾端，返回EOF</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+
+
+
+
+    
+      
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2015/10/25/unix-c-信号学习/" title="上一篇: unix_c--信号学习">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2015/10/20/unix-c-开机流程/" title="下一篇: unix-c--开机流程">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/05/07/http协议/">http协议</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/07/tcp-11种状态/">tcp--11种状态</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/05/stl-avl树/">stl--avl树</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/02/stl-空间配置器/">stl_空间配置器</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/06/算法-大整数算法/">算法--大整数算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/06/shell-字符处理/">shell-字符处理</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/14/面试题整理2/">面试题整理2</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/11/leetcode-Majority-Element/">leetcode--Majority Element</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/09/数据结构-红黑树/">数据结构--红黑树</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/06/算法-将两个栈封装成队列/">算法--将两个栈封装成队列</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/04/算法-kmp字符串匹配算法/">算法--kmp字符串匹配算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/04/面试题整理1/">面试题整理1</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/17/unix-c-IPC使用步骤/">unix_c--IPC使用步骤</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/09/mysql-c语言编程/">mysql--c语言编程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/mysql的安装/">mysql的安装(服务端，客户端，mysql库)</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/17/unix-c-线程学习/">unix_c--线程学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/31/unix-c-IPC进程通信学习/">unix-c-IPC进程通信学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/25/unix-c-信号学习/">unix_c--信号学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/20/unix-c-IO学习/">unix_c--IO学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/20/unix-c-开机流程/">unix-c--开机流程</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/20/picture-test/">picture_test</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/07/unix-c-makefile写法/">unix_c--makefile写法</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/07/shell-expect用法/">shell--expect用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/06/shell-awk和sed用法/">shell--awk和sed用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/06/shell-find用法/">shell--find用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/06/linux-修改PS1的值/">linux--修改PS1的值</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/04/unix-c-静态链接库和动态链接库/">unix_c--静态链接库和动态链接库</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/26/linux-修改redhat7的截图配置/">linux--修改redhat7的截图配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/23/算法-排序算法整理/">算法--排序算法整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/22/数据结构-将通用双端链表封装成队列/">数据结构--将通用双端链表封装成队列</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/20/数据结构-将通用双端链表封装成栈/">数据结构--将通用双端链表封装成栈</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/20/数据结构-带控制信息的双向链表/">数据结构--带控制信息的双向链表</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/01/数据结构-单向链表的操作-带表头/">数据结构--单向链表的操作(带表头)</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/11/c语言-一个很搓的malloc的实现/">c语言--一个很搓的malloc的实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/04/c语言-strtok函数的实现/">c语言--strtok函数的实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/04/c语言-位操作实现ftoi/">c语言--位操作实现ftoi</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/03/c语言-素数的查找/">c语言--素数的查找</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/03/c语言-两个整数的交换函数/">c语言--两个整数的交换函数</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/03/c语言-strcpy函数实现/">c语言--strcpy函数实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/27/linux学习-磁盘分区和lvm的使用/">linux学习--磁盘分区和lvm的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/27/linux学习-yum使用yum源配置/">linux学习--yum使用yum源配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/27/linux学习-文件打包压缩/">linux学习--文件打包压缩</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/26/linux学习-网络设置/">linux学习--网络设置</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/24/学长推荐的书/">学长推荐的书</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/24/linux学习-openssh的使用/">linux学习--openssh的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/24/linux学习-进程管理/">linux学习--进程管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/24/linux学习-文件存储管理/">linux学习--文件存储管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/22/linux学习-权限和特殊权限/">linux学习--权限和特殊权限</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/22/linux学习-用户和组的管理/">linux学习--用户和组的管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/22/linux学习-文本编辑以vim/">linux学习--文本编辑以vim</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/22/linux学习-管道和重定向/">linux学习--管道和重定向</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/21/linux学习-系统相关指令/">linux学习--系统相关指令</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/21/linux学习-文件基本操作/">linux学习--文件基本操作</a></li></ul>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2016 John Doe
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的静态博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减双栏 Hexo 博客主题">Yelee</a> by MOxFIVE
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >本站到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 2;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/page/6/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description">
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+    
+    
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: true,
+          isPost: false,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/avatar.png" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/">John Doe</a></h1>
+        </hgroup>
+
+        
+                
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="mailto:jinfeng1995@gmail.com" title="Email"></a></li>
+                            
+                                <li id="GitHub"><a class="GitHub" target="_blank" href="//github.com/kingfeng12138" title="GitHub"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/IPC/" style="font-size: 10px;">IPC</a> <a href="/tags/avl树/" style="font-size: 10px;">avl树</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/leetcode/" style="font-size: 10px;">leetcode</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/linux基础/" style="font-size: 20px;">linux基础</a> <a href="/tags/mysql/" style="font-size: 11.67px;">mysql</a> <a href="/tags/shell/" style="font-size: 15px;">shell</a> <a href="/tags/stl/" style="font-size: 11.67px;">stl</a> <a href="/tags/tcp/" style="font-size: 10px;">tcp</a> <a href="/tags/unix-c/" style="font-size: 18.33px;">unix_c</a> <a href="/tags/位运算/" style="font-size: 11.67px;">位运算</a> <a href="/tags/函数原型/" style="font-size: 11.67px;">函数原型</a> <a href="/tags/排序/" style="font-size: 10px;">排序</a> <a href="/tags/数据结构/" style="font-size: 16.67px;">数据结构</a> <a href="/tags/栈/" style="font-size: 10px;">栈</a> <a href="/tags/算法/" style="font-size: 15px;">算法</a> <a href="/tags/链表/" style="font-size: 10px;">链表</a> <a href="/tags/队列/" style="font-size: 10px;">队列</a> <a href="/tags/面试题/" style="font-size: 10px;">面试题</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://my.oschina.net/cnyinlinux">cnyinlinux</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.zmy123.cn">IT-追梦园</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://rubbly.cn">Rubbly</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://xknow.net">认知</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://leejiahao.com">leejiahao</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.Riyadhlinux.com/wordpress">Riyadh</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.learnandroid.cn">xavier</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于后台</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">John Doe</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/avatar.png" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">John Doe</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="mailto:jinfeng1995@gmail.com" title="Email"></a></li>
+                            
+                                <li id="GitHub"><a class="GitHub" target="_blank" href="//github.com/kingfeng12138" title="GitHub"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap">
+  
+    <article id="post-linux学习-管道和重定向" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>##系统的标准输入，输出，错误</p>
+<p>###当一个程序刚刚打开时候，首先会创建三个文件</p>
+<p>###标准输入0，标准输出1，标准错误2</p>
+<p>##文件的重定向 </p>
+<p>###&gt;<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">command</span> &gt; filename		//把标准输出重定向到一个文件中</span><br><span class="line"><span class="built_in">command</span> &gt;&gt; filename		//把标准输出重定向到一个文件中（追加）</span><br><span class="line"><span class="built_in">command</span> 1&gt; filename		//把标准输出重定向到一个文件中</span><br><span class="line"><span class="built_in">command</span> &gt; file 2&gt;&amp;1		//把标准输出和标准错误一起重定向到文件中</span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line"><span class="built_in">command</span> 2&gt; filename		//把标准错误重定向到文件中</span><br><span class="line"><span class="built_in">command</span> 2&gt;&gt; filename		//把标准错误重定向到一个文件中（追加）</span><br><span class="line"><span class="built_in">command</span> &gt;&gt; filename 2&gt;&amp;1	//把标准输出和标准错误一起重定向到文件中（追加）</span><br><span class="line"><span class="built_in">command</span> &amp;&gt; filename		//把标准输出和标准错误一起重定向到文件中</span><br></pre></td></tr></table></figure></p>
+<p>##管道符</p>
+<h2 id=""><a href="#" class="headerlink" title="|"></a>|</h2><p>可以通过管道把一个命令的输出传递到另一个命令作为输入。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat file | head -n 25 | tail -n 15  #把文件的15行到25行显示出来</span></span><br></pre></td></tr></table></figure></p>
+<p>##tee</p>
+<p>###把标准输出的数据复制一份<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat /etc/passwd |grep "/sbinnologin" |tee /mnt/nologin.out</span></span><br><span class="line"><span class="comment">#把/etc/passwd文件中含有/sbin/nologin的行输出到屏幕上并写入到/mnt/nologin.out文件中</span></span><br></pre></td></tr></table></figure></p>
+<p>tee 只能复制标准输出，不能复制标准错误。</p>
+<p>##diff 和patch 用法</p>
+<p>###diff<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># diff hello.c hello.c.new  	//显示两个文本的差异</span></span><br><span class="line"><span class="comment"># diff -Nura hello.c hello.c.new &gt; patch.test.c  //加入参数后生成补丁文件并重定向到patch.test.c</span></span><br></pre></td></tr></table></figure></p>
+<p>###patch<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># patch -p0 &lt; patch.hello.c  	//利用diff生成的patch补丁，来更新hello.c</span></span><br><span class="line"><span class="comment"># patch -p0 -R &lt;patch.hello.c 	//-R参数，可以将更新后的文件还原成以前文件</span></span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-linux学习-系统相关指令" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>##关机与重启命令:(shutdown,init)</p>
+<p>###shutdown<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># shutdown -k		#只是发送消息给所有登陆本机的用户，不会真正关机</span></span><br><span class="line"><span class="comment"># shutdown -h 		#将系统关机</span></span><br><span class="line"><span class="comment"># shutdown -c 		#中断关机命令</span></span><br></pre></td></tr></table></figure></p>
+<p>###init [0,1,2,3,4,5,6]  他们分别代表系统的七种级别<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span>	关机	</span><br><span class="line"><span class="number">1</span>	单用户模式</span><br><span class="line"><span class="number">2</span>	多用户(没有NFS功能)</span><br><span class="line"><span class="number">3</span>	多用户命令行模式</span><br><span class="line"><span class="number">4</span>	系统未使用</span><br><span class="line"><span class="number">5</span>	x11控制台，系统启动后进入图形化界面</span><br><span class="line"><span class="number">6</span>	重新启动</span><br></pre></td></tr></table></figure></p>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+      
+        <p class="article-more-link">
+          <a  href="/2015/07/21/linux学习-系统相关指令/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-linux学习-文件基本操作" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h4 id="与文本相关的命令主要有"><a href="#与文本相关的命令主要有" class="headerlink" title="与文本相关的命令主要有:"></a>与文本相关的命令主要有:</h4><h4 id="mkdir-rmdir-rm-file-stat-touch-mv-cp-echo-cat-less-more-tree-ls-cd-echo-evince-find"><a href="#mkdir-rmdir-rm-file-stat-touch-mv-cp-echo-cat-less-more-tree-ls-cd-echo-evince-find" class="headerlink" title="mkdir,rmdir,rm,file,stat,touch,mv,cp,echo,cat,less,more,tree,ls,cd,echo,evince,find"></a>mkdir,rmdir,rm,file,stat,touch,mv,cp,echo,cat,less,more,tree,ls,cd,echo,evince,find</h4><h2 id="touch"><a href="#touch" class="headerlink" title="touch"></a>touch</h2><h3 id="用来创建一个文件"><a href="#用来创建一个文件" class="headerlink" title="用来创建一个文件"></a>用来创建一个文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ touch file</span><br></pre></td></tr></table></figure>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+      
+        <p class="article-more-link">
+          <a  href="/2015/07/21/linux学习-文件基本操作/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span>
+    </nav>
+  
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2016 John Doe
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的静态博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减双栏 Hexo 博客主题">Yelee</a> by MOxFIVE
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >本站到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 2;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

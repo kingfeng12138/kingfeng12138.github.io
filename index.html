@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description">
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+    
+    
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: true,
+          isPost: false,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/avatar.png" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/">John Doe</a></h1>
+        </hgroup>
+
+        
+                
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="mailto:jinfeng1995@gmail.com" title="Email"></a></li>
+                            
+                                <li id="GitHub"><a class="GitHub" target="_blank" href="//github.com/kingfeng12138" title="GitHub"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/IPC/" style="font-size: 10px;">IPC</a> <a href="/tags/avl树/" style="font-size: 10px;">avl树</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/leetcode/" style="font-size: 10px;">leetcode</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/linux基础/" style="font-size: 20px;">linux基础</a> <a href="/tags/mysql/" style="font-size: 11.67px;">mysql</a> <a href="/tags/shell/" style="font-size: 15px;">shell</a> <a href="/tags/stl/" style="font-size: 11.67px;">stl</a> <a href="/tags/tcp/" style="font-size: 10px;">tcp</a> <a href="/tags/unix-c/" style="font-size: 18.33px;">unix_c</a> <a href="/tags/位运算/" style="font-size: 11.67px;">位运算</a> <a href="/tags/函数原型/" style="font-size: 11.67px;">函数原型</a> <a href="/tags/排序/" style="font-size: 10px;">排序</a> <a href="/tags/数据结构/" style="font-size: 16.67px;">数据结构</a> <a href="/tags/栈/" style="font-size: 10px;">栈</a> <a href="/tags/算法/" style="font-size: 15px;">算法</a> <a href="/tags/链表/" style="font-size: 10px;">链表</a> <a href="/tags/队列/" style="font-size: 10px;">队列</a> <a href="/tags/面试题/" style="font-size: 10px;">面试题</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://my.oschina.net/cnyinlinux">cnyinlinux</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.zmy123.cn">IT-追梦园</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://rubbly.cn">Rubbly</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://xknow.net">认知</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://leejiahao.com">leejiahao</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.Riyadhlinux.com/wordpress">Riyadh</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.learnandroid.cn">xavier</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于后台</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">John Doe</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/avatar.png" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">John Doe</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="mailto:jinfeng1995@gmail.com" title="Email"></a></li>
+                            
+                                <li id="GitHub"><a class="GitHub" target="_blank" href="//github.com/kingfeng12138" title="GitHub"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap">
+  
+    <article id="post-http协议" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>http协议属于应用层的协议，在传输层TCP基础之上，加上指定的报头，封装成了http协议</p>
+<p>http协议中文名：超文本传输协议<br>Hyper Text Transfer Protocol(超文本传输协议)</p>
+<p>http请求分为三个部分: 请求行，消息报头，请求正文</p>
+<p>Method Request-URI HTTP-Version</p>
+<p>GET     用于请求Request-URI所标识的资源<br>POST    在Request-URI所标识的资源后附加新的数据<br>HEAD    请求获取由Request-URI所标识的资源的响应消息报头<br>PUT     请求服务器存储一个资源，并用Reque-URI作为其标识<br>DELETE  请求服务器删除Request-URI所标识的资源<br>TRACE   请求服务器送回收到的请求信息，主要用于测试或诊断<br>CONNECT  保留将来使用<br>OPTIONS  请求查询服务器的性能，或者查询与资源相关的选项和需求</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-tcp-11种状态" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="tcp连接和断开过程中的状态变化"><a href="#tcp连接和断开过程中的状态变化" class="headerlink" title="tcp连接和断开过程中的状态变化"></a>tcp连接和断开过程中的状态变化</h2><p>全部的11种状态<br>(1) SYN_SEND (2)FIN_WAIT1 (3) FIN_WAIT2 (4) CLOSING (5) TIME_WAIT<br>(1) LISTEN (2) SYN_RCVD (3) CLOSE_WAIT (4) LAST_ACK<br>(1)CLOSED (2) ESTABLISHED<br>刚开始都为CLOSED状态<br>在连接的过程中。<br>A 创建socket socket<br>B 创建socket，然后bind，然后listen变为LISTEN状态<br>A 执行connect，发送syn 进入到SYN_SENT状态<br>B 服务端收到SYN 向客户端发送ACK和SYN 进入SYN_RCVD状态 (服务端的连接有操作系统完成)<br>A 客户端收到SYN和ACK就向服务端发送ACK，进入到ESTABLISHED状态<br>B 服务端收到ACK之后也进入到ESTABLISHED状态</p>
+<p>断开过程中<br>A 客户端发送FIN给B服务端，状态变为FIN_WAIT1.<br>B 服务端收到FIN向A客户端发送ACK，服务端状态变为CLOSE_WAIT<br>A 客户端收到ACK进入到FIN_WAIT2状态，此时连接断开了一半，服务端任然能给客户端发送数据<br>B 服务端发完了所有的数据之后，再发送FIN，服务端进入到LAST_ACK状态<br>A 客户端收到FIN之后，发送ACK给B服务端，然后进入到TIME_WAIT状态<br>B 服务端收到ACK进入CLOSED状态<br>A 客户端经过了2MSL长的时间之后就进入到CLOSED状态</p>
+<p>CLOSING状态：<br>出现在同时关闭中:<br>客户端和服务端同时发送FIN，发送后进入FIN_WAIT1状态<br>客户端和服务端都收到对方发送的FIN后，回复ACK，进入到CLOSING<br>收到对方的ACK之后，进入TIME_WAIT状态。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-stl-avl树" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="avl树"><a href="#avl树" class="headerlink" title="avl树"></a>avl树</h2><p>特性：<br>avl树又称自平衡二叉树查找树，平衡二叉树是，任一节点的左右子树的高度差不能超过1</p>
+<p>首先它是一颗二叉查找树，所以任何父节点的值大于左孩子节点小于右孩子节点的值。<br>但是普通的二叉查找树不能够充分的体现二分的特性，它的左右子树可能分布并不均匀。<br>所以在查找和插入的时候复杂度可能会退化成线性的。所以，这时就需要来通过旋转操作<br>才维持树的平衡性，所以这就是自平衡二叉查找树。它通过各种旋转操作来保持树的平衡性。</p>
+<h3 id="avl树节点设计"><a href="#avl树节点设计" class="headerlink" title="avl树节点设计"></a>avl树节点设计</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> AVLTree;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> Type&gt;</span><br><span class="line"><span class="keyword">class</span> AVLNode &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    Type data;</span><br><span class="line">    AVLNode&lt;Type&gt; *leftChild;</span><br><span class="line">    AVLNode&lt;Type&gt; *rightChild;</span><br><span class="line">    <span class="keyword">int</span> bf;                <span class="comment">//旋转因子</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    AVLNode():data(<span class="number">0</span>), leftChild(<span class="literal">NULL</span>), rightChild(<span class="literal">NULL</span>), bf(<span class="number">0</span>) &#123;&#125;</span><br><span class="line">    AVLNode(Type d, AVLNode&lt;Type&gt; *left = <span class="literal">NULL</span>, AVLNode&lt;Type&gt; *right = <span class="literal">NULL</span>)</span><br><span class="line">        :data(d), leftChild(left), rightChild(right), bf(<span class="number">0</span>)</span><br><span class="line">    &#123;&#125;</span><br><span class="line">    ~AVLNode() &#123;&#125;</span><br><span class="line">    <span class="keyword">friend</span> <span class="keyword">class</span> AVLNode&lt;Type&gt;;   <span class="comment">//由于树可能需要修改节点的值，所以需要将类AVLTree声明为节点的友元类</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="avl树的设计"><a href="#avl树的设计" class="headerlink" title="avl树的设计"></a>avl树的设计</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> Type&gt;</span><br><span class="line"><span class="keyword">class</span> AVLTree &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    AVLNode&lt;Type&gt; *root;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    AVLTree() : root(<span class="literal">NULL</span>) &#123;&#125;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">Insert</span><span class="params">(<span class="keyword">const</span> Type &amp;x)</span>  <span class="comment">//插入节点操作</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        return Insert(root, x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">Remove</span><span class="params">(<span class="keyword">const</span> Type &amp;x)</span>  <span class="comment">//删除节点操作</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        return Remove(root, x);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">Insert</span><span class="params">(AVLNode&lt;Type&gt; *&amp;t, <span class="keyword">const</span> Type &amp;x)</span></span>;  <span class="comment">//真正的插入操作</span></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">Remove</span><span class="params">(AVLNode&lt;Type&gt; *&amp;t, <span class="keyword">const</span> Type &amp;x)</span></span>;  <span class="comment">//真正的删除操作</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">RotateL</span><span class="params">(AVLNode&lt;Type&gt; *&amp;ptr)</span></span>;              <span class="comment">//左旋</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">RotateR</span><span class="params">(AVLNode&lt;Type&gt; *&amp;ptr)</span></span>;              <span class="comment">//右旋</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">RotateLR</span><span class="params">(AVLNode&lt;Type&gt; *&amp;ptr)</span></span>;             <span class="comment">//左右旋</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">RotateRL</span><span class="params">(AVLNode&lt;Type&gt; *&amp;ptr)</span></span>;             <span class="comment">//右左旋</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="avl树的旋转"><a href="#avl树的旋转" class="headerlink" title="avl树的旋转"></a>avl树的旋转</h2><p>avl树每次插入或者删除就需要使用选装操作来维持树的平衡性。<br>总共分为：左旋转，右旋转，左右旋，和右左旋。</p>
+<h3 id="左旋"><a href="#左旋" class="headerlink" title="左旋"></a>左旋</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="右旋"><a href="#右旋" class="headerlink" title="右旋"></a>右旋</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="左右旋"><a href="#左右旋" class="headerlink" title="左右旋"></a>左右旋</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="右左旋"><a href="#右左旋" class="headerlink" title="右左旋"></a>右左旋</h3><h2 id="插入与删除"><a href="#插入与删除" class="headerlink" title="插入与删除"></a>插入与删除</h2><p>avl树的难点并不在如何旋转，而是在于判断树在插入或者删除之后判断改做出哪一种旋转操作。</p>
+<h3 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h3><h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-stl-空间配置器" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="空间配置器"><a href="#空间配置器" class="headerlink" title="空间配置器"></a>空间配置器</h2><p>空间配置器: 用来分配内存。它并不会给我们直接使用，而是在容器之后默默工作。</p>
+<p>在c++中，一般使用new<br>在c++中，一般使用new来来分配内存，同时并调用构造函数来完成值得初始化，但在stl中，这两步是分开的<br>首先有空间配置器来分配内存，然后调用construct函数来完成在指定内存完成值得初始化。<br>构造可以调用place new 来在指定的内存空间来声明对象，和初始化值。但是毕竟类才需要调用构造，<br>有的对象并不需要使用构造函数。使用简单的内存拷贝就能达到目的。</p>
+<p>sgi中使用的默认的空间配置器是alloc。 alloc有两种不同的方式来分配内存。当所申请的空间大于128B的时候<br>直接调用c语言中的malloc来来申请内存, free来释放内存，而小于128B的空间，就在内存池中分配。</p>
+<h2 id="空间配置器标准接口"><a href="#空间配置器标准接口" class="headerlink" title="空间配置器标准接口"></a>空间配置器标准接口</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">allocator::value_type</span><br><span class="line">allocator::pointer</span><br><span class="line">allocator::const_pointer</span><br><span class="line">allocator::reference</span><br><span class="line">allocator::const_reference</span><br><span class="line">allocator::size_type</span><br><span class="line">allocator::difference_type</span><br><span class="line">allocator::rebind</span><br><span class="line">allocator::allocator()   <span class="comment">//默认构造</span></span><br><span class="line">allocator::allocator(<span class="keyword">const</span> allocator&amp;)   <span class="comment">//拷贝构造</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> U&gt;allocator::allocator::allocator(<span class="keyword">const</span> allocator&lt;U&gt;&amp;)</span><br><span class="line">allocator::~allocator()   <span class="comment">//析构</span></span><br><span class="line">pointer allocator::address(reference x) <span class="keyword">const</span>  <span class="comment">//返回某个对象的地址</span></span><br><span class="line">pointer allocator::allocate(size_type n, <span class="keyword">const</span> <span class="keyword">void</span>* = <span class="number">0</span>) <span class="comment">//配置空间，足以存储n个T对象</span></span><br><span class="line"><span class="keyword">void</span> allocator::deallocate(pointer p, size_type n)  <span class="comment">//归还先前配置的空间</span></span><br><span class="line">size_type allocator::max_size() <span class="keyword">const</span>     <span class="comment">//返回可以配置的最大值</span></span><br><span class="line"><span class="keyword">void</span> allocator::construct(pointer p, <span class="keyword">const</span> T&amp;x)  <span class="comment">//相当于new((void *) p) T(x)</span></span><br><span class="line"><span class="keyword">void</span> allocator::destroy(pointer p)       <span class="comment">//相当于p-&gt;~T()</span></span><br></pre></td></tr></table></figure>
+<h2 id="sgi中的空间配置器"><a href="#sgi中的空间配置器" class="headerlink" title="sgi中的空间配置器"></a>sgi中的空间配置器</h2><p>sgi中使用alloc作为默认的空间配置器，但是该配置器并不真正符合标准接口。但是sgi中是默认使用alloc的<br>在sgi中:<br>stl_construct.h     定义了construct()和destroy()<br>stl_alloc.h         定义了一二级空间配置器，名为alloc<br>stl_uninitialized.h 定义了一些全局函数用来填充或者复制内存数据。<br>                      stl_initialized_copy<br>                      stl_initialized_fill()<br>                      stl_initialized_fill_n()</p>
+<h3 id="construct-和destroy"><a href="#construct-和destroy" class="headerlink" title="construct()和destroy()"></a>construct()和destroy()</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> T1, <span class="keyword">class</span> T2&gt;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">construct</span><span class="params">(T1* p, <span class="keyword">const</span> T2&amp; value)</span> </span>&#123;</span><br><span class="line">    new (p) T1(value);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//第一种版本，接受一个对象指针，直接调用对象的析构</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">(T *pointer)</span> </span>&#123;</span><br><span class="line">    pointer-&gt;~T();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//第二个版本, 接受两个迭代器，通过萃取，来判定迭代器指向的对象是否需要调用析构函数</span></span><br><span class="line"><span class="comment">//所以分别是__true_type 和__false_type 两个版本。</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> ForwardIterator&gt;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">(ForwardIterator first, ForwardIterator last)</span> </span>&#123;</span><br><span class="line">    __destroy(first, last, value_type(first));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> ForwardIterator, <span class="keyword">class</span> T&gt;</span><br><span class="line"><span class="keyword">inline</span> <span class="keyword">void</span> __destroy(ForwardIterator first, ForwardIterator last, T *) &#123;</span><br><span class="line">    <span class="keyword">typedef</span> <span class="keyword">typename</span> __type_traits&lt;T&gt;::has_trival_destructor trivial_destructor;</span><br><span class="line">    __destroy_aux(first, last, trivial_destructor());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> ForwardIterator&gt;</span><br><span class="line"><span class="keyword">inline</span> <span class="keyword">void</span> __destroy_aux(ForwardIterator, ForwardIterator, __true_type) &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> ForwardIterator&gt;</span><br><span class="line"><span class="keyword">inline</span> <span class="keyword">void</span> __destroy_aux(ForwardIterator, ForwardIterator, __false_type) &#123;</span><br><span class="line">    <span class="keyword">for</span> ( ; first &lt; last; ++first)</span><br><span class="line">        destroy(&amp;*first);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="一二级空间配置器"><a href="#一二级空间配置器" class="headerlink" title="一二级空间配置器"></a>一二级空间配置器</h3><p><code>__malloc_alloc_templat</code> 一级空间配置器<br>一级空间配置器直接使用了c中的malloc(), free(), realloc()<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">template &lt;int inst&gt;</span><br><span class="line">class __malloc_alloc_template &#123;</span><br><span class="line"></span><br><span class="line">public:</span><br><span class="line">static void * allocate(size_t n)</span><br><span class="line">&#123;</span><br><span class="line">    void *result = malloc(n);</span><br><span class="line">    if (0 == result) result = oom_malloc(n);</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">static void deallocate(void *p, size_t)</span><br><span class="line">&#123;</span><br><span class="line">    free(p);</span><br><span class="line">&#125;</span><br><span class="line">static void *reallocate(void *p, size_t /* old_sz */, size_t new_sz)</span><br><span class="line">&#123;</span><br><span class="line">    void *result = realloc(p, new_sz);</span><br><span class="line">    if (0 == result) result = oom_realoc(p, new_sz);</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">static void (* set_malloc_handler(void (*f)()))()</span><br><span class="line">&#123;</span><br><span class="line">    void (* old)() = __malloc_alloc_oom_handler;</span><br><span class="line">    __malloc_alloc_oom_handler =f;</span><br><span class="line">    return (old)</span><br><span class="line">&#125;</span><br><span class="line">private:</span><br><span class="line"></span><br><span class="line">static void *oom_malloc(size_t);</span><br><span class="line"></span><br><span class="line">static void *oom_realloc(void *, size_t);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p><code>__default_alloc_template</code> 二级空间配置器</p>
+<h2 id="构造和析构"><a href="#构造和析构" class="headerlink" title="构造和析构"></a>构造和析构</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-算法-大整数算法" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>本文主要整理了几个常用的大整数的算法:<br>大整数加法<br>大整数乘法<br>大整数阶乘<br>大整数幂<br>其实大体的思路都差不多，都是用数组来存储大整数。以下的代码仅仅实现功能，并没有充分详细的参数判断，在实际运用中，肯定是需要考虑的。<br>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+      
+        <p class="article-more-link">
+          <a  href="/2016/04/06/算法-大整数算法/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-shell-字符处理" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>一些常用的字符或者文本处理命令</p>
+<h3 id="diff"><a href="#diff" class="headerlink" title="diff"></a>diff</h3><p>比较两个文件的不同<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@bogon diff]<span class="comment"># diff file1 file2</span></span><br></pre></td></tr></table></figure></p>
+<p>以高亮的形式在vim编辑器中显示两个文件的不同之处<br>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+      
+        <p class="article-more-link">
+          <a  href="/2016/04/06/shell-字符处理/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-面试题整理2" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p><img src="/img/question/006.png" alt=""><br>const 限定一个对象为只读属性。<br>（1）const char p    限定变量p为只读。这样如p=2这样的赋值操作就是错误的。<br>（2）const char <em>p   p为一个指向char类型的指针，const只限定p指向的对象为只读。这样，p=&amp;a或  p++等操作都是合法的，但如</em>p=4这样的操作就错了，因为企图改写这个已经被限定为只读属性的对象。<br>（3）char <em>const p  限定此指针为只读，这样p=&amp;a或  p++等操作都是不合法的。而</em>p=3这样的操作合法，因为并没有限定其最终对象为只读。<br>（4）const char <em>const p 两者皆限定为只读，不能改写.<br>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+      
+        <p class="article-more-link">
+          <a  href="/2016/03/14/面试题整理2/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-leetcode-Majority-Element" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h3 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h3><p>Given an array of size n, find the majority element. The majority element is the element that appears more than ⌊ n/2 ⌋ times.<br>You may assume that the array is non-empty and the majority element always exist in the array.</p>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+      
+        <p class="article-more-link">
+          <a  href="/2016/03/11/leetcode-Majority-Element/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-数据结构-红黑树" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>##红黑树的满足条件<br>每个结点要么是”红色”，要么是”黑色”<br>所有的叶子结点都是空结点(NULL)，并且是”黑色”<br>如果一个结点是”红色”的，那么它的两个子结点一定是黑色。<br>结点到其子孙的每条简单路径都包含相同的黑色结点<br>根结点永远是黑色。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-算法-将两个栈封装成队列" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>纵然栈和队列是两种不同的数据结构，但是两者是可以相互转换的</p>
+<p>###把栈封装成队列<br>对于栈，就采用c++里面的stack<br>使用两个栈，栈是先进后出，而队列是先进先出<br>现在有两个栈，一个栈A放数据，另一个栈B为空，只要把前面栈A的数据<br>出栈然后压到栈B，然后出栈。因此数据只要从栈A进，从栈B出就可以了<br>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+      
+        <p class="article-more-link">
+          <a  href="/2016/03/06/算法-将两个栈封装成队列/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
+  
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2016 John Doe
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的静态博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减双栏 Hexo 博客主题">Yelee</a> by MOxFIVE
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >本站到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 2;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
