@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>linux学习--磁盘分区和lvm的使用 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="##磁盘分区对linux的第二块磁盘进行分区使用fdisk /dev/sdb12345678[root@localhost ~]# fdisk /dev/sdbWelcome to fdisk (util-linux 2.23.2).Changes will remain in memory only, until you decide to write them.Be careful befor">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux学习--磁盘分区和lvm的使用">
+<meta property="og:url" content="http://yoursite.com/2015/07/27/linux学习-磁盘分区和lvm的使用/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="##磁盘分区对linux的第二块磁盘进行分区使用fdisk /dev/sdb12345678[root@localhost ~]# fdisk /dev/sdbWelcome to fdisk (util-linux 2.23.2).Changes will remain in memory only, until you decide to write them.Be careful befor">
+<meta property="og:updated_time" content="2016-04-06T05:35:57.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="linux学习--磁盘分区和lvm的使用">
+<meta name="twitter:description" content="##磁盘分区对linux的第二块磁盘进行分区使用fdisk /dev/sdb12345678[root@localhost ~]# fdisk /dev/sdbWelcome to fdisk (util-linux 2.23.2).Changes will remain in memory only, until you decide to write them.Be careful befor">
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/avatar.png" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/">John Doe</a></h1>
+        </hgroup>
+
+        
+                
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="mailto:jinfeng1995@gmail.com" title="Email"></a></li>
+                            
+                                <li id="GitHub"><a class="GitHub" target="_blank" href="//github.com/kingfeng12138" title="GitHub"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/IPC/" style="font-size: 10px;">IPC</a> <a href="/tags/avl树/" style="font-size: 10px;">avl树</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/leetcode/" style="font-size: 10px;">leetcode</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/linux基础/" style="font-size: 20px;">linux基础</a> <a href="/tags/mysql/" style="font-size: 11.67px;">mysql</a> <a href="/tags/shell/" style="font-size: 15px;">shell</a> <a href="/tags/stl/" style="font-size: 11.67px;">stl</a> <a href="/tags/tcp/" style="font-size: 10px;">tcp</a> <a href="/tags/unix-c/" style="font-size: 18.33px;">unix_c</a> <a href="/tags/位运算/" style="font-size: 11.67px;">位运算</a> <a href="/tags/函数原型/" style="font-size: 11.67px;">函数原型</a> <a href="/tags/排序/" style="font-size: 10px;">排序</a> <a href="/tags/数据结构/" style="font-size: 16.67px;">数据结构</a> <a href="/tags/栈/" style="font-size: 10px;">栈</a> <a href="/tags/算法/" style="font-size: 15px;">算法</a> <a href="/tags/链表/" style="font-size: 10px;">链表</a> <a href="/tags/队列/" style="font-size: 10px;">队列</a> <a href="/tags/面试题/" style="font-size: 10px;">面试题</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://my.oschina.net/cnyinlinux">cnyinlinux</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.zmy123.cn">IT-追梦园</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://rubbly.cn">Rubbly</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://xknow.net">认知</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://leejiahao.com">leejiahao</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.Riyadhlinux.com/wordpress">Riyadh</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.learnandroid.cn">xavier</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于后台</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">John Doe</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/avatar.png" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">John Doe</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="mailto:jinfeng1995@gmail.com" title="Email"></a></li>
+                            
+                                <li id="GitHub"><a class="GitHub" target="_blank" href="//github.com/kingfeng12138" title="GitHub"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-linux学习-磁盘分区和lvm的使用" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>##磁盘分区<br>对linux的第二块磁盘进行分区<br>使用<code>fdisk /dev/sdb</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># fdisk /dev/sdb</span></span><br><span class="line">Welcome to fdisk (util-linux 2.23.2).</span><br><span class="line"></span><br><span class="line">Changes will remain <span class="keyword">in</span> memory only, until you decide to write them.</span><br><span class="line">Be careful before using the write command.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Command (m <span class="keyword">for</span> <span class="built_in">help</span>):</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p><code>m</code>     可以查看帮助选项<br><code>p</code>    答应当前的分区<br><code>d</code>    删除一个分区<br><code>n</code>    新建一个分区<br><code>t</code>    更改分区的ID<br><code>w</code>    保存分区<br><code>q</code>     退出<br>分区原则:<br>1 分区可以分为主分区和拓展分区<br>2 主分区可以分成四个，将剩下的分区都分给拓展分区<br>3 然后在拓展分区下再新建逻辑分区<br>分区示例<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Command (m <span class="keyword">for</span> <span class="built_in">help</span>): n</span><br><span class="line">Partition <span class="built_in">type</span>:</span><br><span class="line">p   primary (1 primary, 0 extended, 3 free)</span><br><span class="line">e   extended</span><br><span class="line">Select (default p): p</span><br><span class="line">Partition number (2-4, default 2): 2</span><br><span class="line">First sector (20973568-31277231, default 20973568): </span><br><span class="line">Using default value 20973568</span><br><span class="line">Last sector, +sectors or +size&#123;K,M,G&#125; (20973568-31277231, default 31277231): +1G</span><br></pre></td></tr></table></figure></p>
+<p>分好区后，输入p即可查看所分的区<br>输入wq即可保存退出<br>分好区后一定要刷新分区使用<code>partprobe</code>命令<br>然后格式化使用<code>mkfs.分区格式  磁盘分区</code></p>
+<p>##lvm</p>
+<p>###lvm的简介<br>lvm是linux环境下对磁盘分区进行管理的一种机制。lvm是建立在硬盘和分区之上的<br>一个逻辑层，来提高磁盘分区管理的灵活性。通过lvm可以轻松管理磁盘分区。<br>将若干个磁盘分区<code>pv(physical volume)</code>链接成为一个整块的卷组<code>vg(volumegroup)</code>，形成一个存储池<br>而管理员可以在卷组上创建逻辑卷组<code>lv(logicalvolumes)</code><br>同时，逻辑卷组lv可以拓展。<br>存储池vg也可以通过增加pv来拓展，这样就可以实现动态的增加和减少</p>
+<p>###相关术语<br>物理卷(Physical Volume,PV)<br>磁盘分区或从逻辑上与磁盘分区具有相同功能的设备(如RAID),是LVM的基本存储逻辑<br>块，但和基本的物理存储接只(如分区，磁盘等)比较，却包含有与LVM相关的管理参数<br>卷组(Volume Group,VG)<br>类似于非LVM系统中的物理磁盘，其由一个或多个物理卷PV组成，可以在卷组上创建<br>一个或者多个LV(逻辑卷)<br>逻辑卷(Logical Volume,LV)<br>类似于非LVM系统中的逻辑分区，逻辑卷建立在卷组VG之上。在逻辑卷LV之上可以建立<br>文件系统(比如/home或者/usr等)<br>物理块(Physical Extent ,PE)<br>每一个物理卷PV被划分为PE(Physical Extents)的基本单元,具有唯一的编号的PE是<br>可以被LVM寻址的最小单元。PE的大小是可配置的，默认为4MB。所以物理卷(PV)由大<br>小的等同的PE组成。<br>逻辑块(Logical Extent,LE)<br>逻辑卷LV也被划分为可被寻址的基本单元，成为LE。在每一个卷组中，LE的大小和PE是相同的，并且一一对应。</p>
+<p>###实际操作<br>1 在虚拟机中添加一块10G的硬盘,为vd<br>2 先分三个主分区，每个2G，<code>vdb1</code>,<code>vdb2</code>,<code>vdb3</code>剩下的分给拓展分区<code>vdb4</code><br>3 再在拓展分区下新建3个逻辑分区均为500M,<code>vdb5</code>,<code>vdb6</code>,<code>vdb7</code><br>4 更改三个逻辑分区的ID,输入t，更改成8e，输入p会发现格式变为linux lvm<br>5 创建PV<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost /]<span class="comment"># pvcreat /dev/vdb&#123;5,6,7&#125;</span></span><br><span class="line">WARING: xfs signature detected on /dev/vdb5 at offset 0,Wipe it? [y/n] y</span><br><span class="line">Wiping xfs signature on /dev/vdb5</span><br><span class="line">Physical volume <span class="string">"/dev/vdb5"</span> successfully created</span><br><span class="line">Physical volume <span class="string">"/dev/vdb6"</span> successfully created</span><br><span class="line">Physical volume <span class="string">"/dev/vdb7"</span> successfully created</span><br><span class="line">[root@localhost /]<span class="comment"># pvdisplay     //查看已经创建的PV</span></span><br></pre></td></tr></table></figure></p>
+<p>6 创建VG<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost /]<span class="comment"># vgcreate vg0 /dev/vdb&#123;5,6,7&#125;</span></span><br><span class="line">  Volume group <span class="string">"vg0"</span> successfully created</span><br><span class="line">[root@localhost /]<span class="comment"># vgdisplay     //查看已经创建的VG</span></span><br></pre></td></tr></table></figure></p>
+<p>7 创建LV<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost /]<span class="comment"># lvcreate -L 700M -n lv1 vg0</span></span><br><span class="line">  Logical volume <span class="string">"lv1"</span> created</span><br><span class="line">[root@localhost /]<span class="comment"># lvdisplay      //查看已经创建的lv</span></span><br></pre></td></tr></table></figure></p>
+<p>8 格式化lv1<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost /]<span class="comment"># mkfs.xfs /dev/vg0/lv1</span></span><br><span class="line">meta-data=/dev/vg0/lv1		 isize=256    agcount=4, agsize=44800 blks</span><br><span class="line">	 =			 sectsz=512   attr=2, projid32bit=1</span><br><span class="line">	 =			 crc=0</span><br><span class="line">data	 = 			 bsize=4090   blocks=179200, imaxpct=25</span><br><span class="line">	 = 			 sunit=0      swidth=0 blks</span><br><span class="line">naming   =version 2 	         bsize=4096   asicii-ci=0 ftype=0</span><br><span class="line"><span class="built_in">log</span>      =internal <span class="built_in">log</span> 		 bsize=4096   blocks=853, version=2</span><br><span class="line">	 =			 sectsz=512   sunit=0 blks,lazy-count=1</span><br><span class="line">realtime =none			 extsz=4096   blocks=0, rtextents=0</span><br></pre></td></tr></table></figure></p>
+<p>8 挂载格式化后的lv1<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost /]<span class="comment"># mount /dev/vg0/lv1 /mnt</span></span><br><span class="line">[root@localhost /]<span class="comment"># df 	          //查看已经挂载的LV</span></span><br></pre></td></tr></table></figure></p>
+<p>9 LV的拓展<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost /]<span class="comment"># lvextend -L 1000M /dev/vg0/lv1</span></span><br><span class="line">//执行这个只能是增加了存储区，但是控制区没有被扩大，使用df查看仍然是700M</span><br><span class="line">[root@localhost /]<span class="comment"># xfs_growfs /dev/mapper/vg0-lv1</span></span><br><span class="line">meta-data=/dev/vg0/lv1           isize=256    agcount=4, agsize=44800 blks</span><br><span class="line">         =                       sectsz=512   attr=2, projid32bit=1</span><br><span class="line">	 =                       crc=0</span><br><span class="line">data     =                       bsize=4090   blocks=179200, imaxpct=25</span><br><span class="line">	 =                       sunit=0      swidth=0 blks</span><br><span class="line">naming   =version 2              bsize=4096   asicii-ci=0 ftype=0</span><br><span class="line"><span class="built_in">log</span>      =internal <span class="built_in">log</span>           bsize=4096   blocks=853, version=2</span><br><span class="line">         =                       sectsz=512   sunit=0 blks,lazy-count=1</span><br><span class="line">realtime =none                   extsz=4096   blocks=0, rtextents=0</span><br><span class="line">date blocks changed from 179200 to 256000</span><br><span class="line">//这样，lv1才真正被扩大了</span><br></pre></td></tr></table></figure></p>
+<p>8 扩大VG<br>先新建一个PV,和之前的方法一样，先新建分区vdb8.然后更改ID,保存退出<br>刷新分区<code>partprobe</code><br>创建PV<code>pvcreat /dev/vdb8</code><br>扩大VG<code>vgcreatend vg0 /dev/vdb8</code><br>9 删除lv1<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost /]<span class="comment"># lvremove /dev/vg0/lv1</span></span><br><span class="line">D0 you really want to remove active logical volume lv1? [y/n]:y</span><br><span class="line"> Logical volume <span class="string">"lv1"</span> successully removed</span><br></pre></td></tr></table></figure></p>
+<p>10 删除VG<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost /]<span class="comment"># vgremove vg0</span></span><br><span class="line"> Volume group <span class="string">"vg0"</span> successfully removed</span><br></pre></td></tr></table></figure></p>
+<p>11 删除PV<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost /]<span class="comment"># pvremove /dev/vdb&#123;5,6,7,8&#125;</span></span><br><span class="line">  Labels on physical volume <span class="string">"/dev/vdb5"</span> successfully wiped</span><br><span class="line">  Labels on physical volume <span class="string">"/dev/vdb6"</span> successfully wiped</span><br><span class="line">  Labels on physical volume <span class="string">"/dev/vdb7"</span> successfully wiped</span><br><span class="line">  Labels on physical volume <span class="string">"/dev/vdb8"</span> successfully wiped</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+
+
+
+
+    
+      
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2015/08/03/c语言-strcpy函数实现/" title="上一篇: c语言--strcpy函数实现">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2015/07/27/linux学习-yum使用yum源配置/" title="下一篇: linux学习--yum使用yum源配置">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/05/07/http协议/">http协议</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/07/tcp-11种状态/">tcp--11种状态</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/05/stl-avl树/">stl--avl树</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/02/stl-空间配置器/">stl_空间配置器</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/06/算法-大整数算法/">算法--大整数算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/06/shell-字符处理/">shell-字符处理</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/14/面试题整理2/">面试题整理2</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/11/leetcode-Majority-Element/">leetcode--Majority Element</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/09/数据结构-红黑树/">数据结构--红黑树</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/06/算法-将两个栈封装成队列/">算法--将两个栈封装成队列</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/04/算法-kmp字符串匹配算法/">算法--kmp字符串匹配算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/04/面试题整理1/">面试题整理1</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/17/unix-c-IPC使用步骤/">unix_c--IPC使用步骤</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/09/mysql-c语言编程/">mysql--c语言编程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/mysql的安装/">mysql的安装(服务端，客户端，mysql库)</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/17/unix-c-线程学习/">unix_c--线程学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/31/unix-c-IPC进程通信学习/">unix-c-IPC进程通信学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/25/unix-c-信号学习/">unix_c--信号学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/20/unix-c-IO学习/">unix_c--IO学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/20/unix-c-开机流程/">unix-c--开机流程</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/20/picture-test/">picture_test</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/07/unix-c-makefile写法/">unix_c--makefile写法</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/07/shell-expect用法/">shell--expect用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/06/shell-awk和sed用法/">shell--awk和sed用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/06/shell-find用法/">shell--find用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/06/linux-修改PS1的值/">linux--修改PS1的值</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/04/unix-c-静态链接库和动态链接库/">unix_c--静态链接库和动态链接库</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/26/linux-修改redhat7的截图配置/">linux--修改redhat7的截图配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/23/算法-排序算法整理/">算法--排序算法整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/22/数据结构-将通用双端链表封装成队列/">数据结构--将通用双端链表封装成队列</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/20/数据结构-将通用双端链表封装成栈/">数据结构--将通用双端链表封装成栈</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/20/数据结构-带控制信息的双向链表/">数据结构--带控制信息的双向链表</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/01/数据结构-单向链表的操作-带表头/">数据结构--单向链表的操作(带表头)</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/11/c语言-一个很搓的malloc的实现/">c语言--一个很搓的malloc的实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/04/c语言-strtok函数的实现/">c语言--strtok函数的实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/04/c语言-位操作实现ftoi/">c语言--位操作实现ftoi</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/03/c语言-素数的查找/">c语言--素数的查找</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/03/c语言-两个整数的交换函数/">c语言--两个整数的交换函数</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/03/c语言-strcpy函数实现/">c语言--strcpy函数实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/27/linux学习-磁盘分区和lvm的使用/">linux学习--磁盘分区和lvm的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/27/linux学习-yum使用yum源配置/">linux学习--yum使用yum源配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/27/linux学习-文件打包压缩/">linux学习--文件打包压缩</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/26/linux学习-网络设置/">linux学习--网络设置</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/24/学长推荐的书/">学长推荐的书</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/24/linux学习-openssh的使用/">linux学习--openssh的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/24/linux学习-进程管理/">linux学习--进程管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/24/linux学习-文件存储管理/">linux学习--文件存储管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/22/linux学习-权限和特殊权限/">linux学习--权限和特殊权限</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/22/linux学习-用户和组的管理/">linux学习--用户和组的管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/22/linux学习-文本编辑以vim/">linux学习--文本编辑以vim</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/22/linux学习-管道和重定向/">linux学习--管道和重定向</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/21/linux学习-系统相关指令/">linux学习--系统相关指令</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/21/linux学习-文件基本操作/">linux学习--文件基本操作</a></li></ul>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2016 John Doe
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的静态博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减双栏 Hexo 博客主题">Yelee</a> by MOxFIVE
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >本站到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 2;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
