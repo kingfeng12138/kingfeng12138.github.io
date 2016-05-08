@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html >
 <head>
   <meta charset="utf-8">
   
-  <title>shell--awk和sed用法 | Hexo</title>
+  <title>shell--awk和sed用法 | LOVE LINUX</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="awk和sed都是功能超强的文件处理工具，awk主要用于行处理，sed用于列的处理
 ##简介awk用法
@@ -11,8 +11,8 @@ awk是一个对文本操作的工具，可以直接用于命令行，也可以�
 以截取自己的局域网ip为例">
 <meta property="og:type" content="article">
 <meta property="og:title" content="shell--awk和sed用法">
-<meta property="og:url" content="http://yoursite.com/2015/10/06/shell-awk和sed用法/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:url" content="http://0x00000000.cn/2015/10/06/shell-awk和sed用法/index.html">
+<meta property="og:site_name" content="LOVE LINUX">
 <meta property="og:description" content="awk和sed都是功能超强的文件处理工具，awk主要用于行处理，sed用于列的处理
 ##简介awk用法
 awk是一个对文本操作的工具，可以直接用于命令行，也可以以脚本的形式
@@ -25,61 +25,230 @@ awk是一个对文本操作的工具，可以直接用于命令行，也可以�
 awk是一个对文本操作的工具，可以直接用于命令行，也可以以脚本的形式
 以截取自己的局域网ip为例">
   
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="LOVE LINUX" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
   
   
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+      <link href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css" rel="stylesheet">
+  
+  
+  
+      <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+      <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
   
   <link rel="stylesheet" href="/css/style.css">
   
+  <link href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+  
+  <script src="//cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.9/clipboard.min.js"></script>
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false,
+          fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+          scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.0.9/scrollreveal.min.js"
+      }
+  </script>
 
+  
+      <script>
+          yiliaConfig.rootUrl = "/";
+      </script>
+  
+
+  
+  
 </head>
-
 <body>
   <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Jin Feng</a></h1>
+        </hgroup>
+
+        
+                
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/IPC/">IPC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/avl树/">avl树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux基础/">linux基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stl/">stl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tcp/">tcp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unix-c/">unix_c</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/位运算/">位运算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数原型/">函数原型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/排序/">排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/栈/">栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/链表/">链表</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/队列/">队列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试题/">面试题</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于c/c++</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Jin Feng</a></h1>
       </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Jin Feng</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
     </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-shell-awk和sed用法" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/10/06/shell-awk和sed用法/" class="article-date">
-  <time datetime="2015-10-06T15:46:40.000Z" itemprop="datePublished">2015-10-06</time>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-shell-awk和sed用法" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/10/06/shell-awk和sed用法/" class="article-date">
+      <time datetime="2015-10-06T15:46:40.000Z" itemprop="datePublished">2015-10-06</time>
 </a>
-    
-  </div>
+    </div>
+  
   <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
     
     
       <header class="article-header">
@@ -91,9 +260,22 @@ awk是一个对文本操作的工具，可以直接用于命令行，也可以�
   
 
       </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
     
     <div class="article-entry" itemprop="articleBody">
       
+          
         <p>awk和sed都是功能超强的文件处理工具，awk主要用于行处理，sed用于列的处理</p>
 <p>##简介awk用法</p>
 <p>awk是一个对文本操作的工具，可以直接用于命令行，也可以以脚本的形式</p>
@@ -109,143 +291,214 @@ awk是一个对文本操作的工具，可以直接用于命令行，也可以�
 
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/10/06/shell-awk和sed用法/" data-id="cinxblcke0025wngp44olx45y" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
-
-    </footer>
+    
   </div>
   
     
-<nav id="article-nav">
-  
-    <a href="/2015/10/07/shell-expect用法/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2015/10/06/shell-awk和sed用法/">shell--awk和sed用法</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Jin Feng</a></p>
+        <p><span>发布时间:</span>2015-10-06, 23:46:40</p>
+        <p><span>最后更新:</span>2016-04-06, 13:35:57</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2015/10/06/shell-awk和sed用法/" title="shell--awk和sed用法">http://0x00000000.cn/2015/10/06/shell-awk和sed用法/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://0x00000000.cn/2015/10/06/shell-awk和sed用法/　　作者: Jin Feng" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
         
-          shell--expect用法
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2015/10/07/shell-expect用法/">
+                    shell--expect用法
+                </a>
+            </div>
         
-      </div>
-    </a>
-  
-  
-    <a href="/2015/10/06/shell-find用法/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">shell--find用法</div>
-    </a>
-  
-</nav>
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2015/10/06/shell-find用法/">
+                    shell--find用法
+                </a>
+            </div>
+        
+    </nav>
 
   
 </article>
 
-</section>
-        
-          <aside id="sidebar">
-  
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/c语言基础/">c语言基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux基础/">linux基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/">数据结构</a></li></ul>
-    </div>
-  </div>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
 
 
-  
+
+
+
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/IPC/">IPC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/avl树/">avl树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux基础/">linux基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stl/">stl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tcp/">tcp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unix-c/">unix_c</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/位运算/">位运算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数原型/">函数原型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/排序/">排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/栈/">栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/链表/">链表</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/队列/">队列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试题/">面试题</a></li></ul>
-    </div>
-  </div>
-
-
-  
+<div class="share">
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/IPC/" style="font-size: 10px;">IPC</a> <a href="/tags/avl树/" style="font-size: 10px;">avl树</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/leetcode/" style="font-size: 10px;">leetcode</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/linux基础/" style="font-size: 20px;">linux基础</a> <a href="/tags/mysql/" style="font-size: 11.67px;">mysql</a> <a href="/tags/shell/" style="font-size: 15px;">shell</a> <a href="/tags/stl/" style="font-size: 11.67px;">stl</a> <a href="/tags/tcp/" style="font-size: 10px;">tcp</a> <a href="/tags/unix-c/" style="font-size: 18.33px;">unix_c</a> <a href="/tags/位运算/" style="font-size: 11.67px;">位运算</a> <a href="/tags/函数原型/" style="font-size: 11.67px;">函数原型</a> <a href="/tags/排序/" style="font-size: 10px;">排序</a> <a href="/tags/数据结构/" style="font-size: 16.67px;">数据结构</a> <a href="/tags/栈/" style="font-size: 10px;">栈</a> <a href="/tags/算法/" style="font-size: 15px;">算法</a> <a href="/tags/链表/" style="font-size: 10px;">链表</a> <a href="/tags/队列/" style="font-size: 10px;">队列</a> <a href="/tags/面试题/" style="font-size: 10px;">面试题</a>
-    </div>
-  </div>
-
-  
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"shell--awk和sed用法　| LOVE LINUX　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li></ul>
-    </div>
-  </div>
 
-
-  
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2016/05/07/http协议/">http协议</a>
-          </li>
-        
-          <li>
-            <a href="/2016/05/07/tcp-11种状态/">tcp--11种状态</a>
-          </li>
-        
-          <li>
-            <a href="/2016/05/05/stl-avl树/">stl--avl树</a>
-          </li>
-        
-          <li>
-            <a href="/2016/05/02/stl-空间配置器/">stl_空间配置器</a>
-          </li>
-        
-          <li>
-            <a href="/2016/04/06/算法-大整数算法/">算法--大整数算法</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
+</div>
 
-  
-</aside>
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
         
-      </div>
+            <a href="/2015/10/07/shell-expect用法/" title="上一篇: shell--expect用法">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2015/10/06/shell-find用法/" title="下一篇: shell--find用法">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/05/07/http协议/">http协议</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/07/tcp-11种状态/">tcp--11种状态</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/05/stl-avl树/">stl--avl树</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/02/stl-空间配置器/">stl_空间配置器</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/06/算法-大整数算法/">算法--大整数算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/06/shell-字符处理/">shell-字符处理</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/14/面试题整理2/">面试题整理2</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/11/leetcode-Majority-Element/">leetcode--Majority Element</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/09/数据结构-红黑树/">数据结构--红黑树</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/06/算法-将两个栈封装成队列/">算法--将两个栈封装成队列</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/04/算法-kmp字符串匹配算法/">算法--kmp字符串匹配算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/04/面试题整理1/">面试题整理1</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/17/unix-c-IPC使用步骤/">unix_c--IPC使用步骤</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/09/mysql-c语言编程/">mysql--c语言编程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/mysql的安装/">mysql的安装(服务端，客户端，mysql库)</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/17/unix-c-线程学习/">unix_c--线程学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/31/unix-c-IPC进程通信学习/">unix-c-IPC进程通信学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/25/unix-c-信号学习/">unix_c--信号学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/20/unix-c-IO学习/">unix_c--IO学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/20/unix-c-开机流程/">unix-c--开机流程</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/20/picture-test/">picture_test</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/07/unix-c-makefile写法/">unix_c--makefile写法</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/07/shell-expect用法/">shell--expect用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/06/shell-awk和sed用法/">shell--awk和sed用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/06/shell-find用法/">shell--find用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/06/linux-修改PS1的值/">linux--修改PS1的值</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/04/unix-c-静态链接库和动态链接库/">unix_c--静态链接库和动态链接库</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/26/linux-修改redhat7的截图配置/">linux--修改redhat7的截图配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/23/算法-排序算法整理/">算法--排序算法整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/22/数据结构-将通用双端链表封装成队列/">数据结构--将通用双端链表封装成队列</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/20/数据结构-将通用双端链表封装成栈/">数据结构--将通用双端链表封装成栈</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/20/数据结构-带控制信息的双向链表/">数据结构--带控制信息的双向链表</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/01/数据结构-单向链表的操作-带表头/">数据结构--单向链表的操作(带表头)</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/11/c语言-一个很搓的malloc的实现/">c语言--一个很搓的malloc的实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/04/c语言-strtok函数的实现/">c语言--strtok函数的实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/04/c语言-位操作实现ftoi/">c语言--位操作实现ftoi</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/03/c语言-素数的查找/">c语言--素数的查找</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/03/c语言-两个整数的交换函数/">c语言--两个整数的交换函数</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/03/c语言-strcpy函数实现/">c语言--strcpy函数实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/27/linux学习-磁盘分区和lvm的使用/">linux学习--磁盘分区和lvm的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/27/linux学习-yum使用yum源配置/">linux学习--yum使用yum源配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/27/linux学习-文件打包压缩/">linux学习--文件打包压缩</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/26/linux学习-网络设置/">linux学习--网络设置</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/24/学长推荐的书/">学长推荐的书</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/24/linux学习-openssh的使用/">linux学习--openssh的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/24/linux学习-进程管理/">linux学习--进程管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/24/linux学习-文件存储管理/">linux学习--文件存储管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/22/linux学习-权限和特殊权限/">linux学习--权限和特殊权限</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/22/linux学习-用户和组的管理/">linux学习--用户和组的管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/22/linux学习-文本编辑以vim/">linux学习--文本编辑以vim</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/22/linux学习-管道和重定向/">linux学习--管道和重定向</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/21/linux学习-系统相关指令/">linux学习--系统相关指令</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/21/linux学习-文件基本操作/">linux学习--文件基本操作</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
       <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2016 John Doe<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016 Jin Feng
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >本站到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
     </div>
-  </div>
 </footer>
     </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
     
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.1.22/require.min.js"></script>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
 
 
-<script src="/js/script.js"></script>
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
 
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
   </div>
 </body>
 </html>
