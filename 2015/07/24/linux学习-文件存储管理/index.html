@@ -5,22 +5,19 @@
   
   <title>linux学习--文件存储管理 | LOVE LINUX</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="##文件的存储方式
-###控制区和存储区磁盘分为，控制区和存储区，控制区域用来村文件的inode号码，而存储区用来实际存放文件。
-###验证的步骤">
+  <meta name="description" content="文件的存储方式控制区和存储区磁盘分为，控制区和存储区，控制区域用来村文件的inode号码，而存储区用来实际存放文件。
+验证的步骤">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux学习--文件存储管理">
 <meta property="og:url" content="http://0x00000000.cn/2015/07/24/linux学习-文件存储管理/index.html">
 <meta property="og:site_name" content="LOVE LINUX">
-<meta property="og:description" content="##文件的存储方式
-###控制区和存储区磁盘分为，控制区和存储区，控制区域用来村文件的inode号码，而存储区用来实际存放文件。
-###验证的步骤">
-<meta property="og:updated_time" content="2016-04-06T05:35:57.000Z">
+<meta property="og:description" content="文件的存储方式控制区和存储区磁盘分为，控制区和存储区，控制区域用来村文件的inode号码，而存储区用来实际存放文件。
+验证的步骤">
+<meta property="og:updated_time" content="2016-05-09T01:30:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux学习--文件存储管理">
-<meta name="twitter:description" content="##文件的存储方式
-###控制区和存储区磁盘分为，控制区和存储区，控制区域用来村文件的inode号码，而存储区用来实际存放文件。
-###验证的步骤">
+<meta name="twitter:description" content="文件的存储方式控制区和存储区磁盘分为，控制区和存储区，控制区域用来村文件的inode号码，而存储区用来实际存放文件。
+验证的步骤">
   
     <link rel="alternative" href="/atom.xml" title="LOVE LINUX" type="application/atom+xml">
   
@@ -291,16 +288,15 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>##文件的存储方式</p>
-<p>###控制区和存储区<br>磁盘分为，控制区和存储区，控制区域用来村文件的inode号码，而存储区用来实际<br>存放文件。</p>
-<p>###验证的步骤<br><a id="more"></a><br>1 首先使用<code>dd</code>创建一个空镜像文件<br><code>dd if=/dev/zero of=/mnt/test.img bs=512k count=10</code><br>2 格式化该镜像文件<br><code>mkfs.ext4 test.img</code><br>3 挂载<br><code>mount test.img   /mnt</code><br>4 利用脚本创建小文件占满控制区<br><code>vim create_file.sh</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="keyword">for</span>((i = 1;; ++i))</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span> [ $? <span class="_">-eq</span> 0 ];<span class="keyword">then</span></span><br><span class="line">		<span class="built_in">echo</span> <span class="string">"this is file_<span class="variable">$&#123;1&#125;</span>"</span>&gt; /mnt/file_<span class="variable">$&#123;i&#125;</span></span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="built_in">exit</span> 1</span><br><span class="line">	<span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure></p>
+        <h2 id="文件的存储方式"><a href="#文件的存储方式" class="headerlink" title="文件的存储方式"></a>文件的存储方式</h2><h3 id="控制区和存储区"><a href="#控制区和存储区" class="headerlink" title="控制区和存储区"></a>控制区和存储区</h3><p>磁盘分为，控制区和存储区，控制区域用来村文件的inode号码，而存储区用来实际<br>存放文件。</p>
+<h3 id="验证的步骤"><a href="#验证的步骤" class="headerlink" title="验证的步骤"></a>验证的步骤</h3><a id="more"></a>
+<p>1 首先使用<code>dd</code>创建一个空镜像文件<br><code>dd if=/dev/zero of=/mnt/test.img bs=512k count=10</code><br>2 格式化该镜像文件<br><code>mkfs.ext4 test.img</code><br>3 挂载<br><code>mount test.img   /mnt</code><br>4 利用脚本创建小文件占满控制区<br><code>vim create_file.sh</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="keyword">for</span>((i = 1;; ++i))</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span> [ $? <span class="_">-eq</span> 0 ];<span class="keyword">then</span></span><br><span class="line">		<span class="built_in">echo</span> <span class="string">"this is file_<span class="variable">$&#123;1&#125;</span>"</span>&gt; /mnt/file_<span class="variable">$&#123;i&#125;</span></span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="built_in">exit</span> 1</span><br><span class="line">	<span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure></p>
 <p>执行脚本<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost yum]<span class="comment"># sh creat_file.sh </span></span><br><span class="line">creat_file.sh: line 6: /mnt/file_1294: No space left on device</span><br></pre></td></tr></table></figure></p>
 <p>6 进入/mnt目录，创建文件<br><code>#cd /mnt</code><br><code>#touch test123</code><br>同样会提示<code>No space left on device</code><br>但是使用<code>df -h</code> 可以发现<br><code>/dev/loop0             4.0M  1.4M  2.3M  38% /mnt</code><br>依然有可用的空间，原因就是控制区域被占满，所以不能再创建文件</p>
-<p>##硬链接与软链接</p>
-<p>###硬链接(Hard Link)<br>(1)每个文件都会占用一个inode，文件内容由inode的记录来指向:<br>(2)若要读取该文件的内容，必须通过目录所记录的文件名来找到正确的inode号即兴读取<br>创建文件的硬链接使用<code>ln</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# ll</span><br><span class="line">total 0</span><br><span class="line">-rw-r--r--. 1 root root 0 Jul 24 17:19 a</span><br><span class="line">[root@localhost test]# ln -s a b</span><br><span class="line">[root@localhost test]# ll</span><br><span class="line">total 0</span><br><span class="line">-rw-r--r--. 1 root root 0 Jul 24 17:19 a</span><br><span class="line">lrwxrwxrwx. 1 root root 1 Jul 24 17:19 b -&gt; a</span><br></pre></td></tr></table></figure></p>
+<h2 id="硬链接与软链接"><a href="#硬链接与软链接" class="headerlink" title="硬链接与软链接"></a>硬链接与软链接</h2><h3 id="硬链接-Hard-Link"><a href="#硬链接-Hard-Link" class="headerlink" title="硬链接(Hard Link)"></a>硬链接(Hard Link)</h3><p>(1)每个文件都会占用一个inode，文件内容由inode的记录来指向:<br>(2)若要读取该文件的内容，必须通过目录所记录的文件名来找到正确的inode号即兴读取<br>创建文件的硬链接使用<code>ln</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# ll</span><br><span class="line">total 0</span><br><span class="line">-rw-r--r--. 1 root root 0 Jul 24 17:19 a</span><br><span class="line">[root@localhost test]# ln -s a b</span><br><span class="line">[root@localhost test]# ll</span><br><span class="line">total 0</span><br><span class="line">-rw-r--r--. 1 root root 0 Jul 24 17:19 a</span><br><span class="line">lrwxrwxrwx. 1 root root 1 Jul 24 17:19 b -&gt; a</span><br></pre></td></tr></table></figure></p>
 <p>注意<br>(1) 不能跨越文件系统<br>(2) 不能对目录进行硬链接</p>
 <p>解释:<br>跨越文件系统会造成链接上的错乱,而如果使用 hard link 链接到目录时, 链接的<br>数据需要连同被链接目录底下的所有数据都要建立链接,举例来说,如果你要将/etc 使用<br>硬链接建立一个 /etc_hd 的目录时,那在 /etc_hd 底下的所有文件同时都与/etc 底下的<br>文件要建立 hard link ,而不仅是两个目录名之间建立硬链接而已。</p>
-<p>###软链接<br>通过软链接建立的文件是一个独立的文件,它相当于是一个“指针”。这个文件会让数据<br>的读取指向它 link 的文件。因为只是一种指向动作,如果软链接的源文件被修改,它进行读取也会发生改变,如果源文件被删除,则链接文件无法进行读取了。</p>
+<h3 id="软链接"><a href="#软链接" class="headerlink" title="软链接"></a>软链接</h3><p>通过软链接建立的文件是一个独立的文件,它相当于是一个“指针”。这个文件会让数据<br>的读取指向它 link 的文件。因为只是一种指向动作,如果软链接的源文件被修改,它进行读取也会发生改变,如果源文件被删除,则链接文件无法进行读取了。</p>
 <p>1软链接是可以链接不存的文件<br><code>ln -s aabbccddee slink</code><br>即使aabbccddee这个文件不存在，都是可以创建成功的<br>当aabbccddee这个文件被创建之后，这个软链接也是有效的</p>
 <p>2 软链接可以链接目录<br>当使用当同时使用vsftpd和httpd来共享文件时，只要把ftp共享的文件夹，创建软链接到httpd的目录就可以同时分享<br><code>ln -s /var/ftp/pub    /var/www/html</code></p>
 
@@ -314,7 +310,7 @@
         <p><span>本文标题:</span><a href="/2015/07/24/linux学习-文件存储管理/">linux学习--文件存储管理</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Jin Feng</a></p>
         <p><span>发布时间:</span>2015-07-24, 08:59:22</p>
-        <p><span>最后更新:</span>2016-04-06, 13:35:57</p>
+        <p><span>最后更新:</span>2016-05-09, 09:30:03</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2015/07/24/linux学习-文件存储管理/" title="linux学习--文件存储管理">http://0x00000000.cn/2015/07/24/linux学习-文件存储管理/</a>
             <span class="copy-path" data-clipboard-text="原文: http://0x00000000.cn/2015/07/24/linux学习-文件存储管理/　　作者: Jin Feng" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -349,7 +345,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#文件的存储方式"><span class="toc-number">1.</span> <span class="toc-text">文件的存储方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#控制区和存储区"><span class="toc-number">1.1.</span> <span class="toc-text">控制区和存储区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#验证的步骤"><span class="toc-number">1.2.</span> <span class="toc-text">验证的步骤</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#硬链接与软链接"><span class="toc-number">2.</span> <span class="toc-text">硬链接与软链接</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#硬链接-Hard-Link"><span class="toc-number">2.1.</span> <span class="toc-text">硬链接(Hard Link)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#软链接"><span class="toc-number">2.2.</span> <span class="toc-text">软链接</span></a></li></ol></li></ol>
 </div>
 <style>
     .left-col .switch-btn {

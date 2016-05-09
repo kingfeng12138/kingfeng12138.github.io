@@ -276,8 +276,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p>##yum源配置<br>yum支持三种，htttp，ftp，和本地文件<br>1 找到与本机相匹配的镜像源<br>2 编辑yum配置</p>
-<p>###配置本地源<br>以配置本地源为例<br>
+              <h2 id="yum源配置"><a href="#yum源配置" class="headerlink" title="yum源配置"></a>yum源配置</h2><p>yum支持三种，htttp，ftp，和本地文件<br>1 找到与本机相匹配的镜像源<br>2 编辑yum配置</p>
+<h3 id="配置本地源"><a href="#配置本地源" class="headerlink" title="配置本地源"></a>配置本地源</h3><p>以配置本地源为例<br>
           
       
     </div>
@@ -343,8 +343,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p>##文件压缩</p>
-<p>###compress<br>comprss是一个比较老的压缩命令<br>1 压缩<br><code>compress file</code>  生成 <code>file.z</code><br>2 解压缩<br><code>uncompress file.z</code><br>
+              <h2 id="文件压缩"><a href="#文件压缩" class="headerlink" title="文件压缩"></a>文件压缩</h2><h3 id="compress"><a href="#compress" class="headerlink" title="compress"></a>compress</h3><p>comprss是一个比较老的压缩命令<br>1 压缩<br><code>compress file</code>  生成 <code>file.z</code><br>2 解压缩<br><code>uncompress file.z</code><br>
           
       
     </div>
@@ -410,8 +409,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p>##静态ip设置</p>
-<p>###查看本机的局域网ip<br><code>ifconfig</code><br>一般是在列出的第一项，一般为<code>192.168.*.*</code><br>如下所示，只列出了第一项，本机的ip为192.168.3.109<br>
+              <h2 id="静态ip设置"><a href="#静态ip设置" class="headerlink" title="静态ip设置"></a>静态ip设置</h2><h3 id="查看本机的局域网ip"><a href="#查看本机的局域网ip" class="headerlink" title="查看本机的局域网ip"></a>查看本机的局域网ip</h3><p><code>ifconfig</code><br>一般是在列出的第一项，一般为<code>192.168.*.*</code><br>如下所示，只列出了第一项，本机的ip为192.168.3.109<br>
           
       
     </div>
@@ -547,9 +545,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p>##openssh简介</p>
-<p>###功能<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1 类似telnet的远程联机使用shell的服务器，亦即是俗称的ssh</span><br><span class="line">2 类是ftp服务的sftp-server提供更安全的FTP服务</span><br></pre></td></tr></table></figure></p>
-<p>###加密原理<br>公钥:提供给远程主机用来加密。公共的钥匙，大家都能获取到<br>私钥:只能自己使用，用于解密公钥加密的文件<br>通信双方各自拥有对方的公钥，还保留有自己的私钥<br>
+              <h2 id="openssh简介"><a href="#openssh简介" class="headerlink" title="openssh简介"></a>openssh简介</h2><h3 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1 类似telnet的远程联机使用shell的服务器，亦即是俗称的ssh</span><br><span class="line">2 类是ftp服务的sftp-server提供更安全的FTP服务</span><br></pre></td></tr></table></figure>
+<h3 id="加密原理"><a href="#加密原理" class="headerlink" title="加密原理"></a>加密原理</h3><p>公钥:提供给远程主机用来加密。公共的钥匙，大家都能获取到<br>私钥:只能自己使用，用于解密公钥加密的文件<br>通信双方各自拥有对方的公钥，还保留有自己的私钥<br>
           
       
     </div>
@@ -615,8 +612,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p>##查看进程的几种方式</p>
-<p>###<code>ps</code><br>1 <code>ps</code><br>查看当前shell的运行的程序,<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># ps</span></span><br><span class="line">PID TTY          TIME CMD</span><br><span class="line">4619 pts/1    00:00:00 bash</span><br><span class="line">4771 pts/1    00:00:00 ps</span><br></pre></td></tr></table></figure></p>
+              <h2 id="查看进程的几种方式"><a href="#查看进程的几种方式" class="headerlink" title="查看进程的几种方式"></a>查看进程的几种方式</h2><h3 id="ps"><a href="#ps" class="headerlink" title="ps"></a><code>ps</code></h3><p>1 <code>ps</code><br>查看当前shell的运行的程序,<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># ps</span></span><br><span class="line">PID TTY          TIME CMD</span><br><span class="line">4619 pts/1    00:00:00 bash</span><br><span class="line">4771 pts/1    00:00:00 ps</span><br></pre></td></tr></table></figure></p>
           
       
     </div>
@@ -682,9 +678,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p>##文件的存储方式</p>
-<p>###控制区和存储区<br>磁盘分为，控制区和存储区，控制区域用来村文件的inode号码，而存储区用来实际<br>存放文件。</p>
-<p>###验证的步骤<br>
+              <h2 id="文件的存储方式"><a href="#文件的存储方式" class="headerlink" title="文件的存储方式"></a>文件的存储方式</h2><h3 id="控制区和存储区"><a href="#控制区和存储区" class="headerlink" title="控制区和存储区"></a>控制区和存储区</h3><p>磁盘分为，控制区和存储区，控制区域用来村文件的inode号码，而存储区用来实际<br>存放文件。</p>
+<h3 id="验证的步骤"><a href="#验证的步骤" class="headerlink" title="验证的步骤"></a>验证的步骤</h3>
           
       
     </div>
@@ -750,8 +745,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p>##1 linux文件权限概念</p>
-<p>###权限的查看<br>可以通过<code>ls -l</code>命令来查看文件的详细信息，其中就列出了文件的权限<br>列出的的一共有7列分别为:<br>以<code>-rw-r--r--. 1 root root 2172 Jul 6 11:11  file</code>为例<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"-rwxrwxrwx."</span>: 文件的权限，总共有十个字符包括点</span><br><span class="line"><span class="string">"1"</span>:	文件的硬链接的个数</span><br><span class="line"><span class="string">"root"</span>: 文件所属的用户</span><br><span class="line"><span class="string">"root"</span>: 文件所属的组</span><br><span class="line"><span class="string">"2172"</span>: 文件的大小(默认单位bytes)。</span><br><span class="line"><span class="string">"Jul 6 11:11"</span>: 这个文件的创建日期或者时最近一次的修改日期</span><br><span class="line"><span class="string">"file"</span> :文件名称</span><br></pre></td></tr></table></figure></p>
+              <h2 id="1-linux文件权限概念"><a href="#1-linux文件权限概念" class="headerlink" title="1 linux文件权限概念"></a>1 linux文件权限概念</h2><h3 id="权限的查看"><a href="#权限的查看" class="headerlink" title="权限的查看"></a>权限的查看</h3><p>可以通过<code>ls -l</code>命令来查看文件的详细信息，其中就列出了文件的权限<br>列出的的一共有7列分别为:<br>以<code>-rw-r--r--. 1 root root 2172 Jul 6 11:11  file</code>为例<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"-rwxrwxrwx."</span>: 文件的权限，总共有十个字符包括点</span><br><span class="line"><span class="string">"1"</span>:	文件的硬链接的个数</span><br><span class="line"><span class="string">"root"</span>: 文件所属的用户</span><br><span class="line"><span class="string">"root"</span>: 文件所属的组</span><br><span class="line"><span class="string">"2172"</span>: 文件的大小(默认单位bytes)。</span><br><span class="line"><span class="string">"Jul 6 11:11"</span>: 这个文件的创建日期或者时最近一次的修改日期</span><br><span class="line"><span class="string">"file"</span> :文件名称</span><br></pre></td></tr></table></figure></p>
           
       
     </div>
@@ -817,9 +811,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p>##1 与linux用户和组相关的命令</p>
-<p>##3新建用户<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># useradd feng 		//新建feng用户</span><br><span class="line"># passwd  feng		//修改feng的密码</span><br></pre></td></tr></table></figure></p>
-<p>###新建组<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># groupadd test		//新建test组</span></span><br></pre></td></tr></table></figure></p>
+              <h2 id="与linux用户和组相关的命令"><a href="#与linux用户和组相关的命令" class="headerlink" title="与linux用户和组相关的命令"></a>与linux用户和组相关的命令</h2><h3 id="新建用户"><a href="#新建用户" class="headerlink" title="新建用户"></a>新建用户</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># useradd feng 		//新建feng用户</span><br><span class="line"># passwd  feng		//修改feng的密码</span><br></pre></td></tr></table></figure>
+<h3 id="新建组"><a href="#新建组" class="headerlink" title="新建组"></a>新建组</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># groupadd test		//新建test组</span></span><br></pre></td></tr></table></figure>
           
       
     </div>
@@ -886,8 +879,7 @@
       
           
               <p>linux系统中，主要有两个编辑器vim和emacs.vim以其快速和简洁深受用户使用.</p>
-<p>##vim</p>
-<p>###vim的模式<br>在vim一共有四种模式，分别是普通模式，插入模式，可视模式，和命令行模式<br>
+<h2 id="vim"><a href="#vim" class="headerlink" title="vim"></a>vim</h2><h3 id="vim的模式"><a href="#vim的模式" class="headerlink" title="vim的模式"></a>vim的模式</h3><p>在vim一共有四种模式，分别是普通模式，插入模式，可视模式，和命令行模式<br>
           
       
     </div>

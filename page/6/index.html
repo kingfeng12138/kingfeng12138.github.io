@@ -276,20 +276,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>##系统的标准输入，输出，错误</p>
-<p>###当一个程序刚刚打开时候，首先会创建三个文件</p>
-<p>###标准输入0，标准输出1，标准错误2</p>
-<p>##文件的重定向 </p>
-<p>###&gt;<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">command</span> &gt; filename		//把标准输出重定向到一个文件中</span><br><span class="line"><span class="built_in">command</span> &gt;&gt; filename		//把标准输出重定向到一个文件中（追加）</span><br><span class="line"><span class="built_in">command</span> 1&gt; filename		//把标准输出重定向到一个文件中</span><br><span class="line"><span class="built_in">command</span> &gt; file 2&gt;&amp;1		//把标准输出和标准错误一起重定向到文件中</span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line"><span class="built_in">command</span> 2&gt; filename		//把标准错误重定向到文件中</span><br><span class="line"><span class="built_in">command</span> 2&gt;&gt; filename		//把标准错误重定向到一个文件中（追加）</span><br><span class="line"><span class="built_in">command</span> &gt;&gt; filename 2&gt;&amp;1	//把标准输出和标准错误一起重定向到文件中（追加）</span><br><span class="line"><span class="built_in">command</span> &amp;&gt; filename		//把标准输出和标准错误一起重定向到文件中</span><br></pre></td></tr></table></figure></p>
-<p>##管道符</p>
-<h2 id=""><a href="#" class="headerlink" title="|"></a>|</h2><p>可以通过管道把一个命令的输出传递到另一个命令作为输入。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat file | head -n 25 | tail -n 15  #把文件的15行到25行显示出来</span></span><br></pre></td></tr></table></figure></p>
-<p>##tee</p>
-<p>###把标准输出的数据复制一份<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat /etc/passwd |grep "/sbinnologin" |tee /mnt/nologin.out</span></span><br><span class="line"><span class="comment">#把/etc/passwd文件中含有/sbin/nologin的行输出到屏幕上并写入到/mnt/nologin.out文件中</span></span><br></pre></td></tr></table></figure></p>
-<p>tee 只能复制标准输出，不能复制标准错误。</p>
-<p>##diff 和patch 用法</p>
-<p>###diff<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># diff hello.c hello.c.new  	//显示两个文本的差异</span></span><br><span class="line"><span class="comment"># diff -Nura hello.c hello.c.new &gt; patch.test.c  //加入参数后生成补丁文件并重定向到patch.test.c</span></span><br></pre></td></tr></table></figure></p>
-<p>###patch<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># patch -p0 &lt; patch.hello.c  	//利用diff生成的patch补丁，来更新hello.c</span></span><br><span class="line"><span class="comment"># patch -p0 -R &lt;patch.hello.c 	//-R参数，可以将更新后的文件还原成以前文件</span></span><br></pre></td></tr></table></figure></p>
-
+              <h2 id="系统的标准输入，输出，错误"><a href="#系统的标准输入，输出，错误" class="headerlink" title="系统的标准输入，输出，错误"></a>系统的标准输入，输出，错误</h2><h3 id="当一个程序刚刚打开时候，首先会创建三个文件"><a href="#当一个程序刚刚打开时候，首先会创建三个文件" class="headerlink" title="当一个程序刚刚打开时候，首先会创建三个文件"></a>当一个程序刚刚打开时候，首先会创建三个文件</h3><h3 id="标准输入0，标准输出1，标准错误2"><a href="#标准输入0，标准输出1，标准错误2" class="headerlink" title="标准输入0，标准输出1，标准错误2"></a>标准输入0，标准输出1，标准错误2</h3><h2 id="文件的重定向"><a href="#文件的重定向" class="headerlink" title="文件的重定向"></a>文件的重定向</h2>
+          
       
     </div>
     
@@ -306,6 +294,10 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux基础/">linux基础</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a href="/2015/07/22/linux学习-管道和重定向/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -350,9 +342,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p>##关机与重启命令:(shutdown,init)</p>
-<p>###shutdown<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># shutdown -k		#只是发送消息给所有登陆本机的用户，不会真正关机</span></span><br><span class="line"><span class="comment"># shutdown -h 		#将系统关机</span></span><br><span class="line"><span class="comment"># shutdown -c 		#中断关机命令</span></span><br></pre></td></tr></table></figure></p>
-<p>###init [0,1,2,3,4,5,6]  他们分别代表系统的七种级别<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span>	关机	</span><br><span class="line"><span class="number">1</span>	单用户模式</span><br><span class="line"><span class="number">2</span>	多用户(没有NFS功能)</span><br><span class="line"><span class="number">3</span>	多用户命令行模式</span><br><span class="line"><span class="number">4</span>	系统未使用</span><br><span class="line"><span class="number">5</span>	x11控制台，系统启动后进入图形化界面</span><br><span class="line"><span class="number">6</span>	重新启动</span><br></pre></td></tr></table></figure></p>
+              <h2 id="关机与重启命令-shutdown-init"><a href="#关机与重启命令-shutdown-init" class="headerlink" title="关机与重启命令:(shutdown,init)"></a>关机与重启命令:(shutdown,init)</h2><h3 id="shutdown"><a href="#shutdown" class="headerlink" title="shutdown"></a>shutdown</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># shutdown -k		#只是发送消息给所有登陆本机的用户，不会真正关机</span></span><br><span class="line"><span class="comment"># shutdown -h 		#将系统关机</span></span><br><span class="line"><span class="comment"># shutdown -c 		#中断关机命令</span></span><br></pre></td></tr></table></figure>
+<h3 id="init-0-1-2-3-4-5-6-他们分别代表系统的七种级别"><a href="#init-0-1-2-3-4-5-6-他们分别代表系统的七种级别" class="headerlink" title="init [0,1,2,3,4,5,6]  他们分别代表系统的七种级别"></a>init [0,1,2,3,4,5,6]  他们分别代表系统的七种级别</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span>	关机	</span><br><span class="line"><span class="number">1</span>	单用户模式</span><br><span class="line"><span class="number">2</span>	多用户(没有NFS功能)</span><br><span class="line"><span class="number">3</span>	多用户命令行模式</span><br><span class="line"><span class="number">4</span>	系统未使用</span><br><span class="line"><span class="number">5</span>	x11控制台，系统启动后进入图形化界面</span><br><span class="line"><span class="number">6</span>	重新启动</span><br></pre></td></tr></table></figure>
           
       
     </div>

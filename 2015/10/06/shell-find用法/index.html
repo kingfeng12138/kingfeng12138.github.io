@@ -11,7 +11,7 @@
 <meta property="og:url" content="http://0x00000000.cn/2015/10/06/shell-find用法/index.html">
 <meta property="og:site_name" content="LOVE LINUX">
 <meta property="og:description" content="在shell编程中常常需要来查找文件，并对文件进行处理findfind 的参数有很多，就不一一列举，主要写了几个常用参数-name  根据文件名来查找-perm  根据文件权限来查找-user  根据文件的所有者-type  根据文件类型来查找">
-<meta property="og:updated_time" content="2016-04-06T05:35:57.000Z">
+<meta property="og:updated_time" content="2016-05-09T01:38:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shell--find用法">
 <meta name="twitter:description" content="在shell编程中常常需要来查找文件，并对文件进行处理findfind 的参数有很多，就不一一列举，主要写了几个常用参数-name  根据文件名来查找-perm  根据文件权限来查找-user  根据文件的所有者-type  根据文件类型来查找">
@@ -283,8 +283,7 @@
           
         <p>在shell编程中常常需要来查找文件，并对文件进行处理<br>find<br>find 的参数有很多，就不一一列举，主要写了几个常用参数<br>-name  根据文件名来查找<br>-perm  根据文件权限来查找<br>-user  根据文件的所有者<br>-type  根据文件类型来查找</p>
 <a id="more"></a>
-<p>###用法示例</p>
-<p>-name<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#查找家目录下所有的*.txt文件</span><br><span class="line">find ~ -name &quot;*.txt&quot; -print</span><br><span class="line">#查找当前目录下的所有*.txt文件</span><br><span class="line">find . -name &quot;*.txt&quot; -print</span><br></pre></td></tr></table></figure></p>
+<h3 id="用法示例"><a href="#用法示例" class="headerlink" title="用法示例"></a>用法示例</h3><p>-name<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#查找家目录下所有的*.txt文件</span><br><span class="line">find ~ -name &quot;*.txt&quot; -print</span><br><span class="line">#查找当前目录下的所有*.txt文件</span><br><span class="line">find . -name &quot;*.txt&quot; -print</span><br></pre></td></tr></table></figure></p>
 <p>-perm<br>一般来说，为了系统安全，查找777权限的文件<br><code>find / -perm 777 -print</code></p>
 <p>-user<br>查找当前目录下的所有属于root的所有文件<br><code>find . -user root -print</code></p>
 <p>-type<br>文件类型主要有<br>b 块设备文件<br>d 目录<br>c 字符设备文件<br>p 管道文件<br>l 符号链接文件<br>f 普通文件<br>查找当前目录下的所有目录文件<br><code>find . -type d -print</code></p>
@@ -309,7 +308,7 @@
         <p><span>本文标题:</span><a href="/2015/10/06/shell-find用法/">shell--find用法</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Jin Feng</a></p>
         <p><span>发布时间:</span>2015-10-06, 13:39:05</p>
-        <p><span>最后更新:</span>2016-04-06, 13:35:57</p>
+        <p><span>最后更新:</span>2016-05-09, 09:38:44</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2015/10/06/shell-find用法/" title="shell--find用法">http://0x00000000.cn/2015/10/06/shell-find用法/</a>
             <span class="copy-path" data-clipboard-text="原文: http://0x00000000.cn/2015/10/06/shell-find用法/　　作者: Jin Feng" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -344,7 +343,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#用法示例"><span class="toc-number">1.</span> <span class="toc-text">用法示例</span></a></li></ol>
 </div>
 <style>
     .left-col .switch-btn {

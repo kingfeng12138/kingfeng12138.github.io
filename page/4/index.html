@@ -276,8 +276,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p>##什么是栈？</p>
-<p>栈（stack）又名堆栈，它是一种运算受限的线性表。<br>其限制是仅允许在表的一端进行插入和删除运算。<br>这一端被称为栈顶，相对地，把另一端称为栈底。<br>向一个栈插入新元素又称作进栈、入栈或压栈，<br>它是把新元素放到栈顶元素的上面，使之成为新的栈顶元素；<br>从一个栈删除元素又称作出栈或退栈，它是把栈顶元素删除掉，<br>使其相邻的元素成为新的栈顶元素。<br>
+              <h2 id="什么是栈？"><a href="#什么是栈？" class="headerlink" title="什么是栈？"></a>什么是栈？</h2><p>栈（stack）又名堆栈，它是一种运算受限的线性表。<br>其限制是仅允许在表的一端进行插入和删除运算。<br>这一端被称为栈顶，相对地，把另一端称为栈底。<br>向一个栈插入新元素又称作进栈、入栈或压栈，<br>它是把新元素放到栈顶元素的上面，使之成为新的栈顶元素；<br>从一个栈删除元素又称作出栈或退栈，它是把栈顶元素删除掉，<br>使其相邻的元素成为新的栈顶元素。<br>
           
       
     </div>
@@ -339,7 +338,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p>###带控制信息的双向链表<br>双向链表的主要操作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">链表的初始化</span><br><span class="line">头部插入</span><br><span class="line">尾部插入</span><br><span class="line">头部删除</span><br><span class="line">尾部删除</span><br><span class="line">插入到指定结点的前面</span><br><span class="line">插入到指定结点的后面</span><br><span class="line">删除双向链表中的结点</span><br><span class="line">打印双端链表</span><br><span class="line">.......还有很多...</span><br></pre></td></tr></table></figure></p>
+              <h3 id="带控制信息的双向链表"><a href="#带控制信息的双向链表" class="headerlink" title="带控制信息的双向链表"></a>带控制信息的双向链表</h3><p>双向链表的主要操作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">链表的初始化</span><br><span class="line">头部插入</span><br><span class="line">尾部插入</span><br><span class="line">头部删除</span><br><span class="line">尾部删除</span><br><span class="line">插入到指定结点的前面</span><br><span class="line">插入到指定结点的后面</span><br><span class="line">删除双向链表中的结点</span><br><span class="line">打印双端链表</span><br><span class="line">.......还有很多...</span><br></pre></td></tr></table></figure></p>
           
       
     </div>
@@ -401,9 +400,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p>##带表头的单向链表</p>
-<p>###结构体的声明<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">struct List_node&#123;</span><br><span class="line">    struct List_node *head;    //链表的头结点</span><br><span class="line">    struct List_node *tail;    //链表的尾结点</span><br><span class="line">    int count;                 //链表的结点个数</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>###一些必要的的定义和重命名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#define TRUE   (1)</span><br><span class="line">#define FALSE  (0)</span><br><span class="line"></span><br><span class="line">typedef unsigned char Boolean;</span><br><span class="line"></span><br><span class="line">typedef struct List_node List_node;</span><br><span class="line">typedef List_node * List_head;</span><br></pre></td></tr></table></figure></p>
+              <h2 id="带表头的单向链表"><a href="#带表头的单向链表" class="headerlink" title="带表头的单向链表"></a>带表头的单向链表</h2><h3 id="结构体的声明"><a href="#结构体的声明" class="headerlink" title="结构体的声明"></a>结构体的声明</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">struct List_node&#123;</span><br><span class="line">    struct List_node *head;    //链表的头结点</span><br><span class="line">    struct List_node *tail;    //链表的尾结点</span><br><span class="line">    int count;                 //链表的结点个数</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="一些必要的的定义和重命名"><a href="#一些必要的的定义和重命名" class="headerlink" title="一些必要的的定义和重命名"></a>一些必要的的定义和重命名</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#define TRUE   (1)</span><br><span class="line">#define FALSE  (0)</span><br><span class="line"></span><br><span class="line">typedef unsigned char Boolean;</span><br><span class="line"></span><br><span class="line">typedef struct List_node List_node;</span><br><span class="line">typedef List_node * List_head;</span><br></pre></td></tr></table></figure>
           
       
     </div>
@@ -861,7 +859,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p>##磁盘分区<br>对linux的第二块磁盘进行分区<br>使用<code>fdisk /dev/sdb</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># fdisk /dev/sdb</span></span><br><span class="line">Welcome to fdisk (util-linux 2.23.2).</span><br><span class="line"></span><br><span class="line">Changes will remain <span class="keyword">in</span> memory only, until you decide to write them.</span><br><span class="line">Be careful before using the write command.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Command (m <span class="keyword">for</span> <span class="built_in">help</span>):</span><br></pre></td></tr></table></figure></p>
+              <h2 id="磁盘分区"><a href="#磁盘分区" class="headerlink" title="磁盘分区"></a>磁盘分区</h2><p>对linux的第二块磁盘进行分区<br>使用<code>fdisk /dev/sdb</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># fdisk /dev/sdb</span></span><br><span class="line">Welcome to fdisk (util-linux 2.23.2).</span><br><span class="line"></span><br><span class="line">Changes will remain <span class="keyword">in</span> memory only, until you decide to write them.</span><br><span class="line">Be careful before using the write command.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Command (m <span class="keyword">for</span> <span class="built_in">help</span>):</span><br></pre></td></tr></table></figure></p>
           
       
     </div>

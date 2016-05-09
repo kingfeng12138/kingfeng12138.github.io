@@ -5,19 +5,19 @@
   
   <title>linux学习--yum使用yum源配置 | LOVE LINUX</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="##yum源配置yum支持三种，htttp，ftp，和本地文件1 找到与本机相匹配的镜像源2 编辑yum配置
-###配置本地源以配置本地源为例">
+  <meta name="description" content="yum源配置yum支持三种，htttp，ftp，和本地文件1 找到与本机相匹配的镜像源2 编辑yum配置
+配置本地源以配置本地源为例">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux学习--yum使用yum源配置">
 <meta property="og:url" content="http://0x00000000.cn/2015/07/27/linux学习-yum使用yum源配置/index.html">
 <meta property="og:site_name" content="LOVE LINUX">
-<meta property="og:description" content="##yum源配置yum支持三种，htttp，ftp，和本地文件1 找到与本机相匹配的镜像源2 编辑yum配置
-###配置本地源以配置本地源为例">
-<meta property="og:updated_time" content="2016-04-06T05:35:57.000Z">
+<meta property="og:description" content="yum源配置yum支持三种，htttp，ftp，和本地文件1 找到与本机相匹配的镜像源2 编辑yum配置
+配置本地源以配置本地源为例">
+<meta property="og:updated_time" content="2016-05-09T01:29:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux学习--yum使用yum源配置">
-<meta name="twitter:description" content="##yum源配置yum支持三种，htttp，ftp，和本地文件1 找到与本机相匹配的镜像源2 编辑yum配置
-###配置本地源以配置本地源为例">
+<meta name="twitter:description" content="yum源配置yum支持三种，htttp，ftp，和本地文件1 找到与本机相匹配的镜像源2 编辑yum配置
+配置本地源以配置本地源为例">
   
     <link rel="alternative" href="/atom.xml" title="LOVE LINUX" type="application/atom+xml">
   
@@ -288,20 +288,19 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>##yum源配置<br>yum支持三种，htttp，ftp，和本地文件<br>1 找到与本机相匹配的镜像源<br>2 编辑yum配置</p>
-<p>###配置本地源<br>以配置本地源为例<br><a id="more"></a><br>首先要挂载镜像到指定目录<br><code>mount /root/rhel-server-7.1-x86_64-dvd.iso   /yum</code><br>在<code>/etc/yum.repos.d/</code>下创建新的yum仓库<code>yum.repo</code>(只要以.repo结尾即可)<br>编辑文本<code>yum.repo</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[source]</span><br><span class="line">name=localserver</span><br><span class="line">baseurl=file:///yum     //可以为http://  或者ftp://</span><br><span class="line">gpgcheck=0</span><br><span class="line">enable=1</span><br></pre></td></tr></table></figure></p>
+        <h2 id="yum源配置"><a href="#yum源配置" class="headerlink" title="yum源配置"></a>yum源配置</h2><p>yum支持三种，htttp，ftp，和本地文件<br>1 找到与本机相匹配的镜像源<br>2 编辑yum配置</p>
+<h3 id="配置本地源"><a href="#配置本地源" class="headerlink" title="配置本地源"></a>配置本地源</h3><p>以配置本地源为例<br><a id="more"></a><br>首先要挂载镜像到指定目录<br><code>mount /root/rhel-server-7.1-x86_64-dvd.iso   /yum</code><br>在<code>/etc/yum.repos.d/</code>下创建新的yum仓库<code>yum.repo</code>(只要以.repo结尾即可)<br>编辑文本<code>yum.repo</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[source]</span><br><span class="line">name=localserver</span><br><span class="line">baseurl=file:///yum     //可以为http://  或者ftp://</span><br><span class="line">gpgcheck=0</span><br><span class="line">enable=1</span><br></pre></td></tr></table></figure></p>
 <p><code>yum clean all</code>   即可更新源</p>
-<p>###设置开机自动挂载<br>编辑/etc/fstable文件<br>在后面加上一行<br><code>/root/rhel-server-7.1-x86_64-dvd.iso  /yum iso9660 defaults,loop 0 0</code></p>
-<p>##yum命令</p>
-<p>###安装<br><code>yum install</code> 全部安装<br><code>yum install package1</code> 安装指定的安装包package1<br><code>yum groupinstall group1</code> 安装程序组group1<br><code>yum localinstall XX.rpm</code> 安装本地软件，并安装依赖包</p>
-<p>###更新和升级<br><code>yum update</code> 全部更新<br><code>yum update package1</code> 更新指定程序包package1<br><code>yum check-update</code>    检查可更新的程序<br><code>yum upgarde package1</code> 升级指定的程序包<br><code>yum groupupdate gruop</code>        升级程序组group1</p>
-<p>###查找和显示<br><code>yum info package1</code>    显示安装包信息package1<br><code>yum list</code>        显示所有已经安装和可以安装的程序包<br><code>yum list package1</code>    显示指定程序包的安装情况<br><code>ym groupinfo group1</code>    显示程序组group1信息yum search string 根据关键字string查找安装包</p>
-<p>###删除程序<br><code>yum remove package1</code>     删除程序包<br><code>yum groupremove group1</code> 删除程序组group1<br><code>yum deplist package1</code>    查看程序package1的依赖情况</p>
-<p>###清理缓存<br><code>yum clean packages</code>    清除缓存目录下的软件包<br><code>yum clean headers</code>    清除缓存目录下的headers<br><code>yum clean oldheaders</code>    清除缓存目录下旧的headers</p>
-<p>###查看命令依赖的包<br><code>yum whatprovides 命令名称</code></p>
+<h3 id="设置开机自动挂载"><a href="#设置开机自动挂载" class="headerlink" title="设置开机自动挂载"></a>设置开机自动挂载</h3><p>编辑/etc/fstable文件<br>在后面加上一行<br><code>/root/rhel-server-7.1-x86_64-dvd.iso  /yum iso9660 defaults,loop 0 0</code></p>
+<h2 id="yum命令"><a href="#yum命令" class="headerlink" title="yum命令"></a>yum命令</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p><code>yum install</code> 全部安装<br><code>yum install package1</code> 安装指定的安装包package1<br><code>yum groupinstall group1</code> 安装程序组group1<br><code>yum localinstall XX.rpm</code> 安装本地软件，并安装依赖包</p>
+<h3 id="更新和升级"><a href="#更新和升级" class="headerlink" title="更新和升级"></a>更新和升级</h3><p><code>yum update</code> 全部更新<br><code>yum update package1</code> 更新指定程序包package1<br><code>yum check-update</code>    检查可更新的程序<br><code>yum upgarde package1</code> 升级指定的程序包<br><code>yum groupupdate gruop</code>        升级程序组group1</p>
+<h3 id="查找和显示"><a href="#查找和显示" class="headerlink" title="查找和显示"></a>查找和显示</h3><p><code>yum info package1</code>    显示安装包信息package1<br><code>yum list</code>        显示所有已经安装和可以安装的程序包<br><code>yum list package1</code>    显示指定程序包的安装情况<br><code>ym groupinfo group1</code>    显示程序组group1信息yum search string 根据关键字string查找安装包</p>
+<h3 id="删除程序"><a href="#删除程序" class="headerlink" title="删除程序"></a>删除程序</h3><p><code>yum remove package1</code>     删除程序包<br><code>yum groupremove group1</code> 删除程序组group1<br><code>yum deplist package1</code>    查看程序package1的依赖情况</p>
+<h3 id="清理缓存"><a href="#清理缓存" class="headerlink" title="清理缓存"></a>清理缓存</h3><p><code>yum clean packages</code>    清除缓存目录下的软件包<br><code>yum clean headers</code>    清除缓存目录下的headers<br><code>yum clean oldheaders</code>    清除缓存目录下旧的headers</p>
+<h3 id="查看命令依赖的包"><a href="#查看命令依赖的包" class="headerlink" title="查看命令依赖的包"></a>查看命令依赖的包</h3><p><code>yum whatprovides 命令名称</code></p>
 <pre><code class="bash">
 </code></pre>
-<p>##rpm命令<br>(1)<code>rpm -ivh /mdeia/cdrom/RedHat/RPMS/samba-3.0.10-1.4E.i386.rpm
+<h2 id="rpm命令"><a href="#rpm命令" class="headerlink" title="rpm命令"></a>rpm命令</h2><p>(1)<code>rpm -ivh /mdeia/cdrom/RedHat/RPMS/samba-3.0.10-1.4E.i386.rpm
 //按照路径安装并显示安装进度
 (2)</code>rpm -qa |grep httpd`<br>//[搜索指定rpm包是否安装]-all匹配搜索<em>httpd</em><br>(3)rpm -e file.rpm<br>//[删除一个rpm包]-erase<br>(4)rpm -ql httpd<br>//[搜索rpm包]–list所有文件安装目录</p>
 
@@ -315,7 +314,7 @@
         <p><span>本文标题:</span><a href="/2015/07/27/linux学习-yum使用yum源配置/">linux学习--yum使用yum源配置</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Jin Feng</a></p>
         <p><span>发布时间:</span>2015-07-27, 11:13:39</p>
-        <p><span>最后更新:</span>2016-04-06, 13:35:57</p>
+        <p><span>最后更新:</span>2016-05-09, 09:29:39</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2015/07/27/linux学习-yum使用yum源配置/" title="linux学习--yum使用yum源配置">http://0x00000000.cn/2015/07/27/linux学习-yum使用yum源配置/</a>
             <span class="copy-path" data-clipboard-text="原文: http://0x00000000.cn/2015/07/27/linux学习-yum使用yum源配置/　　作者: Jin Feng" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -350,7 +349,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#yum源配置"><span class="toc-number">1.</span> <span class="toc-text">yum源配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置本地源"><span class="toc-number">1.1.</span> <span class="toc-text">配置本地源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置开机自动挂载"><span class="toc-number">1.2.</span> <span class="toc-text">设置开机自动挂载</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#yum命令"><span class="toc-number">2.</span> <span class="toc-text">yum命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装"><span class="toc-number">2.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更新和升级"><span class="toc-number">2.2.</span> <span class="toc-text">更新和升级</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查找和显示"><span class="toc-number">2.3.</span> <span class="toc-text">查找和显示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除程序"><span class="toc-number">2.4.</span> <span class="toc-text">删除程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#清理缓存"><span class="toc-number">2.5.</span> <span class="toc-text">清理缓存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看命令依赖的包"><span class="toc-number">2.6.</span> <span class="toc-text">查看命令依赖的包</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rpm命令"><span class="toc-number">3.</span> <span class="toc-text">rpm命令</span></a></li></ol>
 </div>
 <style>
     .left-col .switch-btn {

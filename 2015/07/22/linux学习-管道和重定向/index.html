@@ -5,28 +5,16 @@
   
   <title>linux学习--管道和重定向 | LOVE LINUX</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="##系统的标准输入，输出，错误
-###当一个程序刚刚打开时候，首先会创建三个文件
-###标准输入0，标准输出1，标准错误2
-##文件的重定向 
-###&amp;gt;123456789command &amp;gt; filename		//把标准输出重定向到一个文件中command &amp;gt;&amp;gt; filename		//把标准输出重定向到一个文件中（追加）command 1&amp;gt; filename		//">
+  <meta name="description" content="系统的标准输入，输出，错误当一个程序刚刚打开时候，首先会创建三个文件标准输入0，标准输出1，标准错误2文件的重定向">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux学习--管道和重定向">
 <meta property="og:url" content="http://0x00000000.cn/2015/07/22/linux学习-管道和重定向/index.html">
 <meta property="og:site_name" content="LOVE LINUX">
-<meta property="og:description" content="##系统的标准输入，输出，错误
-###当一个程序刚刚打开时候，首先会创建三个文件
-###标准输入0，标准输出1，标准错误2
-##文件的重定向 
-###&amp;gt;123456789command &amp;gt; filename		//把标准输出重定向到一个文件中command &amp;gt;&amp;gt; filename		//把标准输出重定向到一个文件中（追加）command 1&amp;gt; filename		//">
-<meta property="og:updated_time" content="2016-04-06T05:35:57.000Z">
+<meta property="og:description" content="系统的标准输入，输出，错误当一个程序刚刚打开时候，首先会创建三个文件标准输入0，标准输出1，标准错误2文件的重定向">
+<meta property="og:updated_time" content="2016-05-09T01:27:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux学习--管道和重定向">
-<meta name="twitter:description" content="##系统的标准输入，输出，错误
-###当一个程序刚刚打开时候，首先会创建三个文件
-###标准输入0，标准输出1，标准错误2
-##文件的重定向 
-###&amp;gt;123456789command &amp;gt; filename		//把标准输出重定向到一个文件中command &amp;gt;&amp;gt; filename		//把标准输出重定向到一个文件中（追加）command 1&amp;gt; filename		//">
+<meta name="twitter:description" content="系统的标准输入，输出，错误当一个程序刚刚打开时候，首先会创建三个文件标准输入0，标准输出1，标准错误2文件的重定向">
   
     <link rel="alternative" href="/atom.xml" title="LOVE LINUX" type="application/atom+xml">
   
@@ -297,19 +285,13 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>##系统的标准输入，输出，错误</p>
-<p>###当一个程序刚刚打开时候，首先会创建三个文件</p>
-<p>###标准输入0，标准输出1，标准错误2</p>
-<p>##文件的重定向 </p>
-<p>###&gt;<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">command</span> &gt; filename		//把标准输出重定向到一个文件中</span><br><span class="line"><span class="built_in">command</span> &gt;&gt; filename		//把标准输出重定向到一个文件中（追加）</span><br><span class="line"><span class="built_in">command</span> 1&gt; filename		//把标准输出重定向到一个文件中</span><br><span class="line"><span class="built_in">command</span> &gt; file 2&gt;&amp;1		//把标准输出和标准错误一起重定向到文件中</span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line"><span class="built_in">command</span> 2&gt; filename		//把标准错误重定向到文件中</span><br><span class="line"><span class="built_in">command</span> 2&gt;&gt; filename		//把标准错误重定向到一个文件中（追加）</span><br><span class="line"><span class="built_in">command</span> &gt;&gt; filename 2&gt;&amp;1	//把标准输出和标准错误一起重定向到文件中（追加）</span><br><span class="line"><span class="built_in">command</span> &amp;&gt; filename		//把标准输出和标准错误一起重定向到文件中</span><br></pre></td></tr></table></figure></p>
-<p>##管道符</p>
-<h2 id=""><a href="#" class="headerlink" title="|"></a>|</h2><p>可以通过管道把一个命令的输出传递到另一个命令作为输入。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat file | head -n 25 | tail -n 15  #把文件的15行到25行显示出来</span></span><br></pre></td></tr></table></figure></p>
-<p>##tee</p>
-<p>###把标准输出的数据复制一份<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat /etc/passwd |grep "/sbinnologin" |tee /mnt/nologin.out</span></span><br><span class="line"><span class="comment">#把/etc/passwd文件中含有/sbin/nologin的行输出到屏幕上并写入到/mnt/nologin.out文件中</span></span><br></pre></td></tr></table></figure></p>
+        <h2 id="系统的标准输入，输出，错误"><a href="#系统的标准输入，输出，错误" class="headerlink" title="系统的标准输入，输出，错误"></a>系统的标准输入，输出，错误</h2><h3 id="当一个程序刚刚打开时候，首先会创建三个文件"><a href="#当一个程序刚刚打开时候，首先会创建三个文件" class="headerlink" title="当一个程序刚刚打开时候，首先会创建三个文件"></a>当一个程序刚刚打开时候，首先会创建三个文件</h3><h3 id="标准输入0，标准输出1，标准错误2"><a href="#标准输入0，标准输出1，标准错误2" class="headerlink" title="标准输入0，标准输出1，标准错误2"></a>标准输入0，标准输出1，标准错误2</h3><h2 id="文件的重定向"><a href="#文件的重定向" class="headerlink" title="文件的重定向"></a>文件的重定向</h2><a id="more"></a>
+<h3 id="gt"><a href="#gt" class="headerlink" title="&gt;"></a>&gt;</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">command</span> &gt; filename		//把标准输出重定向到一个文件中</span><br><span class="line"><span class="built_in">command</span> &gt;&gt; filename		//把标准输出重定向到一个文件中（追加）</span><br><span class="line"><span class="built_in">command</span> 1&gt; filename		//把标准输出重定向到一个文件中</span><br><span class="line"><span class="built_in">command</span> &gt; file 2&gt;&amp;1		//把标准输出和标准错误一起重定向到文件中</span><br><span class="line"><span class="built_in">command</span> 2&gt; filename		//把标准错误重定向到文件中</span><br><span class="line"><span class="built_in">command</span> 2&gt;&gt; filename		//把标准错误重定向到一个文件中（追加）</span><br><span class="line"><span class="built_in">command</span> &gt;&gt; filename 2&gt;&amp;1	//把标准输出和标准错误一起重定向到文件中（追加）</span><br><span class="line"><span class="built_in">command</span> &amp;&gt; filename		//把标准输出和标准错误一起重定向到文件中</span><br></pre></td></tr></table></figure>
+<h2 id="管道符"><a href="#管道符" class="headerlink" title="管道符"></a>管道符</h2><h3 id=""><a href="#" class="headerlink" title="|"></a>|</h3><p>可以通过管道把一个命令的输出传递到另一个命令作为输入。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat file | head -n 25 | tail -n 15  #把文件的15行到25行显示出来</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="tee"><a href="#tee" class="headerlink" title="tee"></a>tee</h2><p>###把标准输出的数据复制一份<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat /etc/passwd |grep "/sbinnologin" |tee /mnt/nologin.out</span></span><br><span class="line"><span class="comment">#把/etc/passwd文件中含有/sbin/nologin的行输出到屏幕上并写入到/mnt/nologin.out文件中</span></span><br></pre></td></tr></table></figure></p>
 <p>tee 只能复制标准输出，不能复制标准错误。</p>
-<p>##diff 和patch 用法</p>
-<p>###diff<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># diff hello.c hello.c.new  	//显示两个文本的差异</span></span><br><span class="line"><span class="comment"># diff -Nura hello.c hello.c.new &gt; patch.test.c  //加入参数后生成补丁文件并重定向到patch.test.c</span></span><br></pre></td></tr></table></figure></p>
-<p>###patch<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># patch -p0 &lt; patch.hello.c  	//利用diff生成的patch补丁，来更新hello.c</span></span><br><span class="line"><span class="comment"># patch -p0 -R &lt;patch.hello.c 	//-R参数，可以将更新后的文件还原成以前文件</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="diff-和patch-用法"><a href="#diff-和patch-用法" class="headerlink" title="diff 和patch 用法"></a>diff 和patch 用法</h2><h3 id="diff"><a href="#diff" class="headerlink" title="diff"></a>diff</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># diff hello.c hello.c.new  	//显示两个文本的差异</span></span><br><span class="line"><span class="comment"># diff -Nura hello.c hello.c.new &gt; patch.test.c  //加入参数后生成补丁文件并重定向到patch.test.c</span></span><br></pre></td></tr></table></figure>
+<h3 id="patch"><a href="#patch" class="headerlink" title="patch"></a>patch</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># patch -p0 &lt; patch.hello.c  	//利用diff生成的patch补丁，来更新hello.c</span></span><br><span class="line"><span class="comment"># patch -p0 -R &lt;patch.hello.c 	//-R参数，可以将更新后的文件还原成以前文件</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -321,7 +303,7 @@
         <p><span>本文标题:</span><a href="/2015/07/22/linux学习-管道和重定向/">linux学习--管道和重定向</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Jin Feng</a></p>
         <p><span>发布时间:</span>2015-07-22, 10:21:42</p>
-        <p><span>最后更新:</span>2016-04-06, 13:35:57</p>
+        <p><span>最后更新:</span>2016-05-09, 09:27:26</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2015/07/22/linux学习-管道和重定向/" title="linux学习--管道和重定向">http://0x00000000.cn/2015/07/22/linux学习-管道和重定向/</a>
             <span class="copy-path" data-clipboard-text="原文: http://0x00000000.cn/2015/07/22/linux学习-管道和重定向/　　作者: Jin Feng" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -356,7 +338,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text">|</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#系统的标准输入，输出，错误"><span class="toc-number">1.</span> <span class="toc-text">系统的标准输入，输出，错误</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#当一个程序刚刚打开时候，首先会创建三个文件"><span class="toc-number">1.1.</span> <span class="toc-text">当一个程序刚刚打开时候，首先会创建三个文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#标准输入0，标准输出1，标准错误2"><span class="toc-number">1.2.</span> <span class="toc-text">标准输入0，标准输出1，标准错误2</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文件的重定向"><span class="toc-number">2.</span> <span class="toc-text">文件的重定向</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#gt"><span class="toc-number">2.1.</span> <span class="toc-text">></span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#管道符"><span class="toc-number">3.</span> <span class="toc-text">管道符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#"><span class="toc-number">3.1.</span> <span class="toc-text">|</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tee"><span class="toc-number">4.</span> <span class="toc-text">tee</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#diff-和patch-用法"><span class="toc-number">5.</span> <span class="toc-text">diff 和patch 用法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#diff"><span class="toc-number">5.1.</span> <span class="toc-text">diff</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#patch"><span class="toc-number">5.2.</span> <span class="toc-text">patch</span></a></li></ol></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
