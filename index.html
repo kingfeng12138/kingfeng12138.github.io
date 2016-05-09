@@ -276,13 +276,9 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>http协议属于应用层的协议，在传输层TCP基础之上，加上指定的报头，封装成了http协议</p>
-<p>http协议中文名：超文本传输协议<br>Hyper Text Transfer Protocol(超文本传输协议)</p>
-<p>http请求分为三个部分: 请求行，消息报头，请求正文</p>
-<p>Method Request-URI HTTP-Version</p>
-<p>GET     用于请求Request-URI所标识的资源<br>POST    在Request-URI所标识的资源后附加新的数据<br>HEAD    请求获取由Request-URI所标识的资源的响应消息报头<br>PUT     请求服务器存储一个资源，并用Reque-URI作为其标识<br>DELETE  请求服务器删除Request-URI所标识的资源<br>TRACE   请求服务器送回收到的请求信息，主要用于测试或诊断<br>CONNECT  保留将来使用<br>OPTIONS  请求查询服务器的性能，或者查询与资源相关的选项和需求</p>
-<p>:</p>
-
+              <p>http协议属于应用层的协议，在传输层TCP基础之上，加上指定的报头，封装成了http协议</p>
+<p>http协议中文名：超文本传输协议<br>Hyper Text Transfer Protocol(超文本传输协议)<br>
+          
       
     </div>
     
@@ -295,6 +291,10 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http/">http</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a href="/2016/05/07/http协议/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -339,10 +339,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="tcp连接和断开过程中的状态变化"><a href="#tcp连接和断开过程中的状态变化" class="headerlink" title="tcp连接和断开过程中的状态变化"></a>tcp连接和断开过程中的状态变化</h2><p>全部的11种状态<br>(1) SYN_SEND (2)FIN_WAIT1 (3) FIN_WAIT2 (4) CLOSING (5) TIME_WAIT<br>(1) LISTEN (2) SYN_RCVD (3) CLOSE_WAIT (4) LAST_ACK<br>(1)CLOSED (2) ESTABLISHED<br>刚开始都为CLOSED状态<br>在连接的过程中。<br>A 创建socket socket<br>B 创建socket，然后bind，然后listen变为LISTEN状态<br>A 执行connect，发送syn 进入到SYN_SENT状态<br>B 服务端收到SYN 向客户端发送ACK和SYN 进入SYN_RCVD状态 (服务端的连接有操作系统完成)<br>A 客户端收到SYN和ACK就向服务端发送ACK，进入到ESTABLISHED状态<br>B 服务端收到ACK之后也进入到ESTABLISHED状态</p>
-<p>断开过程中<br>A 客户端发送FIN给B服务端，状态变为FIN_WAIT1.<br>B 服务端收到FIN向A客户端发送ACK，服务端状态变为CLOSE_WAIT<br>A 客户端收到ACK进入到FIN_WAIT2状态，此时连接断开了一半，服务端任然能给客户端发送数据<br>B 服务端发完了所有的数据之后，再发送FIN，服务端进入到LAST_ACK状态<br>A 客户端收到FIN之后，发送ACK给B服务端，然后进入到TIME_WAIT状态<br>B 服务端收到ACK进入CLOSED状态<br>A 客户端经过了2MSL长的时间之后就进入到CLOSED状态</p>
-<p>CLOSING状态：<br>出现在同时关闭中:<br>客户端和服务端同时发送FIN，发送后进入FIN_WAIT1状态<br>客户端和服务端都收到对方发送的FIN后，回复ACK，进入到CLOSING<br>收到对方的ACK之后，进入TIME_WAIT状态。</p>
-
+              <h2 id="tcp连接和断开过程中的状态变化"><a href="#tcp连接和断开过程中的状态变化" class="headerlink" title="tcp连接和断开过程中的状态变化"></a>tcp连接和断开过程中的状态变化</h2><p>全部的11种状态<br>(1) SYN_SEND (2)FIN_WAIT1 (3) FIN_WAIT2 (4) CLOSING (5) TIME_WAIT<br>(1) LISTEN (2) SYN_RCVD (3) CLOSE_WAIT (4) LAST_ACK<br>(1)CLOSED (2) ESTABLISHED<br>
+          
       
     </div>
     
@@ -355,6 +353,10 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tcp/">tcp</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a href="/2016/05/07/tcp-11种状态/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>

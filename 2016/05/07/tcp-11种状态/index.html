@@ -5,16 +5,16 @@
   
   <title>tcp--11种状态 | LOVE LINUX</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="tcp连接和断开过程中的状态变化全部的11种状态(1) SYN_SEND (2)FIN_WAIT1 (3) FIN_WAIT2 (4) CLOSING (5) TIME_WAIT(1) LISTEN (2) SYN_RCVD (3) CLOSE_WAIT (4) LAST_ACK(1)CLOSED (2) ESTABLISHED刚开始都为CLOSED状态在连接的过程中。A 创建socket soc">
+  <meta name="description" content="tcp连接和断开过程中的状态变化全部的11种状态(1) SYN_SEND (2)FIN_WAIT1 (3) FIN_WAIT2 (4) CLOSING (5) TIME_WAIT(1) LISTEN (2) SYN_RCVD (3) CLOSE_WAIT (4) LAST_ACK(1)CLOSED (2) ESTABLISHED">
 <meta property="og:type" content="article">
 <meta property="og:title" content="tcp--11种状态">
 <meta property="og:url" content="http://0x00000000.cn/2016/05/07/tcp-11种状态/index.html">
 <meta property="og:site_name" content="LOVE LINUX">
-<meta property="og:description" content="tcp连接和断开过程中的状态变化全部的11种状态(1) SYN_SEND (2)FIN_WAIT1 (3) FIN_WAIT2 (4) CLOSING (5) TIME_WAIT(1) LISTEN (2) SYN_RCVD (3) CLOSE_WAIT (4) LAST_ACK(1)CLOSED (2) ESTABLISHED刚开始都为CLOSED状态在连接的过程中。A 创建socket soc">
-<meta property="og:updated_time" content="2016-05-07T13:58:01.000Z">
+<meta property="og:description" content="tcp连接和断开过程中的状态变化全部的11种状态(1) SYN_SEND (2)FIN_WAIT1 (3) FIN_WAIT2 (4) CLOSING (5) TIME_WAIT(1) LISTEN (2) SYN_RCVD (3) CLOSE_WAIT (4) LAST_ACK(1)CLOSED (2) ESTABLISHED">
+<meta property="og:updated_time" content="2016-05-09T01:23:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tcp--11种状态">
-<meta name="twitter:description" content="tcp连接和断开过程中的状态变化全部的11种状态(1) SYN_SEND (2)FIN_WAIT1 (3) FIN_WAIT2 (4) CLOSING (5) TIME_WAIT(1) LISTEN (2) SYN_RCVD (3) CLOSE_WAIT (4) LAST_ACK(1)CLOSED (2) ESTABLISHED刚开始都为CLOSED状态在连接的过程中。A 创建socket soc">
+<meta name="twitter:description" content="tcp连接和断开过程中的状态变化全部的11种状态(1) SYN_SEND (2)FIN_WAIT1 (3) FIN_WAIT2 (4) CLOSING (5) TIME_WAIT(1) LISTEN (2) SYN_RCVD (3) CLOSE_WAIT (4) LAST_ACK(1)CLOSED (2) ESTABLISHED">
   
     <link rel="alternative" href="/atom.xml" title="LOVE LINUX" type="application/atom+xml">
   
@@ -281,7 +281,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="tcp连接和断开过程中的状态变化"><a href="#tcp连接和断开过程中的状态变化" class="headerlink" title="tcp连接和断开过程中的状态变化"></a>tcp连接和断开过程中的状态变化</h2><p>全部的11种状态<br>(1) SYN_SEND (2)FIN_WAIT1 (3) FIN_WAIT2 (4) CLOSING (5) TIME_WAIT<br>(1) LISTEN (2) SYN_RCVD (3) CLOSE_WAIT (4) LAST_ACK<br>(1)CLOSED (2) ESTABLISHED<br>刚开始都为CLOSED状态<br>在连接的过程中。<br>A 创建socket socket<br>B 创建socket，然后bind，然后listen变为LISTEN状态<br>A 执行connect，发送syn 进入到SYN_SENT状态<br>B 服务端收到SYN 向客户端发送ACK和SYN 进入SYN_RCVD状态 (服务端的连接有操作系统完成)<br>A 客户端收到SYN和ACK就向服务端发送ACK，进入到ESTABLISHED状态<br>B 服务端收到ACK之后也进入到ESTABLISHED状态</p>
+        <h2 id="tcp连接和断开过程中的状态变化"><a href="#tcp连接和断开过程中的状态变化" class="headerlink" title="tcp连接和断开过程中的状态变化"></a>tcp连接和断开过程中的状态变化</h2><p>全部的11种状态<br>(1) SYN_SEND (2)FIN_WAIT1 (3) FIN_WAIT2 (4) CLOSING (5) TIME_WAIT<br>(1) LISTEN (2) SYN_RCVD (3) CLOSE_WAIT (4) LAST_ACK<br>(1)CLOSED (2) ESTABLISHED<br><a id="more"></a><br>刚开始都为CLOSED状态<br>在连接的过程中。<br>A 创建socket socket<br>B 创建socket，然后bind，然后listen变为LISTEN状态<br>A 执行connect，发送syn 进入到SYN_SENT状态<br>B 服务端收到SYN 向客户端发送ACK和SYN 进入SYN_RCVD状态 (服务端的连接有操作系统完成)<br>A 客户端收到SYN和ACK就向服务端发送ACK，进入到ESTABLISHED状态<br>B 服务端收到ACK之后也进入到ESTABLISHED状态</p>
 <p>断开过程中<br>A 客户端发送FIN给B服务端，状态变为FIN_WAIT1.<br>B 服务端收到FIN向A客户端发送ACK，服务端状态变为CLOSE_WAIT<br>A 客户端收到ACK进入到FIN_WAIT2状态，此时连接断开了一半，服务端任然能给客户端发送数据<br>B 服务端发完了所有的数据之后，再发送FIN，服务端进入到LAST_ACK状态<br>A 客户端收到FIN之后，发送ACK给B服务端，然后进入到TIME_WAIT状态<br>B 服务端收到ACK进入CLOSED状态<br>A 客户端经过了2MSL长的时间之后就进入到CLOSED状态</p>
 <p>CLOSING状态：<br>出现在同时关闭中:<br>客户端和服务端同时发送FIN，发送后进入FIN_WAIT1状态<br>客户端和服务端都收到对方发送的FIN后，回复ACK，进入到CLOSING<br>收到对方的ACK之后，进入TIME_WAIT状态。</p>
 
@@ -295,7 +295,7 @@
         <p><span>本文标题:</span><a href="/2016/05/07/tcp-11种状态/">tcp--11种状态</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Jin Feng</a></p>
         <p><span>发布时间:</span>2016-05-07, 11:24:08</p>
-        <p><span>最后更新:</span>2016-05-07, 21:58:01</p>
+        <p><span>最后更新:</span>2016-05-09, 09:23:33</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/05/07/tcp-11种状态/" title="tcp--11种状态">http://0x00000000.cn/2016/05/07/tcp-11种状态/</a>
             <span class="copy-path" data-clipboard-text="原文: http://0x00000000.cn/2016/05/07/tcp-11种状态/　　作者: Jin Feng" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
