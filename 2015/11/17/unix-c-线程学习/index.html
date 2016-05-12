@@ -5,16 +5,16 @@
   
   <title>unix_c--线程学习 | LOVE LINUX</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="###线程线程不同于进程，线程可以说是一种轻量级的进程。只给每个线程分配自己的栈空间，其他的资源都是和父线程共享的。子线程和父线程构成整个进程。每个进程至少有一个线程。">
+  <meta name="description" content="线程线程不同于进程，线程可以说是一种轻量级的进程。只给每个线程分配自己的栈空间，其他的资源都是和父线程共享的。子线程和父线程构成整个进程。每个进程至少有一个线程。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="unix_c--线程学习">
 <meta property="og:url" content="http://0x00000000.cn/2015/11/17/unix-c-线程学习/index.html">
 <meta property="og:site_name" content="LOVE LINUX">
-<meta property="og:description" content="###线程线程不同于进程，线程可以说是一种轻量级的进程。只给每个线程分配自己的栈空间，其他的资源都是和父线程共享的。子线程和父线程构成整个进程。每个进程至少有一个线程。">
-<meta property="og:updated_time" content="2016-04-06T05:35:57.000Z">
+<meta property="og:description" content="线程线程不同于进程，线程可以说是一种轻量级的进程。只给每个线程分配自己的栈空间，其他的资源都是和父线程共享的。子线程和父线程构成整个进程。每个进程至少有一个线程。">
+<meta property="og:updated_time" content="2016-05-09T01:56:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="unix_c--线程学习">
-<meta name="twitter:description" content="###线程线程不同于进程，线程可以说是一种轻量级的进程。只给每个线程分配自己的栈空间，其他的资源都是和父线程共享的。子线程和父线程构成整个进程。每个进程至少有一个线程。">
+<meta name="twitter:description" content="线程线程不同于进程，线程可以说是一种轻量级的进程。只给每个线程分配自己的栈空间，其他的资源都是和父线程共享的。子线程和父线程构成整个进程。每个进程至少有一个线程。">
   
     <link rel="alternative" href="/atom.xml" title="LOVE LINUX" type="application/atom+xml">
   
@@ -281,21 +281,20 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>###线程<br>线程不同于进程，线程可以说是一种轻量级的进程。<br>只给每个线程分配自己的栈空间，其他的资源都是和父线程共享的。<br>子线程和父线程构成整个进程。<br>每个进程至少有一个线程。</p>
+        <h3 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h3><p>线程不同于进程，线程可以说是一种轻量级的进程。<br>只给每个线程分配自己的栈空间，其他的资源都是和父线程共享的。<br>子线程和父线程构成整个进程。<br>每个进程至少有一个线程。</p>
 <a id="more"></a>
-<p>###线程创建</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;pthread.h&gt;</span><br><span class="line"></span><br><span class="line">int pthread_create(pthread *restrict tidp,</span><br><span class="line">                  const pthread_attr_t *restrit attr,</span><br><span class="line">		  void *(*start_rtn)(void *), void *restrict arg);</span><br></pre></td></tr></table></figure>
+<h3 id="线程创建"><a href="#线程创建" class="headerlink" title="线程创建"></a>线程创建</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;pthread.h&gt;</span><br><span class="line"></span><br><span class="line">int pthread_create(pthread *restrict tidp,</span><br><span class="line">                  const pthread_attr_t *restrit attr,</span><br><span class="line">		  void *(*start_rtn)(void *), void *restrict arg);</span><br></pre></td></tr></table></figure>
 <p>线程的入口是一个函数，当该函数执行完，线程也就结束。<br>start_rtn 就是线程的入口函数指针。<br>该函数参数为void <em> 返回值位void </em>所以当要传入多个参数的时候要将其<br>封装成结构体，然后传入，同理，返回值也是这样。</p>
-<p>###线程的终止<br>线程的终止有很多中方式<br>1 线程从它所执行的函数中返回，返回值是线程的退出码<br>2 线程可以被同一进程中的其他线程取消<br>3 进程调用里pthread_exit<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;pthread.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pthread_exit</span><span class="params">(<span class="keyword">void</span> *rval_ptr)</span></span>;</span><br></pre></td></tr></table></figure></p>
+<h3 id="线程的终止"><a href="#线程的终止" class="headerlink" title="线程的终止"></a>线程的终止</h3><p>线程的终止有很多中方式<br>1 线程从它所执行的函数中返回，返回值是线程的退出码<br>2 线程可以被同一进程中的其他线程取消<br>3 进程调用里pthread_exit<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;pthread.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pthread_exit</span><span class="params">(<span class="keyword">void</span> *rval_ptr)</span></span>;</span><br></pre></td></tr></table></figure></p>
 <p>当线程执行pthread_exit退出后，其他线程可以通过执行pthread_join来访问到rval_ptr这个指针<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;pthread.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pthread_join</span><span class="params">(pthread_t thread, <span class="keyword">void</span> **rval_ptr)</span></span>;</span><br></pre></td></tr></table></figure></p>
 <p>其他线程在调用pthread_join函数之后会将一直阻塞，直到指定的线程退出。<br>类似进程中的wait<br>当调用pthread_join时会让指定的线程进入分离状态。<br>所谓分离状态就是线程的底层资源可以在线程终止时立即被回收。<br>可以通过调用pthread_detach来设置分离状态。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;pthread.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pthread_detach</span><span class="params">(pthread_t tid)</span></span>;</span><br></pre></td></tr></table></figure></p>
 <p>pthread_cancel 用来取消同一进程中的其他进程。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pthread_cancel(<span class="keyword">pthread_t</span> tid)</span><br></pre></td></tr></table></figure></p>
 <p>被指定的线程并不一定会被取消，得看线程的属性<br>用pthread_setcancelstate()<br>用来设置cancel属性<br>PTHREAD_CANCEL_DISABLE         线程不会被cancel<br>PTHREAD_CANCEL_ENABLE          线程可以被cancel<br>同时需要设置cancel的类型。<br>使用pthread_setcanceltype()<br>用来设置cancel的类型<br>PTHREAD_CANCEL_FEFERRED        线程遇到断点函数才会被cancel<br>PTHREAD_CANCEL_ASYNCHRONOUS    线程会被无条件cancel</p>
-<p>###线程的属性设置<br>在创建线程的函数中可以通过传递传递pthread_attr_t的结构体指针来设置线程的属性<br>所以通过函数来设置这个结构体的各个值<br>通过查找可以发现pthread_attr_t是一个联合体</p>
+<h3 id="线程的属性设置"><a href="#线程的属性设置" class="headerlink" title="线程的属性设置"></a>线程的属性设置</h3><p>在创建线程的函数中可以通过传递传递pthread_attr_t的结构体指针来设置线程的属性<br>所以通过函数来设置这个结构体的各个值<br>通过查找可以发现pthread_attr_t是一个联合体</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">union</span> <span class="keyword">pthread_attr_t</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">char</span> __size[__SIZEOF_PTHREAD_ATTR_T];</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">int</span> __align;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>1 线程属性的初始化和销毁<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;pthread.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pthread_attr_init</span><span class="params">(pthread_attr_t *attr)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pthread_attr_destroy</span><span class="params">(pthread_attr_t *attr)</span></span>;</span><br></pre></td></tr></table></figure></p>
 <p>2 线程属性的设置。<br>一般来说每种属性对应一个get函数和一个set函数<br><code>pthread_attr_set***</code><br><code>pthread_attr_get***</code><br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">pthread_attr_getstacksize   </span><br><span class="line">pthread_attr_setstacksize   <span class="comment">//set/get stack size attribute in thread attributes object</span></span><br><span class="line">pthread_attr_getdetachstate</span><br><span class="line">pthread_attr_setdetachstate <span class="comment">//set/get detach state attribute in thread attributes object</span></span><br><span class="line">pthread_attr_getguardsize</span><br><span class="line">pthread_attr_setguardsize   <span class="comment">//get and set the thread guardsize attribute</span></span><br><span class="line">............</span><br><span class="line">............</span><br></pre></td></tr></table></figure></p>
-<p>###线程的同步<br>同一进程中各个线程都共享资源，那么当多个线程都使用同一资源就会有问题<br>这时就需要线程总的各种同步手段里</p>
+<h3 id="线程的同步"><a href="#线程的同步" class="headerlink" title="线程的同步"></a>线程的同步</h3><p>同一进程中各个线程都共享资源，那么当多个线程都使用同一资源就会有问题<br>这时就需要线程总的各种同步手段里</p>
 <ol>
 <li>线程锁(互斥量)<br>和线程锁相关的函数都是像这样的<br>pthread<em>mutex</em><em>*</em><br>线程锁的初始化<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span>  <span class="title">pthread_mutex_init</span><span class="params">(pthread_mutex *<span class="keyword">restrict</span> mutex, </span><br><span class="line"><span class="keyword">const</span> phtread_mutexattr_t *<span class="keyword">restrict</span> mutex)</span></span>;</span><br></pre></td></tr></table></figure>
 </li>
@@ -345,7 +344,7 @@
         <p><span>本文标题:</span><a href="/2015/11/17/unix-c-线程学习/">unix_c--线程学习</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Jin Feng</a></p>
         <p><span>发布时间:</span>2015-11-17, 14:37:55</p>
-        <p><span>最后更新:</span>2016-04-06, 13:35:57</p>
+        <p><span>最后更新:</span>2016-05-09, 09:56:10</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2015/11/17/unix-c-线程学习/" title="unix_c--线程学习">http://0x00000000.cn/2015/11/17/unix-c-线程学习/</a>
             <span class="copy-path" data-clipboard-text="原文: http://0x00000000.cn/2015/11/17/unix-c-线程学习/　　作者: Jin Feng" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -380,7 +379,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#线程"><span class="toc-number">1.</span> <span class="toc-text">线程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#线程创建"><span class="toc-number">2.</span> <span class="toc-text">线程创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#线程的终止"><span class="toc-number">3.</span> <span class="toc-text">线程的终止</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#线程的属性设置"><span class="toc-number">4.</span> <span class="toc-text">线程的属性设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#线程的同步"><span class="toc-number">5.</span> <span class="toc-text">线程的同步</span></a></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
