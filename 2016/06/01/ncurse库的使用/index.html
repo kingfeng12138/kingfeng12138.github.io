@@ -3,18 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>数据结构--红黑树 | LOVE LINUX</title>
+  <title>ncurses库的使用 | LOVE LINUX</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="红黑树的满足条件每个结点要么是”红色”，要么是”黑色”所有的叶子结点都是空结点(NULL)，并且是”黑色”如果一个结点是”红色”的，那么它的两个子结点一定是黑色。结点到其子孙的每条简单路径都包含相同的黑色结点根结点永远是黑色。">
+  <meta name="description" content="为了实现一个简单的聊天程序，如果使用普通的输入输出函数，会很凌乱。so，便想着能不能用下ncurses这个字符图形库
+总结一下，就是这样。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据结构--红黑树">
-<meta property="og:url" content="http://0x00000000.cn/2016/03/09/数据结构-红黑树/index.html">
+<meta property="og:title" content="ncurses库的使用">
+<meta property="og:url" content="http://0x00000000.cn/2016/06/01/ncurse库的使用/index.html">
 <meta property="og:site_name" content="LOVE LINUX">
-<meta property="og:description" content="红黑树的满足条件每个结点要么是”红色”，要么是”黑色”所有的叶子结点都是空结点(NULL)，并且是”黑色”如果一个结点是”红色”的，那么它的两个子结点一定是黑色。结点到其子孙的每条简单路径都包含相同的黑色结点根结点永远是黑色。">
-<meta property="og:updated_time" content="2016-06-26T16:43:40.000Z">
+<meta property="og:description" content="为了实现一个简单的聊天程序，如果使用普通的输入输出函数，会很凌乱。so，便想着能不能用下ncurses这个字符图形库
+总结一下，就是这样。">
+<meta property="og:updated_time" content="2016-06-26T17:04:25.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数据结构--红黑树">
-<meta name="twitter:description" content="红黑树的满足条件每个结点要么是”红色”，要么是”黑色”所有的叶子结点都是空结点(NULL)，并且是”黑色”如果一个结点是”红色”的，那么它的两个子结点一定是黑色。结点到其子孙的每条简单路径都包含相同的黑色结点根结点永远是黑色。">
+<meta name="twitter:title" content="ncurses库的使用">
+<meta name="twitter:description" content="为了实现一个简单的聊天程序，如果使用普通的输入输出函数，会很凌乱。so，便想着能不能用下ncurses这个字符图形库
+总结一下，就是这样。">
   
     <link rel="alternative" href="/atom.xml" title="LOVE LINUX" type="application/atom+xml">
   
@@ -243,11 +246,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-数据结构-红黑树" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-ncurse库的使用" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/03/09/数据结构-红黑树/" class="article-date">
-      <time datetime="2016-03-09T06:59:56.000Z" itemprop="datePublished">2016-03-09</time>
+      <a href="/2016/06/01/ncurse库的使用/" class="article-date">
+      <time datetime="2016-06-01T05:03:45.000Z" itemprop="datePublished">2016-06-01</time>
 </a>
     </div>
   
@@ -260,7 +263,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      数据结构--红黑树
+      ncurses库的使用
     </h1>
   
 
@@ -271,7 +274,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ncurses/">ncurses</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -281,7 +284,22 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="红黑树的满足条件"><a href="#红黑树的满足条件" class="headerlink" title="红黑树的满足条件"></a>红黑树的满足条件</h2><p>每个结点要么是”红色”，要么是”黑色”<br>所有的叶子结点都是空结点(NULL)，并且是”黑色”<br>如果一个结点是”红色”的，那么它的两个子结点一定是黑色。<br>结点到其子孙的每条简单路径都包含相同的黑色结点<br>根结点永远是黑色。</p>
+        <p>为了实现一个简单的聊天程序，如果使用普通的输入输出函数，会很凌乱。so，便想着能不能用下<br>ncurses这个字符图形库</p>
+<p>总结一下，就是这样。</p>
+<a id="more"></a>
+<p>使用ncurses时，先需要初始化窗口，程序结束时，主动调用endwin结束窗口。<br>initscr();<br>endwin();</p>
+<p>输出函数</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;curses.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">printw</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *fmt, ...)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">wprintw</span><span class="params">(WINDOW *win, <span class="keyword">const</span> <span class="keyword">char</span> *fmt, ...)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">mvprintw</span><span class="params">(<span class="keyword">int</span> y, <span class="keyword">int</span> x, <span class="keyword">const</span> <span class="keyword">char</span> *fmt, ...)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">mvwprintw</span><span class="params">(WINDOW *win, <span class="keyword">int</span> y, <span class="keyword">int</span> x, <span class="keyword">const</span> <span class="keyword">char</span> *fmt, ...)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">vwprintw</span><span class="params">(WINDOW *win, <span class="keyword">const</span> <span class="keyword">char</span> *fmt, va_list varglist)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">vw_printw</span><span class="params">(WINDOW *win, <span class="keyword">const</span> <span class="keyword">char</span> *fmt, va_list varglist)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>printw    在默认的坐标输出<br>wprintw   指定窗口，在默认的坐标输出<br>mvprintw  指定坐标，输出<br>mvwprintw 指定窗口，指定坐标输出<br>vmprintw 和 vm_printw 比较不常用，搜索无果。。</p>
+<p>输入函数<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;curses.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">scanw</span><span class="params">(<span class="keyword">char</span> *fmt, ...)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">wscanw</span><span class="params">(WINDOW *win, <span class="keyword">char</span> *fmt, ...)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">mvscanw</span><span class="params">(<span class="keyword">int</span> y, <span class="keyword">int</span> x, <span class="keyword">char</span> *fmt, ...)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">mvwscanw</span><span class="params">(WINDOW *win, <span class="keyword">int</span> y, <span class="keyword">int</span> x, <span class="keyword">char</span> *fmt, ...)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">vw_scanw</span><span class="params">(WINDOW *win, <span class="keyword">char</span> *fmt, va_list varglist)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">vwscanw</span><span class="params">(WINDOW *win, <span class="keyword">char</span> *fmt, va_list varglist)</span></span>;</span><br></pre></td></tr></table></figure></p>
+<p>scanw 在默认的坐标输入<br>wscanw 指定窗口的默认坐标输入<br>mvscanw 在指定的坐标输入<br>mvwscanw 在指定的窗口和指定的坐标输入<br>上面的函数，和scanf差不多，在输入字符串，遇到空格就听，如果需要输入空格，就需要使用下面的函数。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;curses.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getstr</span><span class="params">(<span class="keyword">char</span> *str)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getnstr</span><span class="params">(<span class="keyword">char</span> *str, <span class="keyword">int</span> n)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">wgetstr</span><span class="params">(WINDOW *win, <span class="keyword">char</span> *str)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">wgetnstr</span><span class="params">(WINDOW *win, <span class="keyword">char</span> *str, <span class="keyword">int</span> n)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">mvgetstr</span><span class="params">(<span class="keyword">int</span> y, <span class="keyword">int</span> x, <span class="keyword">char</span> *str)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">mvwgetstr</span><span class="params">(WINDOW *win, <span class="keyword">int</span> y, <span class="keyword">int</span> x, <span class="keyword">char</span> *str)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">mvgetnstr</span><span class="params">(<span class="keyword">int</span> y, <span class="keyword">int</span> x, <span class="keyword">char</span> *str, <span class="keyword">int</span> n)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">mvwgetnstr</span><span class="params">(WINDOW *, <span class="keyword">int</span> y, <span class="keyword">int</span> x, <span class="keyword">char</span> *str, <span class="keyword">int</span> n)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>上面的函数用于输入字符串。</p>
+<p>创建窗口<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">WINDOW *<span class="title">newwin</span><span class="params">(<span class="keyword">int</span> nlines, <span class="keyword">int</span> ncols, <span class="keyword">int</span> begin_y, <span class="keyword">int</span> begin_x)</span></span>;</span><br></pre></td></tr></table></figure></p>
+<p>newwin() nlines和ncol分别为行数和列树，begin_y和begin_x分别为纵坐标和横坐标。<br>这里的坐标指的是左上角的坐标。</p>
+<p>刷新窗口和刷新页面<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wrefresh(WINDOW *win);</span><br><span class="line">refresh();</span><br></pre></td></tr></table></figure></p>
+<p>获取坐标的宏<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">getmaxyx(WINDOW *win, y, x);</span><br></pre></td></tr></table></figure></p>
+<p>getmaxyx 得到指定窗口的长度和高度，默认的窗口是stdscr。</p>
 
       
     </div>
@@ -290,13 +308,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/03/09/数据结构-红黑树/">数据结构--红黑树</a></p>
+        <p><span>本文标题:</span><a href="/2016/06/01/ncurse库的使用/">ncurses库的使用</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Jin Feng</a></p>
-        <p><span>发布时间:</span>2016-03-09, 14:59:56</p>
-        <p><span>最后更新:</span>2016-06-27, 00:43:40</p>
+        <p><span>发布时间:</span>2016-06-01, 13:03:45</p>
+        <p><span>最后更新:</span>2016-06-27, 01:04:25</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/03/09/数据结构-红黑树/" title="数据结构--红黑树">http://0x00000000.cn/2016/03/09/数据结构-红黑树/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://0x00000000.cn/2016/03/09/数据结构-红黑树/　　作者: Jin Feng" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/06/01/ncurse库的使用/" title="ncurses库的使用">http://0x00000000.cn/2016/06/01/ncurse库的使用/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://0x00000000.cn/2016/06/01/ncurse库的使用/　　作者: Jin Feng" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -308,16 +326,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/03/14/面试题整理2/">
-                    面试题整理2
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/03/06/算法-将两个栈封装成队列/">
-                    算法--将两个栈封装成队列
+                <a href="/2016/05/23/stl-vector的实现/">
+                    stl--vector的实现
                 </a>
             </div>
         
@@ -328,7 +340,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#红黑树的满足条件"><span class="toc-number">1.</span> <span class="toc-text">红黑树的满足条件</span></a></li></ol>
+    
 </div>
 <style>
     .left-col .switch-btn {
@@ -385,7 +397,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"数据结构--红黑树　| LOVE LINUX　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"ncurses库的使用　| LOVE LINUX　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -401,7 +413,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2016/03/09/数据结构-红黑树/" data-title="数据结构--红黑树" data-url="http://0x00000000.cn/2016/03/09/数据结构-红黑树/"></div>
+    <div class="ds-thread" data-thread-key="2016/06/01/ncurse库的使用/" data-title="ncurses库的使用" data-url="http://0x00000000.cn/2016/06/01/ncurse库的使用/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -425,15 +437,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/03/14/面试题整理2/" title="上一篇: 面试题整理2">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/03/06/算法-将两个栈封装成队列/" title="下一篇: 算法--将两个栈封装成队列">
+            <a href="/2016/05/23/stl-vector的实现/" title="下一篇: stl--vector的实现">
                 <i class="fa fa-angle-right"></i>
             </a>
         
