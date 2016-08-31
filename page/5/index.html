@@ -249,6 +249,69 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-c语言-两个整数的交换函数" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/08/03/c语言-两个整数的交换函数/" class="article-date">
+      <time datetime="2015-08-03T11:21:27.000Z" itemprop="datePublished">2015-08-03</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/03/c语言-两个整数的交换函数/">c语言--两个整数的交换函数</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h2 id="写一个函数用来交换两个整型变量的值"><a href="#写一个函数用来交换两个整型变量的值" class="headerlink" title="写一个函数用来交换两个整型变量的值"></a>写一个函数用来交换两个整型变量的值</h2><h3 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h3><p>void swap(int <em>a, int </em>b);</p>
+<h3 id="方式1"><a href="#方式1" class="headerlink" title="方式1"></a>方式1</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">void swap(int *a, int *b)</span><br><span class="line">&#123;</span><br><span class="line">    int temp = *a;</span><br><span class="line">    *a = *b;</span><br><span class="line">    *b = temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/c语言基础/">c语言基础</a>
+    </div>
+
+
+      
+      
+        <p class="article-more-link">
+          <a href="/2015/08/03/c语言-两个整数的交换函数/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-c语言-strcpy函数实现" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -835,72 +898,6 @@
       
         <p class="article-more-link">
           <a href="/2015/07/24/linux学习-文件存储管理/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-linux学习-权限和特殊权限" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/07/22/linux学习-权限和特殊权限/" class="article-date">
-      <time datetime="2015-07-22T12:16:47.000Z" itemprop="datePublished">2015-07-22</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/22/linux学习-权限和特殊权限/">linux学习--权限和特殊权限</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h2 id="1-linux文件权限概念"><a href="#1-linux文件权限概念" class="headerlink" title="1 linux文件权限概念"></a>1 linux文件权限概念</h2><h3 id="权限的查看"><a href="#权限的查看" class="headerlink" title="权限的查看"></a>权限的查看</h3><p>可以通过<code>ls -l</code>命令来查看文件的详细信息，其中就列出了文件的权限<br>列出的的一共有7列分别为:<br>以<code>-rw-r--r--. 1 root root 2172 Jul 6 11:11  file</code>为例<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"-rwxrwxrwx."</span>: 文件的权限，总共有十个字符包括点</span><br><span class="line"><span class="string">"1"</span>:	文件的硬链接的个数</span><br><span class="line"><span class="string">"root"</span>: 文件所属的用户</span><br><span class="line"><span class="string">"root"</span>: 文件所属的组</span><br><span class="line"><span class="string">"2172"</span>: 文件的大小(默认单位bytes)。</span><br><span class="line"><span class="string">"Jul 6 11:11"</span>: 这个文件的创建日期或者时最近一次的修改日期</span><br><span class="line"><span class="string">"file"</span> :文件名称</span><br></pre></td></tr></table></figure></p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/linux基础/">linux基础</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux基础/">linux基础</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2015/07/22/linux学习-权限和特殊权限/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>

@@ -249,6 +249,64 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-面试题整理2" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/14/面试题整理2/" class="article-date">
+      <time datetime="2016-03-14T14:59:33.000Z" itemprop="datePublished">2016-03-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/14/面试题整理2/">面试题整理2</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p><img src="/img/question/006.png" alt=""><br>const 限定一个对象为只读属性。<br>（1）const char p    限定变量p为只读。这样如p=2这样的赋值操作就是错误的。<br>（2）const char <em>p   p为一个指向char类型的指针，const只限定p指向的对象为只读。这样，p=&amp;a或  p++等操作都是合法的，但如</em>p=4这样的操作就错了，因为企图改写这个已经被限定为只读属性的对象。<br>（3）char <em>const p  限定此指针为只读，这样p=&amp;a或  p++等操作都是不合法的。而</em>p=3这样的操作合法，因为并没有限定其最终对象为只读。<br>（4）const char <em>const p 两者皆限定为只读，不能改写.<br>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+        <p class="article-more-link">
+          <a href="/2016/03/14/面试题整理2/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-数据结构-红黑树" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -788,68 +846,6 @@
       
         <p class="article-more-link">
           <a href="/2015/10/31/unix-c-IPC进程通信学习/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-unix-c-信号学习" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/10/25/unix-c-信号学习/" class="article-date">
-      <time datetime="2015-10-25T12:43:43.000Z" itemprop="datePublished">2015-10-25</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/25/unix-c-信号学习/">unix_c--信号学习</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h3 id="什么是信号"><a href="#什么是信号" class="headerlink" title="什么是信号?"></a>什么是信号?</h3><p>信号—-signal也， 当进程收到信号后，会根据不同的信号给出不同的回应。<br>当信号传输给了程序，程序会先作出判断，响应它，或在忽略它。<br>响应：如果进程没有设置响应的handler函数，则会使用默认的<br>忽略：忽略信号，信号并不会消失，依然会始终在那，当忽略信号的机制消失时，依然会传给进程</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/unix-c/">unix_c</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2015/10/25/unix-c-信号学习/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
