@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="utf-8">
+  
+  <title>python爬虫-爬取一波美女图 | LOVE LINUX</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="最近简单地看了下python爬虫的视频。便自己尝试写了下爬虫操作，计划的是把某一个网站上的美女图全给爬下来，不过经过计算，查不多有好几百G的样子，还是算了。就首先下载一点点先看看。本次爬虫使用的是python2.7的版本，并且本次的目标网站并没有采用js来加载图片，所以没有涉及对js脚本的解析，都是通过来分析html文件通过正则来一步步提取图片网址，然后存起来。首先这个网站有很多分类，到美女图这个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python爬虫-爬取一波美女图">
+<meta property="og:url" content="http://0x00000000.cn/2016/09/13/python爬虫-爬取一波美女图/index.html">
+<meta property="og:site_name" content="LOVE LINUX">
+<meta property="og:description" content="最近简单地看了下python爬虫的视频。便自己尝试写了下爬虫操作，计划的是把某一个网站上的美女图全给爬下来，不过经过计算，查不多有好几百G的样子，还是算了。就首先下载一点点先看看。本次爬虫使用的是python2.7的版本，并且本次的目标网站并没有采用js来加载图片，所以没有涉及对js脚本的解析，都是通过来分析html文件通过正则来一步步提取图片网址，然后存起来。首先这个网站有很多分类，到美女图这个">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/700757/201609/700757-20160913012747164-1677237848.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/700757/201609/700757-20160913013158961-1276225651.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/700757/201609/700757-20160913013239695-1999135253.png">
+<meta property="og:updated_time" content="2016-09-12T17:41:09.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python爬虫-爬取一波美女图">
+<meta name="twitter:description" content="最近简单地看了下python爬虫的视频。便自己尝试写了下爬虫操作，计划的是把某一个网站上的美女图全给爬下来，不过经过计算，查不多有好几百G的样子，还是算了。就首先下载一点点先看看。本次爬虫使用的是python2.7的版本，并且本次的目标网站并没有采用js来加载图片，所以没有涉及对js脚本的解析，都是通过来分析html文件通过正则来一步步提取图片网址，然后存起来。首先这个网站有很多分类，到美女图这个">
+<meta name="twitter:image" content="http://images2015.cnblogs.com/blog/700757/201609/700757-20160913012747164-1677237848.png">
+  
+    <link rel="alternative" href="/atom.xml" title="LOVE LINUX" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+      <link href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css" rel="stylesheet">
+  
+  
+  
+      <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+      <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+  
+  <script src="//cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.9/clipboard.min.js"></script>
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false,
+          fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+          scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.0.9/scrollreveal.min.js"
+      }
+  </script>
+
+  
+      <script>
+          yiliaConfig.rootUrl = "/";
+      </script>
+  
+
+  
+  
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Jin Feng</a></h1>
+        </hgroup>
+
+        
+                
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/IO复用/">IO复用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IPC/">IPC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/avl树/">avl树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux基础/">linux基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/malloc/">malloc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ncurses/">ncurses</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python爬虫/">python爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stl/">stl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tcp/">tcp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unix-c/">unix_c</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/位运算/">位运算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数原型/">函数原型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多态/">多态</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/排序/">排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/栈/">栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/链表/">链表</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/队列/">队列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试题/">面试题</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://my.oschina.net/cnyinlinux">cnyinlinux</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.zmy123.cn">IT-追梦园</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://rubbly.cn">Rubbly</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://xknow.net">认知</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://leejiahao.com">leejiahao</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.Riyadhlinux.com/wordpress">Riyadh</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.learnandroid.cn">xavier</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于c++</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Jin Feng</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Jin Feng</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-python爬虫-爬取一波美女图" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/09/13/python爬虫-爬取一波美女图/" class="article-date">
+      <time datetime="2016-09-12T17:36:50.000Z" itemprop="datePublished">2016-09-13</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      python爬虫-爬取一波美女图
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python爬虫/">python爬虫</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>最近简单地看了下python爬虫的视频。便自己尝试写了下爬虫操作，计划的是把某一个网站上的美女图全给爬下来，不过经过计算，查不多有好几百G的样子，还是算了。就首先下载一点点先看看。<br>本次爬虫使用的是python2.7的版本，并且本次的目标网站并没有采用js来加载图片，所以没有涉及对js脚本的解析，都是通过来分析html文件通过正则来一步步提取图片网址，然后存起来。<br>首先这个网站有很多分类，到美女图这个子网页，可以发现有很多页，同时每页有多个相册，每个相册点进去就会有多个页，每页有多张照片<br>流程大概是这样<br><a id="more"></a><br>找到所有页数<br>—-遍历所有的页数<br>—-遍历当前页的所有相册(给每个相册建立一个目录)<br>—-遍历当前相册的所有图片(遍历此相册的所有页(遍历当前页的所有照片并找到图片的url))<br>—-获得图片url就存起来<br>不说了，直接上代码<br>这个版本是windows上的运行版本<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_html</span><span class="params">(url)</span>:</span></span><br><span class="line">    socket.setdefaulttimeout(<span class="number">10</span>)</span><br><span class="line">    papg = urllib.urlopen(url)</span><br><span class="line">    html = papg.read()</span><br><span class="line">    html = unicode(html, <span class="string">"gbk"</span>).encode(<span class="string">"utf8"</span>)</span><br><span class="line">    <span class="keyword">return</span> html</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_img</span><span class="params">(html)</span>:</span></span><br><span class="line">    imgre = re.compile(<span class="string">r'&lt;img src="(.*?)"'</span>)</span><br><span class="line">    imglist = re.findall(imgre, html)</span><br><span class="line">    <span class="keyword">for</span> imgurl <span class="keyword">in</span> imglist:</span><br><span class="line">        <span class="keyword">print</span> imgurl</span><br><span class="line">        <span class="keyword">global</span> x</span><br><span class="line">        urllib.urlretrieve(imgurl, <span class="string">'.\\photo\%05d.jpg'</span>%x)</span><br><span class="line">        x += <span class="number">1</span></span><br><span class="line">        print(<span class="string">"正在下载第%s张图片"</span>%x)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_tag_list</span><span class="params">(html)</span>:</span></span><br><span class="line">    szurlre = re.compile(<span class="string">r'&lt;a href="(http://www.5442.com/tag/.*?.html)" class'</span>)</span><br><span class="line">    tag_list = re.findall(szurlre, html)</span><br><span class="line">    <span class="keyword">return</span> tag_list</span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_page_num</span><span class="params">(html)</span>:</span></span><br><span class="line">    szurlre = re.compile(<span class="string">r'(\d+).html\'&gt;末页'</span>)</span><br><span class="line">    szresult = re.findall(szurlre, html)</span><br><span class="line">    <span class="keyword">if</span> len(szresult) == <span class="number">0</span>:</span><br><span class="line">        page_num = <span class="number">0</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        page_num = int(szresult[<span class="number">0</span>])</span><br><span class="line">    <span class="keyword">print</span> page_num</span><br><span class="line">    <span class="keyword">return</span> page_num</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_page_num2</span><span class="params">(html)</span>:</span></span><br><span class="line">    szurlre = re.compile(<span class="string">r'共(\d+)页'</span>)</span><br><span class="line">    szresult = re.findall(szurlre, html)</span><br><span class="line">    <span class="keyword">if</span> len(szresult) == <span class="number">0</span>:</span><br><span class="line">        page_num = <span class="number">0</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        page_num = int(szresult[<span class="number">0</span>])</span><br><span class="line">    <span class="keyword">print</span> page_num</span><br><span class="line">    <span class="keyword">return</span> page_num</span><br><span class="line"></span><br><span class="line"><span class="comment">#获得单页的相册</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_ablum_list</span><span class="params">(html)</span>:</span></span><br><span class="line">    szurlre = re.compile(<span class="string">r'(http://www.5442.com/meinv/2\d+/\d+.html)" target='</span>)</span><br><span class="line">    ablum_list = re.findall(szurlre, html);</span><br><span class="line">    <span class="keyword">return</span> ablum_list</span><br><span class="line"><span class="comment">#获得相册的名称</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_ablum_name</span><span class="params">(html)</span>:</span></span><br><span class="line">    szurlre = re.compile(<span class="string">r'&lt;title&gt;(\S+)&lt;/title&gt;'</span>)</span><br><span class="line">    ablum_name = re.findall(szurlre, html)</span><br><span class="line">    <span class="keyword">return</span> ablum_name[<span class="number">0</span>]</span><br><span class="line"><span class="comment">#获得单页的图片</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_photo</span><span class="params">(html, dir, photo_num)</span>:</span></span><br><span class="line">    imgre = re.compile(<span class="string">r'点击图片进入下一页\' &gt;&lt;img src=\'(http://\S+.jpg)\' alt='</span>)</span><br><span class="line">    imglist = re.findall(imgre, html)</span><br><span class="line">    <span class="keyword">for</span> imgurl <span class="keyword">in</span> imglist:</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            socket.setdefaulttimeout(<span class="number">2</span>)</span><br><span class="line">            urllib.urlretrieve(imgurl, unicode(<span class="string">'.\\photo\\%s\%05d.jpg'</span>%(dir, photo_num), <span class="string">"utf8"</span>))</span><br><span class="line">            print(<span class="string">"正在下载第%s张图片"</span>%photo_num)</span><br><span class="line">            photo_num = photo_num + <span class="number">1</span></span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">    <span class="keyword">return</span> photo_num</span><br><span class="line"></span><br><span class="line">url = <span class="string">"http://www.5442.com/meinv/"</span></span><br><span class="line">baseurl = <span class="string">"http://www.5442.com"</span></span><br><span class="line">html = get_html(url)</span><br><span class="line">page_num = get_page_num(html)</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"一共有%s页"</span>%page_num)</span><br><span class="line">ablum_num = <span class="number">0</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    os.mkdir(<span class="string">"photo"</span>)</span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">    <span class="keyword">print</span> <span class="string">"目录已经存在，继续下载"</span></span><br><span class="line"><span class="comment">#遍历所有的页</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, page_num):</span><br><span class="line">    <span class="keyword">if</span> i != <span class="number">1</span>:</span><br><span class="line">        url = <span class="string">"http://www.5442.com/meinv/list_1_%s.html"</span>%i</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            html = get_html(url)</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">    ablum_list = get_ablum_list(html)</span><br><span class="line">    <span class="comment">#遍历当前页的所有相册</span></span><br><span class="line">    <span class="keyword">for</span> ablum_url <span class="keyword">in</span> ablum_list:</span><br><span class="line">        ablum_num = ablum_num + <span class="number">1</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            photo_html = get_html(ablum_url)</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        url_part = ablum_url[<span class="number">0</span>:<span class="number">-5</span>]</span><br><span class="line">        photo_page_num = get_page_num2(photo_html)</span><br><span class="line">        <span class="comment">#获取相册名有点问题，直接以数字来创建更加方便，便于分</span></span><br><span class="line">        <span class="comment">#ablum_name = get_ablum_name(photo_html)</span></span><br><span class="line">        ablum_name = <span class="string">"编程资料"</span> + <span class="string">"%05d"</span> % ablum_num</span><br><span class="line">        <span class="keyword">print</span> ablum_name</span><br><span class="line">        photo_num = <span class="number">0</span></span><br><span class="line">        <span class="comment">#创建相册对应的目录</span></span><br><span class="line">        ui_ablum_name = unicode(ablum_name, <span class="string">"utf8"</span>)</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            os.mkdir(<span class="string">".\\photo\\"</span>+ui_ablum_name)</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, photo_page_num):</span><br><span class="line">            <span class="keyword">if</span> i != <span class="number">1</span>:</span><br><span class="line">                ablum_url = url_part + <span class="string">"_%d"</span>%i + <span class="string">".html"</span></span><br><span class="line">                <span class="keyword">try</span>:</span><br><span class="line">                    photo_html = get_html(ablum_url)</span><br><span class="line">                <span class="keyword">except</span>:</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">            <span class="comment">#进行存储操作</span></span><br><span class="line">            photo_num = get_photo(photo_html, ablum_name, photo_num)</span><br></pre></td></tr></table></figure></p>
+<p>运行效果截图:<br><img src="http://images2015.cnblogs.com/blog/700757/201609/700757-20160913012747164-1677237848.png" alt=""><br>这样就运行成功了。</p>
+<p>以下是linux下的运行代码，主要是编码和存储的路径格式不一样<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding:utf8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> urllib</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_html</span><span class="params">(url)</span>:</span></span><br><span class="line">    socket.setdefaulttimeout(<span class="number">2</span>)</span><br><span class="line">    papg = urllib.urlopen(url)</span><br><span class="line">    html = papg.read()</span><br><span class="line">    html = unicode(html, <span class="string">"gbk"</span>).encode(<span class="string">"utf8"</span>)</span><br><span class="line">    <span class="keyword">return</span> html</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_img</span><span class="params">(html)</span>:</span></span><br><span class="line">    imgre = re.compile(<span class="string">r'&lt;img src="(.*?)"'</span>)</span><br><span class="line">    imglist = re.findall(imgre, html)</span><br><span class="line">    <span class="keyword">for</span> imgurl <span class="keyword">in</span> imglist:</span><br><span class="line">        <span class="keyword">print</span> imgurl</span><br><span class="line">        <span class="keyword">global</span> x</span><br><span class="line">        urllib.urlretrieve(imgurl, <span class="string">'.\\photo\%05d.jpg'</span>%x)</span><br><span class="line">        x += <span class="number">1</span></span><br><span class="line">        print(<span class="string">"正在下载第%s张图片"</span>%x)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_tag_list</span><span class="params">(html)</span>:</span></span><br><span class="line">    szurlre = re.compile(<span class="string">r'&lt;a href="(http://www.5442.com/tag/.*?.html)" class'</span>)</span><br><span class="line">    tag_list = re.findall(szurlre, html)</span><br><span class="line">    <span class="keyword">return</span> tag_list</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_page_num</span><span class="params">(html)</span>:</span></span><br><span class="line">    szurlre = re.compile(<span class="string">r'(\d+).html\'&gt;末页'</span>)</span><br><span class="line">    szresult = re.findall(szurlre, html)</span><br><span class="line">    <span class="keyword">if</span> len(szresult) == <span class="number">0</span>:</span><br><span class="line">        page_num = <span class="number">0</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        page_num = int(szresult[<span class="number">0</span>])</span><br><span class="line">    <span class="keyword">print</span> page_num</span><br><span class="line">    <span class="keyword">return</span> page_num</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_page_num2</span><span class="params">(html)</span>:</span></span><br><span class="line">    szurlre = re.compile(<span class="string">r'共(\d+)页'</span>)</span><br><span class="line">    szresult = re.findall(szurlre, html)</span><br><span class="line">    <span class="keyword">if</span> len(szresult) == <span class="number">0</span>:</span><br><span class="line">        page_num = <span class="number">0</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        page_num = int(szresult[<span class="number">0</span>])</span><br><span class="line">    <span class="keyword">print</span> page_num</span><br><span class="line">    <span class="keyword">return</span> page_num</span><br><span class="line"></span><br><span class="line"><span class="comment">#获得单页的相册</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_ablum_list</span><span class="params">(html)</span>:</span></span><br><span class="line">    szurlre = re.compile(<span class="string">r'(http://www.5442.com/meinv/2\d+/\d+.html)" target='</span>)</span><br><span class="line">    ablum_list = re.findall(szurlre, html);</span><br><span class="line">    <span class="keyword">return</span> ablum_list</span><br><span class="line"><span class="comment">#获得相册的名称</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_ablum_name</span><span class="params">(html)</span>:</span></span><br><span class="line">    szurlre = re.compile(<span class="string">r'&lt;title&gt;(\S+)&lt;/title&gt;'</span>)</span><br><span class="line">    ablum_name = re.findall(szurlre, html)</span><br><span class="line">    <span class="keyword">return</span> ablum_name[<span class="number">0</span>]</span><br><span class="line"><span class="comment">#获得单页的图片</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_photo</span><span class="params">(html, dir, photo_num)</span>:</span></span><br><span class="line">    imgre = re.compile(<span class="string">r'点击图片进入下一页\' &gt;&lt;img src=\'(http://\S+.jpg)\' alt='</span>)</span><br><span class="line">    imglist = re.findall(imgre, html)</span><br><span class="line">    <span class="keyword">for</span> imgurl <span class="keyword">in</span> imglist:</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            socket.setdefaulttimeout(<span class="number">2</span>)</span><br><span class="line">            urllib.urlretrieve(imgurl, <span class="string">'./photo//%s//%05d.jpg'</span>%(dir, photo_num))</span><br><span class="line">            print(<span class="string">"正在下载第%s张图片"</span>%photo_num)</span><br><span class="line">            photo_num = photo_num + <span class="number">1</span></span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">    <span class="keyword">return</span> photo_num</span><br><span class="line"></span><br><span class="line">url = <span class="string">"http://www.5442.com/meinv/"</span></span><br><span class="line">baseurl = <span class="string">"http://www.5442.com"</span></span><br><span class="line">html = get_html(url)</span><br><span class="line">page_num = get_page_num(html)</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"一共有%s页"</span>%page_num)</span><br><span class="line">ablum_num = <span class="number">0</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    os.mkdir(<span class="string">"./photo"</span>)</span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">    <span class="keyword">print</span> <span class="string">"目录已经存在"</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, page_num):</span><br><span class="line">    <span class="keyword">if</span> i != <span class="number">1</span>:</span><br><span class="line">        url = <span class="string">"http://www.5442.com/meinv/list_1_%s.html"</span>%i</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            html = get_html(url)</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">    ablum_list = get_ablum_list(html)</span><br><span class="line">    <span class="keyword">for</span> ablum_url <span class="keyword">in</span> ablum_list:</span><br><span class="line">        ablum_num = ablum_num + <span class="number">1</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            photo_html = get_html(ablum_url)</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        url_part = ablum_url[<span class="number">0</span>:<span class="number">-5</span>]</span><br><span class="line">        photo_page_num = get_page_num2(photo_html)</span><br><span class="line">        ablum_name = <span class="string">"编程资料"</span> + <span class="string">"%05d"</span> % ablum_num</span><br><span class="line">        <span class="keyword">print</span> ablum_name</span><br><span class="line">        photo_num = <span class="number">0</span></span><br><span class="line">        <span class="comment">#创建相册对应的目录</span></span><br><span class="line">        ui_ablum_name = ablum_name</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            os.mkdir(<span class="string">"./photo/"</span>+ui_ablum_name)</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, photo_page_num):</span><br><span class="line">            <span class="keyword">if</span> i != <span class="number">1</span>:</span><br><span class="line">                ablum_url = url_part + <span class="string">"_%d"</span>%i + <span class="string">".html"</span></span><br><span class="line">                <span class="keyword">try</span>:</span><br><span class="line">                  photo_html = get_html(ablum_url)</span><br><span class="line">                <span class="keyword">except</span>:</span><br><span class="line">                  <span class="keyword">continue</span></span><br><span class="line">            photo_num = get_photo(photo_html, ablum_name, photo_num)</span><br></pre></td></tr></table></figure></p>
+<p>运行效果:<br><img src="http://images2015.cnblogs.com/blog/700757/201609/700757-20160913013158961-1276225651.png" alt=""><br>保存目录<br><img src="http://images2015.cnblogs.com/blog/700757/201609/700757-20160913013239695-1999135253.png" alt=""></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/09/13/python爬虫-爬取一波美女图/">python爬虫-爬取一波美女图</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Jin Feng</a></p>
+        <p><span>发布时间:</span>2016-09-13, 01:36:50</p>
+        <p><span>最后更新:</span>2016-09-13, 01:41:09</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/09/13/python爬虫-爬取一波美女图/" title="python爬虫-爬取一波美女图">http://0x00000000.cn/2016/09/13/python爬虫-爬取一波美女图/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://0x00000000.cn/2016/09/13/python爬虫-爬取一波美女图/　　作者: Jin Feng" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/09/04/unix-c-IO复用/">
+                    unix_c-IO复用
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"python爬虫-爬取一波美女图　| LOVE LINUX　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2016/09/13/python爬虫-爬取一波美女图/" data-title="python爬虫-爬取一波美女图" data-url="http://0x00000000.cn/2016/09/13/python爬虫-爬取一波美女图/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"kingfeng12138"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/09/04/unix-c-IO复用/" title="下一篇: unix_c-IO复用">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/09/13/python爬虫-爬取一波美女图/">python爬虫-爬取一波美女图</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/04/unix-c-IO复用/">unix_c-IO复用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/19/cpp多态的实现/">c++多态的实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/01/ncurse库的使用/">ncurses库的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/23/stl-vector的实现/">stl--vector的实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/07/http协议/">http协议</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/07/tcp-11种状态/">tcp--11种状态</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/05/stl-avl树/">stl--avl树</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/02/stl-空间配置器/">stl_空间配置器</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/06/算法-大整数算法/">算法--大整数算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/06/shell-字符处理/">shell-字符处理</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/14/面试题整理2/">面试题整理2</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/09/数据结构-红黑树/">数据结构--红黑树</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/06/算法-将两个栈封装成队列/">算法--将两个栈封装成队列</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/04/算法-kmp字符串匹配算法/">算法--kmp字符串匹配算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/04/面试题整理1/">面试题整理1</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/17/unix-c-IPC使用步骤/">unix_c--IPC使用步骤</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/09/mysql-c语言编程/">mysql--c语言编程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/mysql的安装/">mysql的安装(服务端，客户端，mysql库)</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/17/unix-c-线程学习/">unix_c--线程学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/31/unix-c-IPC进程通信学习/">unix-c-IPC进程通信学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/25/unix-c-信号学习/">unix_c--信号学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/20/unix-c-IO学习/">unix_c--IO学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/20/unix-c-开机流程/">unix-c--开机流程</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/20/picture-test/">picture_test</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/07/unix-c-makefile写法/">unix_c--makefile写法</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/07/shell-expect用法/">shell--expect用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/06/shell-awk和sed用法/">shell--awk和sed用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/06/shell-find用法/">shell--find用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/06/linux-修改PS1的值/">linux--修改PS1的值</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/04/unix-c-静态链接库和动态链接库/">unix_c--静态链接库和动态链接库</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/26/linux-修改redhat7的截图配置/">linux--修改redhat7的截图配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/23/算法-排序算法整理/">算法--排序算法整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/22/数据结构-将通用双端链表封装成队列/">数据结构--将通用双端链表封装成队列</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/20/数据结构-将通用双端链表封装成栈/">数据结构--将通用双端链表封装成栈</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/20/数据结构-带控制信息的双向链表/">数据结构--带控制信息的双向链表</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/01/数据结构-单向链表的操作-带表头/">数据结构--单向链表的操作(带表头)</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/11/c语言-一个很搓的malloc的实现/">c语言--一个很搓的malloc的实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/04/c语言-strtok函数的实现/">c语言--strtok函数的实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/04/c语言-位操作实现ftoi/">c语言--位操作实现ftoi</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/03/c语言-素数的查找/">c语言--素数的查找</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/03/c语言-两个整数的交换函数/">c语言--两个整数的交换函数</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/03/c语言-strcpy函数实现/">c语言--strcpy函数实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/27/linux学习-磁盘分区和lvm的使用/">linux学习--磁盘分区和lvm的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/27/linux学习-yum使用yum源配置/">linux学习--yum使用yum源配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/27/linux学习-文件打包压缩/">linux学习--文件打包压缩</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/26/linux学习-网络设置/">linux学习--网络设置</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/24/学长推荐的书/">学长推荐的书</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/24/linux学习-openssh的使用/">linux学习--openssh的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/24/linux学习-进程管理/">linux学习--进程管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/24/linux学习-文件存储管理/">linux学习--文件存储管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/22/linux学习-权限和特殊权限/">linux学习--权限和特殊权限</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/22/linux学习-用户和组的管理/">linux学习--用户和组的管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/22/linux学习-文本编辑以vim/">linux学习--文本编辑以vim</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/22/linux学习-管道和重定向/">linux学习--管道和重定向</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/21/linux学习-系统相关指令/">linux学习--系统相关指令</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/21/linux学习-文件基本操作/">linux学习--文件基本操作</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016 Jin Feng
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >本站到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.1.22/require.min.js"></script>
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
