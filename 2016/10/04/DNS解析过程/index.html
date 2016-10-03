@@ -5,19 +5,16 @@
   
   <title>DNS解析过程 | LOVE LINUX</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="DNS怎么说呢，特别特别重要，没有它，不知道会怎样。DNS简单来说就是进行域名和IP的转换，那该如何转换呢？既然要转换，肯定有转换表，那表应该存哪个服务器上，怎样去请求域名服务器来进行转换，所以，这个转换的过程都是什么。而面试的时经常会有这道题：当在浏览器输入网址按下回车之后，到浏览器回显网页，详细描述一下中间发生了神马？
-一般来说，在windows里面的网络配置可以设置DNS地址，比如谷歌的8.">
+  <meta name="description" content="DNS怎么说呢，特别特别重要，没有它，不知道会怎样。DNS简单来说就是进行域名和IP的转换，那该如何转换呢？既然要转换，肯定有转换表，那表应该存哪个服务器上，怎样去请求域名服务器来进行转换，所以，这个转换的过程都是什么。而面试的时经常会有这道题：当在浏览器输入网址按下回车之后，到浏览器回显网页，详细描述一下中间发生了神马？">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DNS解析过程">
 <meta property="og:url" content="http://0x00000000.cn/2016/10/04/DNS解析过程/index.html">
 <meta property="og:site_name" content="LOVE LINUX">
-<meta property="og:description" content="DNS怎么说呢，特别特别重要，没有它，不知道会怎样。DNS简单来说就是进行域名和IP的转换，那该如何转换呢？既然要转换，肯定有转换表，那表应该存哪个服务器上，怎样去请求域名服务器来进行转换，所以，这个转换的过程都是什么。而面试的时经常会有这道题：当在浏览器输入网址按下回车之后，到浏览器回显网页，详细描述一下中间发生了神马？
-一般来说，在windows里面的网络配置可以设置DNS地址，比如谷歌的8.">
-<meta property="og:updated_time" content="2016-10-03T17:53:45.000Z">
+<meta property="og:description" content="DNS怎么说呢，特别特别重要，没有它，不知道会怎样。DNS简单来说就是进行域名和IP的转换，那该如何转换呢？既然要转换，肯定有转换表，那表应该存哪个服务器上，怎样去请求域名服务器来进行转换，所以，这个转换的过程都是什么。而面试的时经常会有这道题：当在浏览器输入网址按下回车之后，到浏览器回显网页，详细描述一下中间发生了神马？">
+<meta property="og:updated_time" content="2016-10-03T17:54:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DNS解析过程">
-<meta name="twitter:description" content="DNS怎么说呢，特别特别重要，没有它，不知道会怎样。DNS简单来说就是进行域名和IP的转换，那该如何转换呢？既然要转换，肯定有转换表，那表应该存哪个服务器上，怎样去请求域名服务器来进行转换，所以，这个转换的过程都是什么。而面试的时经常会有这道题：当在浏览器输入网址按下回车之后，到浏览器回显网页，详细描述一下中间发生了神马？
-一般来说，在windows里面的网络配置可以设置DNS地址，比如谷歌的8.">
+<meta name="twitter:description" content="DNS怎么说呢，特别特别重要，没有它，不知道会怎样。DNS简单来说就是进行域名和IP的转换，那该如何转换呢？既然要转换，肯定有转换表，那表应该存哪个服务器上，怎样去请求域名服务器来进行转换，所以，这个转换的过程都是什么。而面试的时经常会有这道题：当在浏览器输入网址按下回车之后，到浏览器回显网页，详细描述一下中间发生了神马？">
   
     <link rel="alternative" href="/atom.xml" title="LOVE LINUX" type="application/atom+xml">
   
@@ -112,13 +109,13 @@
                 <div class="tips-box hide">
                     <div class="tips-arrow"></div>
                     <ul class="tips-inner">
-                        <li>Menu</li>
-                        <li>Tags</li>
+                        <li>菜单</li>
+                        <li>标签</li>
                         
-                        <li>Friends</li>
+                        <li>友情链接</li>
                         
                         
-                        <li>About Me</li>
+                        <li>关于我</li>
                         
                     </ul>
                 </div>
@@ -244,7 +241,7 @@
             </nav>
         </header>                
     </div>
-    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
       <div class="body-wrap"><article id="post-DNS解析过程" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -285,6 +282,7 @@
       
           
         <p>DNS怎么说呢，特别特别重要，没有它，不知道会怎样。<br>DNS简单来说就是进行域名和IP的转换，那该如何转换呢？既然要转换，肯定有转换表，那表应该存<br>哪个服务器上，怎样去请求域名服务器来进行转换，所以，这个转换的过程都是什么。而面试的时<br>经常会有这道题：当在浏览器输入网址按下回车之后，到浏览器回显网页，详细描述一下中间发生了神马？</p>
+<a id="more"></a>
 <p>一般来说，在windows里面的网络配置可以设置DNS地址，比如谷歌的8.8.8.8<br>如果没有手动设置的话，可能就是运营商提供的ISPDNS域名解析。那这种服务器该属于哪一层？</p>
 <p>当在浏览器敲下回车，<br>本机–&gt;浏览器查看本地缓存<br>本机–&gt;查看本地的host文件<br>本机–&gt;ISPDNS  ISPDNS首先会在缓存中查找是否之前有相同的记录<br>ISPDNS–&gt;根域名服务器   ISPDNS会去请求根域名服务器，而全球有13个IP<br>根域名服务器–&gt;ISPDNS   根域名服务器会返回对应顶级域名的NS记录，比如com的域名<br>ISPDNS–&gt;com域的服务器  请求com域的权威服务器<br>com域的服务器–&gt;ISPDNS  com域的服务器就会发送IP给ISPDNS<br>ISPDNS–&gt;本机           ISPDNS服务器就发送给本地。</p>
 <p>在域名设置中，有多种解析方式，最常用的就是A记录，还有CNAME<br>A就是一个域名一个IP，这里的域名属于二级域名<br>而CNAME是一个域名指向另一域名，百度就是这样，如下所示：<br>先解析www.baidu.com得到www.a.shifen.com.<br>然后解析www.a.shifen.com.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@linux ~]# dig www.baidu.com</span><br><span class="line">...</span><br><span class="line">www.baidu.com.      571 IN  CNAME   www.a.shifen.com.</span><br><span class="line">www.a.shifen.com.   229 IN  A   61.135.169.125</span><br><span class="line">www.a.shifen.com.   229 IN  A   61.135.169.121</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
@@ -296,17 +294,17 @@
   
     
     <div class="copyright">
-        <p><span>Title:</span><a href="/2016/10/04/DNS解析过程/">DNS解析过程</a></p>
-        <p><span>Author:</span><a href="/" title="Back to Homepage">Jin Feng</a></p>
-        <p><span>Created:</span>2016-10-04, 00:58:07</p>
-        <p><span>Updated:</span>2016-10-04, 01:53:45</p>
+        <p><span>本文标题:</span><a href="/2016/10/04/DNS解析过程/">DNS解析过程</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Jin Feng</a></p>
+        <p><span>发布时间:</span>2016-10-04, 00:58:07</p>
+        <p><span>最后更新:</span>2016-10-04, 01:54:48</p>
         <p>
-            <span>Full URL:</span><a class="post-url" href="/2016/10/04/DNS解析过程/" title="DNS解析过程">http://0x00000000.cn/2016/10/04/DNS解析过程/</a>
-            <span class="copy-path" data-clipboard-text="From http://0x00000000.cn/2016/10/04/DNS解析过程/　　By Jin Feng" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/10/04/DNS解析过程/" title="DNS解析过程">http://0x00000000.cn/2016/10/04/DNS解析过程/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://0x00000000.cn/2016/10/04/DNS解析过程/　　作者: Jin Feng" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
-            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
         </p>
     </div>
 
@@ -327,7 +325,7 @@
 </article>
 
     <div id="toc" class="toc-article">
-    <strong class="toc-title">Contents</strong>
+    <strong class="toc-title">文章目录</strong>
     
 </div>
 <style>
@@ -339,10 +337,10 @@
     }
 </style>
 
-<input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 <script>
-    var valueHide = "Hide";
-    var valueShow = "Show";
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
 
     if ($(".left-col").is(":hidden")) {
         $("#tocButton").attr("value", valueShow);
@@ -425,13 +423,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
-        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/10/03/unix-c-用户态和内核态的区别/" title="Next: unix-c-用户态和内核态的区别">
+            <a href="/2016/10/03/unix-c-用户态和内核态的区别/" title="下一篇: unix-c-用户态和内核态的区别">
                 <i class="fa fa-angle-right"></i>
             </a>
         
@@ -454,14 +452,14 @@
                 2016 Jin Feng
             </div>
             <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
             </div>
         </div>
         
             <div class="visit">
                 
                     <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" >Site Visitors: 
+                        <span id="site-visit" >本站到访数: 
                             <span id="busuanzi_value_site_uv"></span>
                         </span>
                     </span>
@@ -471,7 +469,7 @@
                 
                 
                     <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit">Page Hits: 
+                        <span id="page-visit">本页阅读量: 
                             <span id="busuanzi_value_page_pv"></span>
                         </span>
                     </span>
@@ -488,9 +486,9 @@
 
 
 <div class="scroll" id="scroll">
-    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments" title="Comments"><i class="fa fa-comments-o"></i></a>
-    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
 </div>
 
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
