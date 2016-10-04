@@ -11,7 +11,7 @@
 <meta property="og:url" content="http://0x00000000.cn/2016/09/04/unix-c-IO复用/index.html">
 <meta property="og:site_name" content="LOVE LINUX">
 <meta property="og:description" content="简介IO复用技术，简单来说就是同时监听多个描述符。在没有用到IO复用以前，只能是一个线程或一个线程去监听，服务端同时有多个连接的时候，需要创建多个线程或者进程。而且，并不是所有的连接是一直在传输这数据，可能只是连接后啥都没干,如果这样，进程就啥都没干。">
-<meta property="og:updated_time" content="2016-10-03T18:22:26.000Z">
+<meta property="og:updated_time" content="2016-10-04T03:47:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="unix_c-IO复用">
 <meta name="twitter:description" content="简介IO复用技术，简单来说就是同时监听多个描述符。在没有用到IO复用以前，只能是一个线程或一个线程去监听，服务端同时有多个连接的时候，需要创建多个线程或者进程。而且，并不是所有的连接是一直在传输这数据，可能只是连接后啥都没干,如果这样，进程就啥都没干。">
@@ -282,11 +282,19 @@
       
           
         <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>IO复用技术，简单来说就是同时监听多个描述符。在没有用到IO复用以前，只能是一个线程或一个<br>线程去监听，服务端同时有多个连接的时候，需要创建多个线程或者进程。而且，并不是所有的连<br>接是一直在传输这数据，可能只是连接后啥都没干,如果这样，进程就啥都没干。<br><a id="more"></a><br>现在有了IO复用技术，只有描述符就绪的时候才去处理，这样就很方便了。<br>IO复用的使用大概是这样：<br>设置要监听的描述符以及需要监听的事件<br>            ↓<br>监听事件，一直阻塞直到有描述符就绪<br>            ↓<br>遍历所有就绪的描述符，并进行相应处理<br>IO复用有三种方式，分别是select, poll, epoll</p>
-<h2 id="select"><a href="#select" class="headerlink" title="select"></a>select</h2><p>select函数原型<br>select(int nfds, fd_set<em> readfds, fd_set</em> writefds, fd_set<em> exceptfds, struct timeval</em> timeout);</p>
+<h2 id="select"><a href="#select" class="headerlink" title="select"></a>select</h2><p>select函数原型<br>int select(int nfds, fd_set<em> readfds, fd_set</em> writefds, fd_set<em> exceptfds, struct timeval</em> timeout);</p>
 <p>参数详解：<br>nfds:nfds参数指定的是被监听的文件描述符的总数，一般设置成最大的描述符加上1，因为描述<br>符是从0开始的。<br>readfds:需要监听读事件的描述符集<br>writefds：需要监听写事件的描述符集<br>exceptfds:需要监听异常事件的描述符集<br>timeout:设置超时时间，如果传递的是NULL，则select会一直阻塞<br>一般的使用步骤:<br>1 设置FD_SET集合，如果要同时监听多种事件，则需要使用多个描述符集合<br>2 调用select，select会通过更改描述集，只留下准备好的描述符，所以需要在调用前保留一份<br>3 同时描述符需要在数组中存储一份，这个通过遍历数组和FD_ISSET来判断是否准备好，若准备好则去执行相关任务</p>
 <p>缺点:<br>select 最大支持的描述符有限一般是1024。<br>同时select内部的操作是等待描述符集合，必然需要进入到内核态，所以，每次需要把描述符集合<br>从用户空间拷贝到内核空间，这样是特别消耗资源的，同时select这种方式，只保留准备好的描述符<br>这样，使用特别不方便，每次还需要对数组进行遍历来判断描述符是否在准备好的集合当中。</p>
 <h2 id="poll"><a href="#poll" class="headerlink" title="poll"></a>poll</h2><p>poll相对于select的优点就是解决了描述符的限制问题，但是性能并不好。poll也是需要通过遍历<br>的方式来判断描述符的准备状态，当描述符较多时，则就尴尬了。</p>
-<h2 id="epoll"><a href="#epoll" class="headerlink" title="epoll"></a>epoll</h2>
+<p>函数原型:<br>int poll(struct pollfd *fds, nfd_t nfds, int timeout);</p>
+<p>struct pollfd<br>{<br>    int fd;         //文件描述符<br>    short events;   //注册的事件<br>    short revents;  //实际发生的事件<br>}<br>参数详解:<br>fds:需要监听的数组，数组里的每个结构体都设置好描述符和需要注册的事件，如果有多个，使用或(‘|’)操作符<br>nfds:数组的长度<br>timeout:指定超时值，单位是毫秒<br>常用的宏：<br>POLLIN:数据(包括普通数据和优先数据)可读<br>POLLOUT:数据(包括普通数据和优先数据)可写</p>
+<h2 id="epoll"><a href="#epoll" class="headerlink" title="epoll"></a>epoll</h2><p>epoll 相比select和poll不同，epoll将监听的描述符集存放在内核区，免去了select和poll每次调用<br>都需要将描述符集从用户空间拷贝到内核空间的消耗。同时epoll的对于已经准备好的描述符处理比较方便。<br>还增加了一些新的特性，比如ET和LT两种触发模式，</p>
+<h2 id="epoll提供了三个函数"><a href="#epoll提供了三个函数" class="headerlink" title="epoll提供了三个函数:"></a>epoll提供了三个函数:</h2><p>int epoll_create(int size);</p>
+<h2 id="epoll-create用来创建一个描述符，指向内核创建的描述符集。之后的操作都通过描述符来操作。"><a href="#epoll-create用来创建一个描述符，指向内核创建的描述符集。之后的操作都通过描述符来操作。" class="headerlink" title="epoll_create用来创建一个描述符，指向内核创建的描述符集。之后的操作都通过描述符来操作。"></a>epoll_create用来创建一个描述符，指向内核创建的描述符集。之后的操作都通过描述符来操作。</h2><p>int epoll_ctl(int epfd, int op, int fd, struct epoll_event <em>event);<br>epfd:传入的是指向描述符集的描述符<br>op:有三个宏：<br>    EPOLL_CTL_ADD： 添加fd上的注册事件<br>    EPOLL_CTL_MOD： 修改fd上的注册事件<br>    EPOLL_CTL_DEL： 删除fd上的注册事件<br>fd:需要操作的描述符<br>event:<br>    struct epoll_event<br>    {<br>        __uint32_t events;  //epoll事件<br>        epoll_data_t data;  //用户数据<br>    }<br>    typedef union epoll_data_t<br>    {<br>        void </em>ptr;<br>        int fd;<br>        uint32_t u32;<br>        uint64_t u64;</p>
+<pre><code>} epoll_data_t;
+</code></pre><hr>
+<p>int  epoll_wait(int epfd, struct epoll_event* events, int maxevents, int timeout);<br>函数详解：<br>返回值：返回准备好的描述符的个数<br>epfd:指向描述符集的描述符<br>events:这里是作为函数传出使用，epoll_wait之后会设置这个数组,之后再遍历这个数组即可<br>maxevents:指定最多监听的描述符的个数<br>timeout:超时时间，和poll相同。</p>
+
       
     </div>
     
@@ -297,7 +305,7 @@
         <p><span>本文标题:</span><a href="/2016/09/04/unix-c-IO复用/">unix_c-IO复用</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Jin Feng</a></p>
         <p><span>发布时间:</span>2016-09-04, 00:46:54</p>
-        <p><span>最后更新:</span>2016-10-04, 02:22:26</p>
+        <p><span>最后更新:</span>2016-10-04, 11:47:51</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/09/04/unix-c-IO复用/" title="unix_c-IO复用">http://0x00000000.cn/2016/09/04/unix-c-IO复用/</a>
             <span class="copy-path" data-clipboard-text="原文: http://0x00000000.cn/2016/09/04/unix-c-IO复用/　　作者: Jin Feng" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -332,7 +340,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#select"><span class="toc-number">2.</span> <span class="toc-text">select</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#poll"><span class="toc-number">3.</span> <span class="toc-text">poll</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#epoll"><span class="toc-number">4.</span> <span class="toc-text">epoll</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#select"><span class="toc-number">2.</span> <span class="toc-text">select</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#poll"><span class="toc-number">3.</span> <span class="toc-text">poll</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#epoll"><span class="toc-number">4.</span> <span class="toc-text">epoll</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#epoll提供了三个函数"><span class="toc-number">5.</span> <span class="toc-text">epoll提供了三个函数:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#epoll-create用来创建一个描述符，指向内核创建的描述符集。之后的操作都通过描述符来操作。"><span class="toc-number">6.</span> <span class="toc-text">epoll_create用来创建一个描述符，指向内核创建的描述符集。之后的操作都通过描述符来操作。</span></a></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
